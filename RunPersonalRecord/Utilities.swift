@@ -1,0 +1,33 @@
+//
+//  Utilities.swift
+//  RouteSaver
+//
+//  Created by Artsem Lemiasheuski on 29.04.20.
+//  Copyright © 2020 metaxa.routeSaver. All rights reserved.
+//
+
+import Foundation
+import CoreLocation
+
+struct Utilities {
+    static let manager = Utilities()
+    
+    //TODO: return kilometers. i.e. 1.5 km.
+    func getDistance(locations: [CLLocation]) -> Double {
+        var distance = 0.0
+        
+        //Do not include the last element, otherwise Array out of range. The last iteration should be between the penultimate and the last element.
+        for i in 0..<locations.count - 1 {
+            let coordinateA = locations[i]
+            let coordinateB = locations[i+1]
+
+            distance += getDistanceBetweenToPoints(start: coordinateA, end: coordinateB)
+        }
+        
+        return distance
+    }
+    
+    private func getDistanceBetweenToPoints(start: CLLocation, end: CLLocation) -> CLLocationDistance {
+        return start.distance(from: end)
+    }
+}
