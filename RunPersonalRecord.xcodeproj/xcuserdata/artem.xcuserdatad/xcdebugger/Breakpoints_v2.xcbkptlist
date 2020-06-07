@@ -3,4 +3,86 @@
    uuid = "DAB79C08-3D98-4DF1-BEDF-89539D7879D1"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6105F3C-8DB1-4DA2-A9E6-596FA34719E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RunPersonalRecord/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getAllEntities()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DAD936C7-BE57-4C17-9318-1D853ABBF982"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RunPersonalRecord/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "DAD936C7-BE57-4C17-9318-1D853ABBF982 - 5a325b1c5be7ff35"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.NSPersistentContainer in RunPersonalRecord.AppDelegate.persistentContainer.getter : __C.NSPersistentContainer"
+                  moduleName = "RunPersonalRecord"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/artem/Desktop/RunPersonalRecord/RunPersonalRecord/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  uuid = "DAD936C7-BE57-4C17-9318-1D853ABBF982 - 80297387c1bb7a02"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSPersistentStoreDescription, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; __C.NSPersistentContainer in RunPersonalRecord.AppDelegate.persistentContainer.getter : __C.NSPersistentContainer"
+                  moduleName = "RunPersonalRecord"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/artem/Desktop/RunPersonalRecord/RunPersonalRecord/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "106">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76AD8563-9FCC-4D64-9865-1B5203733CBA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RunPersonalRecord/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
