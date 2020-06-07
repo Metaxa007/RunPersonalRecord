@@ -12,6 +12,8 @@ import CoreLocation
 struct Utilities {
     static let manager = Utilities()
     
+    private init() {}
+    
     //TODO: return kilometers. i.e. 1.5 km.
     func getDistance(locations: [CLLocation]) -> Double {
         var distance = 0.0
@@ -29,5 +31,16 @@ struct Utilities {
     
     private func getDistanceBetweenToPoints(start: CLLocation, end: CLLocation) -> CLLocationDistance {
         return start.distance(from: end)
+    }
+    
+    func clLocationToLocation(clLocations: [CLLocation]) -> [Location] {
+        var locations: [Location] = []
+        
+        for clLocation in clLocations {
+            let location = Location(latitude: clLocation.coordinate.latitude, longitude: clLocation.coordinate.longitude)
+            locations.append(location)
+        }
+    
+        return locations
     }
 }
