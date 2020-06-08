@@ -2,7 +2,7 @@
 //  ActivityEntity+CoreDataProperties.swift
 //  RunPersonalRecord
 //
-//  Created by Artsem Lemiasheuski on 21.05.20.
+//  Created by Artsem Lemiasheuski on 08.06.20.
 //  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
 //
 //
@@ -17,6 +17,9 @@ extension ActivityEntity {
         return NSFetchRequest<ActivityEntity>(entityName: "ActivityEntity")
     }
 
-    @NSManaged public var activityAttribute: Activity
+    @NSManaged public var activityAttribute: Activity?
+    @NSManaged public var distance: Double
+    @NSManaged public var date: Date?
+    @NSManaged public var duration: Double
 
 }

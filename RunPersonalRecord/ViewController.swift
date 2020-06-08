@@ -15,7 +15,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var startStopLocatingButton: UIButton!
-
+        
+    var distance = 1000.0
+    var duration: NSDateInterval?
+    var startDate: Date?
+    var stopDate: Date?
     var lastLocation: CLLocation?
     var locations: [CLLocation] = []
     var isLocatingStarted = false {
@@ -59,14 +63,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.distanceFilter = 0
         locationManager.allowsBackgroundLocationUpdates = true
         
+        startDate = Date()
+
         locationManager.startUpdatingLocation()
     }
     
     func stopLocating() {
         locationManager.stopUpdatingLocation()
         
-        let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
-        CoreDataManager.manager.addEntity(activity: activity)
+        stopDate = Date()
+        
+        if let startDate = startDate, let stopDate = stopDate {
+            duration = NSDateInterval.init(start: startDate, end: stopDate)
+            
+            if let duration = duration {
+                let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
+                CoreDataManager.manager.addEntity(activity: activity, date: startDate, duration: duration.duration, distance: distance)
+            }
+        }
         
         locations = []
     }
@@ -114,14 +128,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
     }
     
-    func addTestActivities() {
-        var locations: [Location] = []
-        locations.append(Location.init(latitude: 48.226742, longitude: 16.345461))
-        locations.append(Location.init(latitude: 48.226742, longitude: 16.345461))
-        locations.append(Location.init(latitude: 48.226743, longitude: 16.345461))
-        locations.append(Location.init(latitude: 48.226744, longitude: 16.345461))
-        locations.append(Location.init(latitude: 48.226745, longitude: 16.345461))
-        
+    func addTestActivities() {        
         var locations: [Location] = []
         locations.append(Location.init(latitude: 0.0, longitude: 0.0))
         locations.append(Location.init(latitude: 0.1, longitude: 0.1))
@@ -131,7 +138,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let activity = Activity(locations: locations)
         
-        CoreDataManager.manager.addEntity(activity: activity)
+//        CoreDataManager.manager.addEntity(activity: activity)
         
         
         var locations1: [Location] = []
@@ -143,7 +150,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let activity1 = Activity(locations: locations1)
         
-        CoreDataManager.manager.addEntity(activity: activity1)
+//        CoreDataManager.manager.addEntity(activity: activity1)
         
         var locations2: [Location] = []
         locations2.append(Location.init(latitude: 2.0, longitude: 2.0))
@@ -154,7 +161,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let activity2 = Activity(locations: locations2)
         
-        CoreDataManager.manager.addEntity(activity: activity2)
+//        CoreDataManager.manager.addEntity(activity: activity2)
     }
     
 }

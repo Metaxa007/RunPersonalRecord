@@ -10,13 +10,16 @@ struct CoreDataManager {
     
     private init(){}
     
-    func addEntity(activity: Activity) {
+    func addEntity(activity: Activity, date: Date, duration: Double, distance: Double) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             
             do {
                 let activityEntity = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! ActivityEntity
                 activityEntity.activityAttribute = activity
+                activityEntity.date = date
+                activityEntity.duration = duration
+                activityEntity.distance = distance
                 
                 try context.save()
             } catch {
