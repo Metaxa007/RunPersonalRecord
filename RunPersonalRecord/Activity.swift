@@ -25,7 +25,7 @@ public class Activity: NSObject, NSSecureCoding {
 
     init(locations: [Location]) {
         self.locations = locations
-
+//abc
         super.init()
     }
     
