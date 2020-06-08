@@ -21,6 +21,7 @@
 		AC69032A2476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6903282476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift */; };
 		ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */; };
 		ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AF245A218200BB3F97 /* Utilities.swift */; };
+		ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		AC6903282476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsArray.swift; sourceTree = "<group>"; };
 		ACE0B7AF245A218200BB3F97 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				AC543F3A2454C51200D2202B /* CoreDataManager.swift */,
 				ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */,
 				AC0FD14E2471436D00A4D87C /* Location.swift */,
+				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
 				AC56B2A52452402F00F10921 /* ViewController.swift */,
 				ACE0B7AF245A218200BB3F97 /* Utilities.swift */,
 				AC56B2A32452402F00F10921 /* SceneDelegate.swift */,
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */,
 				AC56B2A62452402F00F10921 /* ViewController.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
