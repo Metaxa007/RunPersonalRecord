@@ -17,10 +17,11 @@
 		AC56B2A92452402F00F10921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2A72452402F00F10921 /* Main.storyboard */; };
 		AC56B2AE2452403100F10921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AD2452403100F10921 /* Assets.xcassets */; };
 		AC56B2B12452403100F10921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AF2452403100F10921 /* LaunchScreen.storyboard */; };
-		AC6903292476F9EC00852089 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6903272476F9EC00852089 /* ActivityEntity+CoreDataClass.swift */; };
-		AC69032A2476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6903282476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift */; };
 		ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */; };
 		ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AF245A218200BB3F97 /* Utilities.swift */; };
+		ACE73FE2248EDC4B00B7EE76 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE73FE0248EDC4B00B7EE76 /* ActivityEntity+CoreDataClass.swift */; };
+		ACE73FE3248EDC4B00B7EE76 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE73FE1248EDC4B00B7EE76 /* ActivityEntity+CoreDataProperties.swift */; };
+		ACE740082490288200B7EE76 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */; };
 		ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,10 +38,11 @@
 		AC56B2AD2452403100F10921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC56B2B02452403100F10921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC56B2B22452403100F10921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC6903272476F9EC00852089 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AC6903282476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsArray.swift; sourceTree = "<group>"; };
 		ACE0B7AF245A218200BB3F97 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		ACE73FE0248EDC4B00B7EE76 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ACE73FE1248EDC4B00B7EE76 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,13 +76,14 @@
 		AC56B2A02452402F00F10921 /* RunPersonalRecord */ = {
 			isa = PBXGroup;
 			children = (
-				AC6903272476F9EC00852089 /* ActivityEntity+CoreDataClass.swift */,
-				AC6903282476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift */,
 				AC0FD15124714E3200A4D87C /* Activity.swift */,
+				ACE73FE0248EDC4B00B7EE76 /* ActivityEntity+CoreDataClass.swift */,
+				ACE73FE1248EDC4B00B7EE76 /* ActivityEntity+CoreDataProperties.swift */,
 				AC56B2A12452402F00F10921 /* AppDelegate.swift */,
 				AC543F3A2454C51200D2202B /* CoreDataManager.swift */,
 				ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */,
 				AC0FD14E2471436D00A4D87C /* Location.swift */,
+				ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */,
 				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
 				AC56B2A52452402F00F10921 /* ViewController.swift */,
 				ACE0B7AF245A218200BB3F97 /* Utilities.swift */,
@@ -167,16 +170,17 @@
 			files = (
 				ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */,
 				AC56B2A62452402F00F10921 /* ViewController.swift in Sources */,
+				ACE73FE2248EDC4B00B7EE76 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
 				ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */,
 				AC0FD14F2471436D00A4D87C /* Location.swift in Sources */,
-				AC69032A2476F9EC00852089 /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */,
 				AC0FD15324714E8700A4D87C /* Activity.swift in Sources */,
-				AC6903292476F9EC00852089 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */,
 				AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */,
+				ACE73FE3248EDC4B00B7EE76 /* ActivityEntity+CoreDataProperties.swift in Sources */,
+				ACE740082490288200B7EE76 /* RecordsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
