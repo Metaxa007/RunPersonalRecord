@@ -36,12 +36,24 @@ class RecordsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecordsTableViewCell
 
-        cell.textLabel?.text = String(activities![indexPath.row].activityAttribute.getLocations()[0].getLatitude())
-        cell.detailTextLabel?.text = String(activities![indexPath.row].activityAttribute.getLocations()[0].getLongitude())
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        
+        cell.distanceLabel.text = String(Int(activities![indexPath.row].distance))
+        cell.dateLabel.text = dateFormatter.string(from: activities![indexPath.row].date!)
+        cell.durationLabel.text = String(Int(activities![indexPath.row].duration))
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return String(10000)
+        }
+        
+        return ""
     }
     
     /*
