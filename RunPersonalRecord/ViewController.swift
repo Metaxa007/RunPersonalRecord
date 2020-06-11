@@ -46,7 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        self.timer?.invalidate()
     }
     
     @IBAction func startStopLocating(_ sender: UIButton) {
@@ -61,12 +61,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func startLocating() {
-        print("Tag1 startLocating")
-        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 0
+        locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.allowsBackgroundLocationUpdates = true
         
         startDate = Date()
@@ -96,14 +94,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func checkWhenDistanceIsCompleted() {
         //weak self?
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-            print("Tag1 timer")
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
+            guard let weakSelf = self else { return }
+            guard weakSelf.locations.count > 0 else { return }
 
-            guard self.locations.count > 0 else { return }
-
-            if Utilities.manager.getDistance(locations: self.locations) >= self.distance {
-                self.isLocatingStarted = false
-                self.stopLocating(completed: true)
+            if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distance {
+                weakSelf.isLocatingStarted = false
+                weakSelf.stopLocating(completed: true)
                 
                 timer.invalidate()
             }
