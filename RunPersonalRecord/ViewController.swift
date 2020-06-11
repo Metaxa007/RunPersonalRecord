@@ -26,11 +26,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var isLocatingStarted = false {
         didSet {
             if isLocatingStarted == true {
-                startStopLocatingButton.setTitle("Stop Tracking", for: .normal)
+                startStopLocatingButton.setTitle("Stop Running", for: .normal)
                 startLocating()
             } else {
-                startStopLocatingButton.setTitle("Start Tracking", for: .normal)
-                //if the user stops manuaaly means he did not reach finish, did not run the planed distance
+                startStopLocatingButton.setTitle("Start Running", for: .normal)
+                //if the user stops manualy means he did not reach the finish line, did not complete the planed distance
                 stopLocating(completed: false)
             }
         }
@@ -108,7 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func roundCorners() {
-        startStopLocatingButton.layer.cornerRadius = 30
+        startStopLocatingButton.layer.cornerRadius = 25
         startStopLocatingButton.clipsToBounds = true
     }
     
