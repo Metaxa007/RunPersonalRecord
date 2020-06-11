@@ -43,7 +43,7 @@ class RecordsTableViewController: UITableViewController {
         
         cell.distanceLabel.text = String(Int(activities![indexPath.row].distance))
         cell.dateLabel.text = dateFormatter.string(from: activities![indexPath.row].date!)
-        cell.durationLabel.text = String(Int(activities![indexPath.row].duration))
+        cell.durationLabel.text = Utilities.manager.secondsToTime(durationInSeconds: activities![indexPath.row].duration)
         
         return cell
     }

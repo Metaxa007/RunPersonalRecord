@@ -43,4 +43,13 @@ struct Utilities {
     
         return locations
     }
+    
+    func secondsToTime(durationInSeconds: TimeInterval) -> String {
+        let hours = Int(durationInSeconds) / 3600
+        let minutes = Int(durationInSeconds) / 60 % 60
+        let seconds = Int(durationInSeconds) % 60
+                
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
 }
