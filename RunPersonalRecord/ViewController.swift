@@ -15,7 +15,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var startStopLocatingButton: UIButton!
-        
+    
+    var timer: Timer?
     var distance = 1000.0
     var duration: NSDateInterval?
     var startDate: Date?
@@ -29,7 +30,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 startLocating()
             } else {
                 startStopLocatingButton.setTitle("Start Tracking", for: .normal)
-                stopLocating()
+                //if the user stops manuaaly means he did not reach finish, did not run the planed distance
+                stopLocating(completed: false)
             }
         }
     }
@@ -43,20 +45,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addPolylineToMap(locations: LocationsArray.array)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
     @IBAction func startStopLocating(_ sender: UIButton) {
         isLocatingStarted = !isLocatingStarted
     }
-        
+    
     func setUpMapView() {
         mapView.showsCompass = true
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.delegate = self
-        
-        startLocating()
     }
     
     func startLocating() {
+        print("Tag1 startLocating")
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -64,11 +70,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.allowsBackgroundLocationUpdates = true
         
         startDate = Date()
-
+        
         locationManager.startUpdatingLocation()
+        
+        checkWhenDistanceIsCompleted()
     }
     
-    func stopLocating() {
+    func stopLocating(completed: Bool) {
+        timer?.invalidate()
         locationManager.stopUpdatingLocation()
         
         stopDate = Date()
@@ -78,11 +87,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             if let duration = duration {
                 let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
-                CoreDataManager.manager.addEntity(activity: activity, date: startDate, duration: duration.duration, distance: distance)
+                CoreDataManager.manager.addEntity(activity: activity, date: startDate, duration: duration.duration, distance: distance, completed: completed)
             }
         }
         
         locations = []
+    }
+    
+    func checkWhenDistanceIsCompleted() {
+        //weak self?
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            print("Tag1 timer")
+
+            guard self.locations.count > 0 else { return }
+
+            if Utilities.manager.getDistance(locations: self.locations) >= self.distance {
+                self.isLocatingStarted = false
+                self.stopLocating(completed: true)
+                
+                timer.invalidate()
+            }
+        })
     }
     
     func roundCorners() {
@@ -110,7 +135,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         }
     }
-
+    
     // MARK: MKMapViewDelegate -
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         print("renderer")
@@ -124,7 +149,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let region = MKCoordinateRegion(center: userLocation.coordinate,
                                         span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-                
+        
         mapView.setRegion(region, animated: true)
     }
     
@@ -138,7 +163,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let activity = Activity(locations: locations)
         
-//        CoreDataManager.manager.addEntity(activity: activity)
+        //        CoreDataManager.manager.addEntity(activity: activity)
         
         
         var locations1: [Location] = []
@@ -150,7 +175,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let activity1 = Activity(locations: locations1)
         
-//        CoreDataManager.manager.addEntity(activity: activity1)
+        //        CoreDataManager.manager.addEntity(activity: activity1)
         
         var locations2: [Location] = []
         locations2.append(Location.init(latitude: 2.0, longitude: 2.0))
@@ -161,7 +186,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let activity2 = Activity(locations: locations2)
         
-//        CoreDataManager.manager.addEntity(activity: activity2)
+        //        CoreDataManager.manager.addEntity(activity: activity2)
     }
     
 }
