@@ -17,7 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var startStopLocatingButton: UIButton!
     
     var timer: Timer?
-    var distance = 1000.0
+    var distance = 0.0
     var duration: NSDateInterval?
     var startDate: Date?
     var stopDate: Date?
@@ -119,6 +119,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         mapView.setRegion(region, animated: true)
         mapView.addOverlay(polyline)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let target = segue.destination as? SettingsViewController {
+            target.viewController = self
+        }
     }
     
     // MARK: CLLocationManagerDelegate -

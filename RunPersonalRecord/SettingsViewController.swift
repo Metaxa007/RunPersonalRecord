@@ -10,49 +10,43 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var distanceTextField: UITextField! {
-        didSet {
-            distanceTextField?.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneButtonTappedForMyNumericTextField)))
-        }
-    }
-    
-    @objc func doneButtonTappedForMyNumericTextField() {
-        print("Done");
-        distanceTextField.resignFirstResponder()
-    }
+    @IBOutlet weak var distanceTextField: UITextField!
+    //NSDefaults for distance
+    private var distance = 0.0
+    var viewController: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        distanceTextField.delegate = self
-//        distanceTextField.keyboardType = UIKeyboardType.decimalPad
+        
+        addToolBarToKeyBoard()
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.view.endEditing(true)
-//        return false
-//    }
-
-}
-
-extension UITextField {
-    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
-        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
-        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
-
-        let toolbar: UIToolbar = UIToolbar()
-        toolbar.barStyle = .default
-        toolbar.items = [
-            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
-        ]
-        toolbar.sizeToFit()
-
-        self.inputAccessoryView = toolbar
+    func addToolBarToKeyBoard() {
+        let toolBar = UIToolbar()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonClicked))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonClicked))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.sizeToFit()
+        toolBar.setItems([cancelButton, flexibleSpace, doneButton], animated: false)
+        
+        distanceTextField.inputAccessoryView = toolBar
     }
 
-    // Default actions:
-    @objc func doneButtonTapped() { self.resignFirstResponder() }
-    @objc func cancelButtonTapped() { self.resignFirstResponder() }
+    @objc func doneButtonClicked() {
+        if let distanceText = distanceTextField.text {
+            distance = Double(distanceText)!
+        }
+
+        viewController?.distance = distance
+        
+        view.endEditing(true)
+    }
+    
+    @objc func cancelButtonClicked() {
+        distanceTextField.text = String(distance)
+        
+        view.endEditing(true)
+    }
+    
 }
