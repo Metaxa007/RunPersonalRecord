@@ -10,6 +10,7 @@
 		AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD14724713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld */; };
 		AC0FD14F2471436D00A4D87C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD14E2471436D00A4D87C /* Location.swift */; };
 		AC0FD15324714E8700A4D87C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD15124714E3200A4D87C /* Activity.swift */; };
+		AC2AE1142492A7C8008ADA10 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AE1132492A7C8008ADA10 /* SettingsViewController.swift */; };
 		AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC543F3A2454C51200D2202B /* CoreDataManager.swift */; };
 		AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A12452402F00F10921 /* AppDelegate.swift */; };
 		AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A32452402F00F10921 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		AC0FD14824713FBB00A4D87C /* RunPersonalRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunPersonalRecord.xcdatamodel; sourceTree = "<group>"; };
 		AC0FD14E2471436D00A4D87C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AC0FD15124714E3200A4D87C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		AC2AE1132492A7C8008ADA10 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AC543F3A2454C51200D2202B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC56B29E2452402F00F10921 /* RunPersonalRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunPersonalRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC56B2A12452402F00F10921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				AC0FD14E2471436D00A4D87C /* Location.swift */,
 				ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */,
 				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
+				AC2AE1132492A7C8008ADA10 /* SettingsViewController.swift */,
 				AC56B2A52452402F00F10921 /* ViewController.swift */,
 				ACE0B7AF245A218200BB3F97 /* Utilities.swift */,
 				AC56B2A32452402F00F10921 /* SceneDelegate.swift */,
@@ -177,6 +180,7 @@
 				AC0FD14F2471436D00A4D87C /* Location.swift in Sources */,
 				AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */,
 				AC0FD15324714E8700A4D87C /* Activity.swift in Sources */,
+				AC2AE1142492A7C8008ADA10 /* SettingsViewController.swift in Sources */,
 				AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */,
 				ACB67DC924918F9A00C2DF1B /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */,
