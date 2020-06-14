@@ -14,10 +14,16 @@ import CoreData
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var paceTextView: UILabel!
+    @IBOutlet weak var durationTextView: UILabel!
     @IBOutlet weak var startStopLocatingButton: UIButton!
+    @IBOutlet weak var distanceTextView: UILabel!
+    @IBOutlet weak var distanceDescriptionTextView: UILabel!
+    @IBOutlet weak var distanceTextField: UITextField!
     
     var timer: Timer?
-    var distance = 0.0
+    var distanceToRun = 0.0
+    var completedDistance: Double = 0.0
     var duration: NSDateInterval?
     var startDate: Date?
     var stopDate: Date?
@@ -43,6 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         setUpMapView()
         roundCorners()
         addPolylineToMap(locations: LocationsArray.array)
+        addToolBarToKeyBoard()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,6 +74,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.allowsBackgroundLocationUpdates = true
         
+        distanceTextField.isEnabled = false
+        distanceTextField.textColor = UIColor.gray
+        
         startDate = Date()
         
         locationManager.startUpdatingLocation()
@@ -77,6 +87,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func stopLocating(completed: Bool) {
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
+        distanceTextField.isEnabled = true
         
         stopDate = Date()
         
@@ -85,20 +96,55 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             if let duration = duration {
                 let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
-                CoreDataManager.manager.addEntity(activity: activity, date: startDate, duration: duration.duration, distance: distance, completed: completed)
+                CoreDataManager.manager.addEntity(activity: activity, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
             }
         }
         
         locations = []
     }
+ 
+    func addToolBarToKeyBoard() {
+        let toolBar = UIToolbar()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonClicked))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonClicked))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.sizeToFit()
+        toolBar.setItems([cancelButton, flexibleSpace, doneButton], animated: false)
+        
+        distanceTextField.inputAccessoryView = toolBar
+    }
+
+    @objc func doneButtonClicked() {
+        if let distance = distanceTextField.text {
+            guard distance != "" else {
+                view.endEditing(true)
+                
+                return
+            }
+            
+            distanceToRun = Double(distance)!
+        }
+        
+        view.endEditing(true)
+    }
+    
+    @objc func cancelButtonClicked() {
+        distanceTextField.text = String(distanceToRun)
+        
+        view.endEditing(true)
+    }
     
     func checkWhenDistanceIsCompleted() {
-        //weak self?
+
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
             guard let weakSelf = self else { return }
             guard weakSelf.locations.count > 0 else { return }
 
-            if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distance {
+            self?.completedDistance = Utilities.manager.getDistance(locations: weakSelf.locations)
+            self?.distanceTextView.text = String(Int(self!.completedDistance) ?? 0)
+            
+            if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distanceToRun {
                 weakSelf.isLocatingStarted = false
                 weakSelf.stopLocating(completed: true)
                 
