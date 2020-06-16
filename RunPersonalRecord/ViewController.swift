@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var paceTextView: UILabel!
@@ -23,7 +23,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var timer: Timer?
     var distanceToRun = 0.0
-    var completedDistance: Double = 0.0
+    var completedDistance: Double = 0.0 {
+        didSet {
+            if oldValue > distanceToRun {
+                completedDistance = distanceToRun
+            }
+        }
+    }
     var duration: NSDateInterval?
     var startDate: Date?
     var stopDate: Date?
@@ -50,6 +56,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         roundCorners()
         addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
+        
+        distanceTextField.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,8 +149,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             guard let weakSelf = self else { return }
             guard weakSelf.locations.count > 0 else { return }
 
-            self?.completedDistance = Utilities.manager.getDistance(locations: weakSelf.locations)
-            self?.distanceTextView.text = String(Int(self!.completedDistance) ?? 0)
+            weakSelf.completedDistance = Utilities.manager.getDistance(locations: weakSelf.locations)
+            weakSelf.distanceTextView.text = String(Int(weakSelf.completedDistance))
             
             if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distanceToRun {
                 weakSelf.isLocatingStarted = false
@@ -154,7 +162,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func roundCorners() {
-        startStopLocatingButton.layer.cornerRadius = 25
+        startStopLocatingButton.layer.cornerRadius = 20
         startStopLocatingButton.clipsToBounds = true
     }
     
@@ -173,6 +181,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    //MARK:UITextFieldDelegate
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let updateText = currentText.replacingCharacters(in: stringRange, with: string)
+
+        if updateText == "0" {
+            return false
+        }
+        
+        return updateText.count < 6
+    }
+    
     // MARK: CLLocationManagerDelegate -
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
@@ -187,7 +210,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // MARK: MKMapViewDelegate -
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        print("renderer")
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.red
         renderer.lineWidth = 3.0
