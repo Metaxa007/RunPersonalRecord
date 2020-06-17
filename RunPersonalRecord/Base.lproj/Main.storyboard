@@ -209,9 +209,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" image="bolt.fill" catalog="system" id="Rz1-It-ypt"/>
                     <connections>
-                        <outlet property="distanceDescriptionTextView" destination="70P-cC-0R2" id="frp-1f-N4t"/>
+                        <outlet property="completedDistanceTextView" destination="GSw-5n-Fau" id="up1-sd-2o3"/>
                         <outlet property="distanceTextField" destination="FFb-SR-EwO" id="sLo-h9-frQ"/>
-                        <outlet property="distanceTextView" destination="GSw-5n-Fau" id="up1-sd-2o3"/>
                         <outlet property="durationTextView" destination="bR7-z4-OWx" id="IP9-cO-V27"/>
                         <outlet property="mapView" destination="L2x-5p-nTJ" id="LgJ-qs-4JC"/>
                         <outlet property="paceTextView" destination="PFt-ZR-N6Z" id="NNd-yj-CxA"/>
@@ -221,50 +220,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMp-uf-dTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1779.7101449275365" y="32.8125"/>
-        </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="BOS-gt-ODm">
-            <objects>
-                <viewController id="mG6-MZ-cIF" customClass="SettingsViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Sbw-0F-kze" customClass="Se">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfD-Hv-bjN">
-                                <rect key="frame" x="126.66666666666669" y="74" width="161" height="35"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.74117647060000003" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BSR-3g-T7N">
-                                <rect key="frame" x="126.66666666666669" y="142" width="161" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="1dL-29-D3U"/>
-                                    <constraint firstAttribute="width" constant="161" id="qiL-FX-Yrz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="BSR-3g-T7N" firstAttribute="top" secondItem="YfD-Hv-bjN" secondAttribute="bottom" constant="33" id="4g2-m2-9Jd"/>
-                            <constraint firstItem="YfD-Hv-bjN" firstAttribute="centerX" secondItem="6Ur-Gk-pMA" secondAttribute="centerX" id="7jT-2s-fxG"/>
-                            <constraint firstItem="BSR-3g-T7N" firstAttribute="centerX" secondItem="6Ur-Gk-pMA" secondAttribute="centerX" id="BQG-hx-V6s"/>
-                            <constraint firstItem="YfD-Hv-bjN" firstAttribute="width" secondItem="Sbw-0F-kze" secondAttribute="width" multiplier="0.388889" id="VhE-gX-qAX"/>
-                            <constraint firstItem="YfD-Hv-bjN" firstAttribute="height" secondItem="Sbw-0F-kze" secondAttribute="height" multiplier="0.0391924" id="ZUi-tY-ivE"/>
-                            <constraint firstItem="YfD-Hv-bjN" firstAttribute="top" secondItem="6Ur-Gk-pMA" secondAttribute="top" constant="30" id="kJa-S4-WE3"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Ur-Gk-pMA"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="yNf-F4-LWg"/>
-                    <connections>
-                        <outlet property="distanceTextField" destination="BSR-3g-T7N" id="ytY-N4-Yb6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uZH-ab-g26" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2657.971014492754" y="32.8125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QFJ-xa-5Nb">
