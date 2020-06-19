@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var paceTextView: UILabel!
@@ -38,6 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var stopDate: Date?
     var lastLocation: CLLocation?
     var locations: [CLLocation] = []
+    var stopWatch = StopWatch()
     var isLocatingStarted = false {
         didSet {
             if isLocatingStarted == true {
@@ -61,6 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addToolBarToKeyBoard()
         
         distanceTextField.delegate = self
+        stopWatch.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -92,16 +94,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         startDate = Date()
         
+        stopWatch.start()
         locationManager.startUpdatingLocation()
         
         checkWhenDistanceIsCompleted()
     }
     
     func stopLocating(completed: Bool) {
+        stopWatch.stop()
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
-        distanceTextField.isEnabled = true
+        
         completedDistanceTextView.text = "0"
+        
+        distanceTextField.isEnabled = true
         distanceTextField.textColor =  UIColor { textColor in
             switch textColor.userInterfaceStyle {
             case .dark:
@@ -247,40 +253,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
     }
     
-    func addTestActivities() {        
-        var locations: [Location] = []
-        locations.append(Location.init(latitude: 0.0, longitude: 0.0))
-        locations.append(Location.init(latitude: 0.1, longitude: 0.1))
-        locations.append(Location.init(latitude: 0.2, longitude: 0.2))
-        locations.append(Location.init(latitude: 0.3, longitude: 0.3))
-        locations.append(Location.init(latitude: 0.4, longitude: 0.4))
-        
-        let activity = Activity(locations: locations)
-        
-        //        CoreDataManager.manager.addEntity(activity: activity)
-        
-        
-        var locations1: [Location] = []
-        locations1.append(Location.init(latitude: 1.0, longitude: 1.0))
-        locations1.append(Location.init(latitude: 1.1, longitude: 1.1))
-        locations1.append(Location.init(latitude: 1.2, longitude: 1.2))
-        locations1.append(Location.init(latitude: 1.3, longitude: 1.3))
-        locations1.append(Location.init(latitude: 1.4, longitude: 1.4))
-        
-        let activity1 = Activity(locations: locations1)
-        
-        //        CoreDataManager.manager.addEntity(activity: activity1)
-        
-        var locations2: [Location] = []
-        locations2.append(Location.init(latitude: 2.0, longitude: 2.0))
-        locations2.append(Location.init(latitude: 2.1, longitude: 2.1))
-        locations2.append(Location.init(latitude: 2.2, longitude: 2.2))
-        locations2.append(Location.init(latitude: 2.3, longitude: 2.3))
-        locations2.append(Location.init(latitude: 2.4, longitude: 2.4))
-        
-        let activity2 = Activity(locations: locations2)
-        
-        //        CoreDataManager.manager.addEntity(activity: activity2)
+    // MARK: StopWatchDelegate -
+    func stopWatch(time: String) {
+        durationTextView.text = time
     }
     
 }

@@ -19,6 +19,7 @@
 		AC56B2B12452403100F10921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AF2452403100F10921 /* LaunchScreen.storyboard */; };
 		ACB67DC824918F9A00C2DF1B /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67DC624918F9A00C2DF1B /* ActivityEntity+CoreDataClass.swift */; };
 		ACB67DC924918F9A00C2DF1B /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67DC724918F9A00C2DF1B /* ActivityEntity+CoreDataProperties.swift */; };
+		ACC57D4B249C162F00DD0B1F /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC57D4A249C162F00DD0B1F /* StopWatch.swift */; };
 		ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */; };
 		ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AF245A218200BB3F97 /* Utilities.swift */; };
 		ACE740082490288200B7EE76 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */; };
@@ -40,6 +41,7 @@
 		AC56B2B22452403100F10921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACB67DC624918F9A00C2DF1B /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACB67DC724918F9A00C2DF1B /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ACC57D4A249C162F00DD0B1F /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsArray.swift; sourceTree = "<group>"; };
 		ACE0B7AF245A218200BB3F97 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */,
 				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
 				AC56B2A52452402F00F10921 /* ViewController.swift */,
+				ACC57D4A249C162F00DD0B1F /* StopWatch.swift */,
 				ACE0B7AF245A218200BB3F97 /* Utilities.swift */,
 				AC56B2A32452402F00F10921 /* SceneDelegate.swift */,
 				AC0FD14724713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld */,
@@ -177,6 +180,7 @@
 				AC0FD14F2471436D00A4D87C /* Location.swift in Sources */,
 				AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */,
 				AC0FD15324714E8700A4D87C /* Activity.swift in Sources */,
+				ACC57D4B249C162F00DD0B1F /* StopWatch.swift in Sources */,
 				AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */,
 				ACB67DC924918F9A00C2DF1B /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */,
