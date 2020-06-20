@@ -2,7 +2,7 @@
 //  ActivityEntity+CoreDataProperties.swift
 //  RunPersonalRecord
 //
-//  Created by Artsem Lemiasheuski on 11.06.20.
+//  Created by Artsem Lemiasheuski on 20.06.20.
 //  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
 //
 //
@@ -18,9 +18,10 @@ extension ActivityEntity {
     }
 
     @NSManaged public var activityAttribute: Activity?
+    @NSManaged public var completed: Bool
     @NSManaged public var date: Date?
     @NSManaged public var distance: Double
     @NSManaged public var duration: Double
-    @NSManaged public var completed: Bool
+    @NSManaged public var pace: Pace?
 
 }
