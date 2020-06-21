@@ -13,7 +13,6 @@
 		AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC543F3A2454C51200D2202B /* CoreDataManager.swift */; };
 		AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A12452402F00F10921 /* AppDelegate.swift */; };
 		AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A32452402F00F10921 /* SceneDelegate.swift */; };
-		AC56B2A62452402F00F10921 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A52452402F00F10921 /* ViewController.swift */; };
 		AC56B2A92452402F00F10921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2A72452402F00F10921 /* Main.storyboard */; };
 		AC56B2AE2452403100F10921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AD2452403100F10921 /* Assets.xcassets */; };
 		AC56B2B12452403100F10921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AF2452403100F10921 /* LaunchScreen.storyboard */; };
@@ -24,6 +23,7 @@
 		ACF4057C249EB007005BC266 /* Pace.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4057B249EB007005BC266 /* Pace.swift */; };
 		ACF4057F249EB1E1005BC266 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4057D249EB1E1005BC266 /* ActivityEntity+CoreDataClass.swift */; };
 		ACF40580249EB1E1005BC266 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4057E249EB1E1005BC266 /* ActivityEntity+CoreDataProperties.swift */; };
+		ACF40584249FA560005BC266 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A52452402F00F10921 /* ViewController.swift */; };
 		ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,8 +198,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF40584249FA560005BC266 /* ViewController.swift in Sources */,
 				ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */,
-				AC56B2A62452402F00F10921 /* ViewController.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
 				ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */,
