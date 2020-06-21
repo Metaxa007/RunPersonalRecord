@@ -80,17 +80,11 @@
 		AC56B2A02452402F00F10921 /* RunPersonalRecord */ = {
 			isa = PBXGroup;
 			children = (
-				ACF4057D249EB1E1005BC266 /* ActivityEntity+CoreDataClass.swift */,
-				ACF4057E249EB1E1005BC266 /* ActivityEntity+CoreDataProperties.swift */,
-				AC0FD15124714E3200A4D87C /* Activity.swift */,
+				ACF40583249F6EB3005BC266 /* Cell */,
+				ACF40582249F6EA5005BC266 /* ViewController */,
+				ACF40581249F6E81005BC266 /* CoreData */,
 				AC56B2A12452402F00F10921 /* AppDelegate.swift */,
-				AC543F3A2454C51200D2202B /* CoreDataManager.swift */,
 				ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */,
-				AC0FD14E2471436D00A4D87C /* Location.swift */,
-				ACF4057B249EB007005BC266 /* Pace.swift */,
-				ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */,
-				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
-				AC56B2A52452402F00F10921 /* ViewController.swift */,
 				ACC57D4A249C162F00DD0B1F /* StopWatch.swift */,
 				ACE0B7AF245A218200BB3F97 /* Utilities.swift */,
 				AC56B2A32452402F00F10921 /* SceneDelegate.swift */,
@@ -101,6 +95,36 @@
 				AC56B2A72452402F00F10921 /* Main.storyboard */,
 			);
 			path = RunPersonalRecord;
+			sourceTree = "<group>";
+		};
+		ACF40581249F6E81005BC266 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AC0FD15124714E3200A4D87C /* Activity.swift */,
+				ACF4057D249EB1E1005BC266 /* ActivityEntity+CoreDataClass.swift */,
+				ACF4057E249EB1E1005BC266 /* ActivityEntity+CoreDataProperties.swift */,
+				AC543F3A2454C51200D2202B /* CoreDataManager.swift */,
+				AC0FD14E2471436D00A4D87C /* Location.swift */,
+				ACF4057B249EB007005BC266 /* Pace.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		ACF40582249F6EA5005BC266 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
+				AC56B2A52452402F00F10921 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ACF40583249F6EB3005BC266 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
