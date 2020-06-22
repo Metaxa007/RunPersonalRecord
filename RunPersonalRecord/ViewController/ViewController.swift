@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var paceTextView: UILabel!
@@ -25,7 +25,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var passedKilometers = 0 { // Used as the key for dictonary "pace"
         willSet {
             paceDict[Double(newValue)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
-            print("Tag1 km \(newValue) pace = \(Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted)")
         }
     }
     var restDistance = 0                  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
@@ -35,6 +34,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var distanceToRun = 0.0 {
         willSet {
             distanceTextField.text = String(Int(newValue))
+            // divide by 10 for tests.
             restDistance = Int(newValue) % 1000
         }
     }
@@ -44,12 +44,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 completedDistance = distanceToRun
             }
 
-            //TODO: change to (completedDistance) / 1000
-            if Int(completedDistance) / 10 >= passedKilometers + 1 {
+            // divide by 10 for tests.
+            if Int(completedDistance) / 1000 >= passedKilometers + 1 {
                 passedKilometers += 1
                 
                 durationWhenLastPaceCounted = Double(stopWatch.getTimeInSeconds())
-                print("Tag1 durationWhenLastPaceCounted = \(durationWhenLastPaceCounted)")
             }
         }
     }
@@ -125,6 +124,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
         
+        completedDistance = 0
         completedDistanceTextView.text = "0"
         
         distanceTextField.isEnabled = true
@@ -233,6 +233,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
         mapView.addOverlay(polyline)
     }
+    
+}
+
+extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
     
     //MARK:UITextFieldDelegate
     //range {1,0} 1 - starting location, 0 - length to replace. Replacement string normally just 1 character that user typed.
