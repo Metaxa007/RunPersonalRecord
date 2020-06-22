@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var paceTextView: UILabel!
@@ -21,15 +21,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var distanceTextField: UITextField!
     
     var timer: Timer?
+    var paceDict: Dictionary<Double, Double> = [Double : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
+    var passedKilometers = 0 { // Used as the key for dictonary "pace"
+        willSet {
+            paceDict[Double(newValue)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+        }
+    }
+    var restDistance = 0                  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
+    var restDistancePace: Dictionary<Double, Double> = [0.0 : 0.0]
+    var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
+                                          // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
     var distanceToRun = 0.0 {
         willSet {
             distanceTextField.text = String(Int(newValue))
+            // divide by 10 for tests.
+            restDistance = Int(newValue) % 1000
         }
     }
     var completedDistance: Double = 0.0 {
         didSet {
             if oldValue > distanceToRun {
                 completedDistance = distanceToRun
+            }
+
+            // divide by 10 for tests.
+            if Int(completedDistance) / 1000 >= passedKilometers + 1 {
+                passedKilometers += 1
+                
+                durationWhenLastPaceCounted = Double(stopWatch.getTimeInSeconds())
             }
         }
     }
@@ -105,6 +124,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
         
+        completedDistance = 0
         completedDistanceTextView.text = "0"
         
         distanceTextField.isEnabled = true
@@ -117,6 +137,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         }
         
+        // Calculate pace of the restDistace
+        if restDistance != 0 {
+            restDistancePace[Double(restDistance)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+        }
+        
+        restDistance = 0
+        durationWhenLastPaceCounted = 0
+        
         stopDate = Date()
         
         if let startDate = startDate, let stopDate = stopDate {
@@ -124,7 +152,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             if let duration = duration {
                 let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
-                CoreDataManager.manager.addEntity(activity: activity, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
+                let pace = Pace(pace: paceDict, restDistancePace: restDistancePace)
+                
+                CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
             }
         }
         
@@ -203,6 +233,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
         mapView.addOverlay(polyline)
     }
+    
+}
+
+extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
     
     //MARK:UITextFieldDelegate
     //range {1,0} 1 - starting location, 0 - length to replace. Replacement string normally just 1 character that user typed.

@@ -17,11 +17,14 @@ class StopWatch {
     fileprivate var timer = Timer()
     
     var delegate: StopWatchDelegate?
+    
     var strHours = "00"
     var strMinutes = "00"
     var strSeconds = "00"
     var strTenthsOfSecond = "00"
+    
     var timeText = ""
+    
     var numHours = 0
     var numMinutes = 0
     var numSeconds = 0
@@ -104,6 +107,24 @@ class StopWatch {
         
         timer.invalidate()
         resetTimer()
+    }
+    
+    // MARK: Value functions
+    
+    func getTimeInHours() -> Int {
+        return numHours
+    }
+    
+    func getTimeInMinutes() -> Int {
+        return numHours * 60 + numMinutes
+    }
+    
+    func getTimeInSeconds() -> Int {
+        return numHours * 3600 + numMinutes * 60 + numSeconds
+    }
+
+    func getTimeInMilliseconds() -> Int {
+        return numHours * 3600000 + numMinutes * 60000 + numSeconds * 1000 + numTenthsOfSecond * 100
     }
 }
 
