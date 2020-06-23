@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             // divide by 10 for tests.
             if Int(completedDistance) / 1000 >= passedKilometers + 1 {
                 passedKilometers += 1
-                
+                paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(passedKilometers))
                 durationWhenLastPaceCounted = Double(stopWatch.getTimeInSeconds())
             }
         }
@@ -140,6 +140,9 @@ class ViewController: UIViewController {
         // Calculate pace of the restDistace
         if restDistance != 0 {
             restDistancePace[Double(restDistance)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            
+            // divide by 10 for tests.
+            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(distanceToRun/1000))
         }
         
         restDistance = 0
