@@ -44,12 +44,18 @@ struct Utilities {
         return locations
     }
     
-    func secondsToTime(durationInSeconds: TimeInterval) -> String {
-        let hours = Int(durationInSeconds) / 3600
-        let minutes = Int(durationInSeconds) / 60 % 60
-        let seconds = Int(durationInSeconds) % 60
-                
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    func getTimeInPaceFormat(duration: TimeInterval) -> String {
+        let (_, minutes, seconds) = getTime(duration: duration)
+        
+        return String(format: "%02i:%02i", minutes, seconds)
+    }
+    
+    private func getTime(duration: TimeInterval) -> (Int, Int, Int) {
+        let hours = Int(duration) / 3600
+        let minutes = Int(duration) / 60 % 60
+        let seconds = Int(duration) % 60
+              
+        return (hours, minutes, seconds)
     }
     
 }

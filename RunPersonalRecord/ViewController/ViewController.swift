@@ -40,14 +40,16 @@ class ViewController: UIViewController {
     }
     var completedDistance: Double = 0.0 {
         didSet {
-            if oldValue > distanceToRun {
-                completedDistance = distanceToRun
+            if oldValue < distanceToRun {
+                completedDistanceTextView.text = String(Int(oldValue))
+            } else {
+                completedDistanceTextView.text = String(Int(distanceToRun))
             }
 
             // divide by 10 for tests.
             if Int(completedDistance) / 1000 >= passedKilometers + 1 {
                 passedKilometers += 1
-                
+                paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(passedKilometers))
                 durationWhenLastPaceCounted = Double(stopWatch.getTimeInSeconds())
             }
         }
@@ -125,7 +127,6 @@ class ViewController: UIViewController {
         locationManager.stopUpdatingLocation()
         
         completedDistance = 0
-        completedDistanceTextView.text = "0"
         
         distanceTextField.isEnabled = true
         distanceTextField.textColor =  UIColor { textColor in
@@ -140,9 +141,11 @@ class ViewController: UIViewController {
         // Calculate pace of the restDistace
         if restDistance != 0 {
             restDistancePace[Double(restDistance)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            
+            // divide by 10 for tests.
+            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(distanceToRun/1000))
         }
         
-        restDistance = 0
         durationWhenLastPaceCounted = 0
         
         stopDate = Date()
@@ -203,11 +206,9 @@ class ViewController: UIViewController {
             guard weakSelf.locations.count > 0 else { return }
 
             weakSelf.completedDistance = Utilities.manager.getDistance(locations: weakSelf.locations)
-            weakSelf.completedDistanceTextView.text = String(Int(weakSelf.completedDistance))
             
             if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distanceToRun {
-                weakSelf.isLocatingStarted = false
-                weakSelf.stopLocating(completed: true)
+                weakSelf.isLocatingStarted = false //stopLocating is called in didSet of isLocatingStarted
                 
                 timer.invalidate()
             }
