@@ -31,14 +31,14 @@ class ViewController: UIViewController {
     var restDistancePace: Dictionary<Double, Double> = [0.0 : 0.0]
     var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
                                           // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
-    var distanceToRun = 0.0 {
+    var distanceToRun = 0 {
         willSet {
             distanceTextField.text = String(Int(newValue))
             // divide by 10 for tests.
-            restDistance = Int(newValue) % 1000
+            restDistance = newValue % 1000
         }
     }
-    var completedDistance: Double = 0.0 {
+    var completedDistance = 0 {
         didSet {
             if oldValue < distanceToRun {
                 completedDistanceTextView.text = String(Int(oldValue))
@@ -122,22 +122,6 @@ class ViewController: UIViewController {
     }
     
     func stopLocating(completed: Bool) {
-        stopWatch.stop()
-        timer?.invalidate()
-        locationManager.stopUpdatingLocation()
-        
-        completedDistance = 0
-        
-        distanceTextField.isEnabled = true
-        distanceTextField.textColor =  UIColor { textColor in
-            switch textColor.userInterfaceStyle {
-            case .dark:
-                return UIColor.white
-            default:
-                return UIColor.black
-            }
-        }
-        
         // Calculate pace of the restDistace
         if restDistance != 0 {
             restDistancePace[Double(restDistance)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
@@ -145,8 +129,6 @@ class ViewController: UIViewController {
             // divide by 10 for tests.
             paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(distanceToRun/1000))
         }
-        
-        durationWhenLastPaceCounted = 0
         
         stopDate = Date()
         
@@ -157,11 +139,27 @@ class ViewController: UIViewController {
                 let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
                 let pace = Pace(pace: paceDict, restDistancePace: restDistancePace)
                 
-                CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
+                CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: Double(distanceToRun), completed: completed)
             }
         }
         
+        stopWatch.stop()
+        timer?.invalidate()
+        locationManager.stopUpdatingLocation()
+        
+        completedDistance = 0
+        durationWhenLastPaceCounted = 0
         locations = []
+
+        distanceTextField.isEnabled = true
+        distanceTextField.textColor =  UIColor { textColor in
+            switch textColor.userInterfaceStyle {
+            case .dark:
+                return UIColor.white
+            default:
+                return UIColor.black
+            }
+        }
     }
  
     func addToolBarToKeyBoard() {
@@ -184,7 +182,7 @@ class ViewController: UIViewController {
                 return
             }
             
-            distanceToRun = Double(distance) ?? 0
+            distanceToRun = Int(distance) ?? 0
             
             view.endEditing(true)
         }
@@ -205,9 +203,9 @@ class ViewController: UIViewController {
             guard let weakSelf = self else { return }
             guard weakSelf.locations.count > 0 else { return }
 
-            weakSelf.completedDistance = Utilities.manager.getDistance(locations: weakSelf.locations)
+            weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locations))
             
-            if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distanceToRun {
+            if Int(Utilities.manager.getDistance(locations: weakSelf.locations)) >= weakSelf.distanceToRun {
                 weakSelf.isLocatingStarted = false //stopLocating is called in didSet of isLocatingStarted
                 
                 timer.invalidate()
