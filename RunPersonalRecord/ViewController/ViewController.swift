@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         }
     }
     var restDistance = 0  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
-    var restDistancePace: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
+    var restDistancePaceDict: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
     var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
                                           // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
     var distanceToRun = 0 {
@@ -118,12 +118,12 @@ class ViewController: UIViewController {
     }
     
     func stopLocating(completed: Bool) {
-        // Calculate pace of the restDistace
+        // Calculate and save pace of the restDistace and print average pace
         if restDistance != 0 {
-            restDistancePace[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
             
             // divide by 10 for tests.
-            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(distanceToRun/1000))
+            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(distanceToRun)/1000))
         }
         
         stopDate = Date()
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
             
             if let duration = duration {
                 let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
-                let pace = Pace(pace: paceDict, restDistancePace: restDistancePace)
+                let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
                 
                 CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
             }
@@ -142,9 +142,12 @@ class ViewController: UIViewController {
         stopWatch.stop()
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
-        
+        paceDict.removeAll()
+        restDistancePaceDict.removeAll()
+
         completedDistance = 0
         durationWhenLastPaceCounted = 0
+        passedKilometers = 0
         locations = []
 
         distanceTextField.isEnabled = true
@@ -199,7 +202,7 @@ class ViewController: UIViewController {
             guard let weakSelf = self else { return }
             guard weakSelf.locations.count > 0 else { return }
 
-            if Int(Utilities.manager.getDistance(locations: weakSelf.locations)) <= weakSelf.distanceToRun {
+            if Utilities.manager.getDistance(locations: weakSelf.locations) <= Double(weakSelf.distanceToRun) {
                 weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locations))
             } else {
                 weakSelf.completedDistance = weakSelf.distanceToRun

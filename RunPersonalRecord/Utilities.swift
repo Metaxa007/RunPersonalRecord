@@ -50,7 +50,7 @@ struct Utilities {
         return String(format: "%02i:%02i", minutes, seconds)
     }
     
-    private func getTime(duration: TimeInterval) -> (Int, Int, Int) {
+    func getTime(duration: TimeInterval) -> (Int, Int, Int) {
         let hours = Int(duration) / 3600
         let minutes = Int(duration) / 60 % 60
         let seconds = Int(duration) % 60

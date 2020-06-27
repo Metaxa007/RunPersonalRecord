@@ -21,14 +21,12 @@ class StopWatch {
     var strHours = "00"
     var strMinutes = "00"
     var strSeconds = "00"
-    var strTenthsOfSecond = "00"
     
     var timeText = ""
     
     var numHours = 0
     var numMinutes = 0
     var numSeconds = 0
-    var numTenthsOfSecond = 0
     
     /**
      Updates the time and saves the values as strings
@@ -38,24 +36,15 @@ class StopWatch {
         let currentTime = Date.timeIntervalSinceReferenceDate
   
         // Find the difference between current time and start time to get the time elapsed
-        var elapsedTime: TimeInterval = currentTime - startTime
+        let elapsedTime: TimeInterval = currentTime - startTime
         
-        numHours = Int(elapsedTime / 3600.0)
-        elapsedTime -= (TimeInterval(numHours) * 3600)
-        
-        numMinutes = Int(elapsedTime / 60.0)
-        elapsedTime -= (TimeInterval(numMinutes) * 60)
-        
-        numSeconds = Int(elapsedTime)
-        elapsedTime -= TimeInterval(numSeconds)
-        
-        numTenthsOfSecond = Int(elapsedTime * 100)
+        (numHours, numMinutes, numSeconds) = Utilities.manager.getTime(duration: elapsedTime)
         
         // Save the values into strings with the 00 format
         strHours = String(format: "%02d", numHours)
         strMinutes = String(format: "%02d", numMinutes)
         strSeconds = String(format: "%02d", numSeconds)
-        strTenthsOfSecond = String(format: "%02d", numTenthsOfSecond)
+
         timeText = "\(strHours):\(strMinutes):\(strSeconds)"
         
         delegate?.stopWatch(time: timeText)
@@ -66,7 +55,7 @@ class StopWatch {
         strHours = "00"
         strMinutes = "00"
         strSeconds = "00"
-        strTenthsOfSecond = "00"
+        
         timeText = "\(strHours):\(strMinutes):\(strSeconds)"
         
         delegate?.stopWatch(time: timeText)
@@ -123,9 +112,6 @@ class StopWatch {
         return numHours * 3600 + numMinutes * 60 + numSeconds
     }
 
-    func getTimeInMilliseconds() -> Int {
-        return numHours * 3600000 + numMinutes * 60000 + numSeconds * 1000 + numTenthsOfSecond * 100
-    }
 }
 
 protocol StopWatchDelegate {
