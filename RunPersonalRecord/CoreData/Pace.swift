@@ -11,12 +11,12 @@ import Foundation
 public class Pace : NSObject, NSSecureCoding {
     public static var supportsSecureCoding = true
 
-    private let pace: [Double: Double]
-    private let restDistancePace: [Double: Double]
+    private let pace: [Int: Double]
+    private let restDistancePace: [Int: Double]
 
     public required init?(coder: NSCoder) {
-        guard let pace = coder.decodeObject(forKey: "pace") as? [Double: Double],
-              let restDistancePace = coder.decodeObject(forKey: "restDistancePace") as? [Double: Double] else {
+        guard let pace = coder.decodeObject(forKey: "pace") as? [Int: Double],
+              let restDistancePace = coder.decodeObject(forKey: "restDistancePace") as? [Int: Double] else {
                 return nil
         }
 
@@ -24,7 +24,7 @@ public class Pace : NSObject, NSSecureCoding {
         self.restDistancePace = restDistancePace
     }
 
-    init(pace: [Double: Double], restDistancePace: [Double: Double]) {
+    init(pace: [Int: Double], restDistancePace: [Int: Double]) {
         self.pace = pace
         self.restDistancePace = restDistancePace
 
@@ -36,11 +36,11 @@ public class Pace : NSObject, NSSecureCoding {
         coder.encode(restDistancePace, forKey: "restDistancePace")
     }
 
-    func getPace() -> [Double: Double] {
+    func getPace() -> [Int: Double] {
         return pace
     }
     
-    func getRestDistance() -> [Double: Double] {
+    func getRestDistance() -> [Int: Double] {
         return restDistancePace
     }
 }

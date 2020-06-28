@@ -21,33 +21,29 @@ class ViewController: UIViewController {
     @IBOutlet weak var distanceTextField: UITextField!
     
     var timer: Timer?
-    var paceDict: Dictionary<Double, Double> = [Double : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
+    var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
     var passedKilometers = 0 { // Used as the key for dictonary "pace"
         willSet {
-            paceDict[Double(newValue)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
         }
     }
-    var restDistance = 0                  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
-    var restDistancePace: Dictionary<Double, Double> = [0.0 : 0.0]
+    var restDistance = 0  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
+    var restDistancePaceDict: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
     var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
                                           // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
-    var distanceToRun = 0.0 {
+    var distanceToRun = 0 {
         willSet {
             distanceTextField.text = String(Int(newValue))
             // divide by 10 for tests.
-            restDistance = Int(newValue) % 1000
+            restDistance = newValue % 1000
         }
     }
-    var completedDistance: Double = 0.0 {
-        didSet {
-            if oldValue < distanceToRun {
-                completedDistanceTextView.text = String(Int(oldValue))
-            } else {
-                completedDistanceTextView.text = String(Int(distanceToRun))
-            }
+    var completedDistance = 0 {
+        willSet {
+            completedDistanceTextView.text = String(newValue)
 
             // divide by 10 for tests.
-            if Int(completedDistance) / 1000 >= passedKilometers + 1 {
+            if newValue / 1000 >= passedKilometers + 1 {
                 passedKilometers += 1
                 paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(passedKilometers))
                 durationWhenLastPaceCounted = Double(stopWatch.getTimeInSeconds())
@@ -61,8 +57,8 @@ class ViewController: UIViewController {
     var locations: [CLLocation] = []
     var stopWatch = StopWatch()
     var isLocatingStarted = false {
-        didSet {
-            if isLocatingStarted == true {
+        willSet {
+            if newValue == true {
                 startStopLocatingButton.setTitle("Stop", for: .normal)
                 startLocating()
             } else {
@@ -122,12 +118,38 @@ class ViewController: UIViewController {
     }
     
     func stopLocating(completed: Bool) {
+        // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
+        if restDistance != 0 {
+            restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            
+            // divide by 10 for tests.
+            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(distanceToRun)/1000))
+        }
+        
+        stopDate = Date()
+        
+        if let startDate = startDate, let stopDate = stopDate {
+            duration = NSDateInterval.init(start: startDate, end: stopDate)
+            
+            if let duration = duration {
+                let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
+                let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
+                
+                CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
+            }
+        }
+        
         stopWatch.stop()
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
-        
+        paceDict.removeAll()
+        restDistancePaceDict.removeAll()
+
         completedDistance = 0
-        
+        durationWhenLastPaceCounted = 0
+        passedKilometers = 0
+        locations = []
+
         distanceTextField.isEnabled = true
         distanceTextField.textColor =  UIColor { textColor in
             switch textColor.userInterfaceStyle {
@@ -137,31 +159,6 @@ class ViewController: UIViewController {
                 return UIColor.black
             }
         }
-        
-        // Calculate pace of the restDistace
-        if restDistance != 0 {
-            restDistancePace[Double(restDistance)] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
-            
-            // divide by 10 for tests.
-            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(distanceToRun/1000))
-        }
-        
-        durationWhenLastPaceCounted = 0
-        
-        stopDate = Date()
-        
-        if let startDate = startDate, let stopDate = stopDate {
-            duration = NSDateInterval.init(start: startDate, end: stopDate)
-            
-            if let duration = duration {
-                let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
-                let pace = Pace(pace: paceDict, restDistancePace: restDistancePace)
-                
-                CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
-            }
-        }
-        
-        locations = []
     }
  
     func addToolBarToKeyBoard() {
@@ -184,7 +181,7 @@ class ViewController: UIViewController {
                 return
             }
             
-            distanceToRun = Double(distance) ?? 0
+            distanceToRun = Int(distance) ?? 0
             
             view.endEditing(true)
         }
@@ -194,7 +191,7 @@ class ViewController: UIViewController {
         if distanceToRun == 0 {
             distanceTextField.text = ""
         } else {
-            distanceTextField.text = String(Int(distanceToRun))
+            distanceTextField.text = String(distanceToRun)
         }
         
         view.endEditing(true)
@@ -205,9 +202,10 @@ class ViewController: UIViewController {
             guard let weakSelf = self else { return }
             guard weakSelf.locations.count > 0 else { return }
 
-            weakSelf.completedDistance = Utilities.manager.getDistance(locations: weakSelf.locations)
-            
-            if Utilities.manager.getDistance(locations: weakSelf.locations) >= weakSelf.distanceToRun {
+            if Utilities.manager.getDistance(locations: weakSelf.locations) <= Double(weakSelf.distanceToRun) {
+                weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locations))
+            } else {
+                weakSelf.completedDistance = weakSelf.distanceToRun
                 weakSelf.isLocatingStarted = false //stopLocating is called in didSet of isLocatingStarted
                 
                 timer.invalidate()
