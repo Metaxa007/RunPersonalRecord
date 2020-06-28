@@ -57,8 +57,8 @@ class ViewController: UIViewController {
     var locations: [CLLocation] = []
     var stopWatch = StopWatch()
     var isLocatingStarted = false {
-        didSet {
-            if isLocatingStarted == true {
+        willSet {
+            if newValue == true {
                 startStopLocatingButton.setTitle("Stop", for: .normal)
                 startLocating()
             } else {
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
     }
     
     func stopLocating(completed: Bool) {
-        // Calculate and save pace of the restDistace and print average pace
+        // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
         if restDistance != 0 {
             restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
             
@@ -191,7 +191,7 @@ class ViewController: UIViewController {
         if distanceToRun == 0 {
             distanceTextField.text = ""
         } else {
-            distanceTextField.text = String(Int(distanceToRun))
+            distanceTextField.text = String(distanceToRun)
         }
         
         view.endEditing(true)
