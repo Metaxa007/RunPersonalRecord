@@ -16,9 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var paceTextView: UILabel!
     @IBOutlet weak var durationTextView: UILabel!
-    @IBOutlet weak var startStopLocatingButton: UIButton!
     @IBOutlet weak var completedDistanceTextView: UILabel!
     @IBOutlet weak var distanceTextField: UITextField!
+    @IBOutlet weak var startButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var startButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var pauseStopStackHeight: NSLayoutConstraint!
+    @IBOutlet weak var pauseStopStackBottom: NSLayoutConstraint!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseStopStack: UIStackView!
     
     var timer: Timer?
     var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
@@ -59,12 +64,16 @@ class ViewController: UIViewController {
     var isLocatingStarted = false {
         willSet {
             if newValue == true {
-                startStopLocatingButton.setTitle("Stop", for: .normal)
+                startButton.setTitle("Stop", for: .normal)
                 startLocating()
+                showPauseStopStack()
+                hideStartButton()
             } else {
-                startStopLocatingButton.setTitle("Start", for: .normal)
+                startButton.setTitle("Start", for: .normal)
                 //if the user stops manualy means he did not reach the finish line, did not complete the planed distance
                 stopLocating(completed: false)
+                showStartButton()
+                hidePauseStopStack()
             }
         }
     }
@@ -78,6 +87,8 @@ class ViewController: UIViewController {
         addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
+        hidePauseStopStack()
+        
         distanceTextField.delegate = self
         stopWatch.delegate = self
     }
@@ -90,6 +101,30 @@ class ViewController: UIViewController {
         if distanceTextFieldIsEmtpy() { return }
 
         isLocatingStarted = !isLocatingStarted
+    }
+    
+    func hidePauseStopStack() {
+        pauseStopStackHeight.constant = 0
+        pauseStopStackBottom.constant = 0
+        pauseStopStack.isHidden = true
+    }
+    
+    func hideStartButton() {
+        startButtonBottom.constant = 0
+        startButtonHeight.constant = 0
+        startButton.isHidden = true
+    }
+    
+    func showPauseStopStack() {
+        pauseStopStackBottom.constant = 38
+        pauseStopStackHeight.constant = 30
+        pauseStopStack.isHidden = false
+    }
+    
+    func showStartButton() {
+        startButtonBottom.constant = 26
+        startButtonHeight.constant = 53
+        startButton.isHidden = false
     }
     
     func setUpMapView() {
@@ -220,8 +255,8 @@ class ViewController: UIViewController {
     }
     
     func roundCorners() {
-        startStopLocatingButton.layer.cornerRadius = 20
-        startStopLocatingButton.clipsToBounds = true
+        startButton.layer.cornerRadius = 20
+        startButton.clipsToBounds = true
     }
     
     func addPolylineToMap(locations: [CLLocation]) {
