@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pauseStopStackHeight: NSLayoutConstraint!
     @IBOutlet weak var pauseStopStackBottom: NSLayoutConstraint!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var pauseStopStack: UIStackView!
     
     var timer: Timer?
@@ -63,7 +64,7 @@ class ViewController: UIViewController {
     var stopWatch = StopWatch()
     var isLocatingStarted = false {
         willSet {
-            if newValue == true {
+            if newValue {
                 startButton.setTitle("Stop", for: .normal)
                 startLocating()
                 showPauseStopStack()
@@ -74,6 +75,19 @@ class ViewController: UIViewController {
                 stopLocating(completed: false)
                 showStartButton()
                 hidePauseStopStack()
+            }
+        }
+    }
+    var isPaused = false {
+        willSet {
+            if newValue {
+                stopWatch.pause()
+                locationManager.stopUpdatingLocation()
+                pauseButton.setTitle("Continue", for: .normal)
+            } else {
+                stopWatch.start()
+                locationManager.startUpdatingLocation()
+                pauseButton.setTitle("Pause", for: .normal)
             }
         }
     }
@@ -100,7 +114,15 @@ class ViewController: UIViewController {
     @IBAction func startStopLocating(_ sender: UIButton) {
         if distanceTextFieldIsEmtpy() { return }
 
-        isLocatingStarted = !isLocatingStarted
+        isLocatingStarted = true
+    }
+    
+    @IBAction func pauseActivity(_ sender: UIButton) {
+        isPaused = !isPaused
+    }
+    
+    @IBAction func stopActivity(_ sender: UIButton) {
+        isLocatingStarted = false
     }
     
     func hidePauseStopStack() {

@@ -198,11 +198,23 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
-                                        <state key="normal" title="Pause"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.74117647060000003" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Pause">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pauseActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="619-Bj-4Aw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
                                         <rect key="frame" x="142" y="0.0" width="32" height="30"/>
-                                        <state key="normal" title="Stop"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.74117647060000003" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Stop">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="cIF-s8-96U"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -235,6 +247,7 @@
                         <outlet property="durationTextView" destination="bR7-z4-OWx" id="IP9-cO-V27"/>
                         <outlet property="mapView" destination="L2x-5p-nTJ" id="LgJ-qs-4JC"/>
                         <outlet property="paceTextView" destination="PFt-ZR-N6Z" id="NNd-yj-CxA"/>
+                        <outlet property="pauseButton" destination="3Ux-lF-ihM" id="Lst-uB-SMV"/>
                         <outlet property="pauseStopStack" destination="zMN-Hi-P1L" id="C8A-UZ-Qr0"/>
                         <outlet property="pauseStopStackBottom" destination="vl2-dM-rFo" id="DQn-LW-3fI"/>
                         <outlet property="pauseStopStackHeight" destination="8Xc-x7-3M2" id="yMs-YF-AHi"/>
