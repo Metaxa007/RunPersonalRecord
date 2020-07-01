@@ -60,7 +60,10 @@ class ViewController: UIViewController {
     var startDate: Date?
     var stopDate: Date?
     var lastLocation: CLLocation?
-    var locations: [CLLocation] = []
+    var locationsAll: [[CLLocation]] = [] //Array contains arrays of Locations. Every array of Locations are locations between start and pause. In this case the last position
+                                       //before pause and the first position after continue won't be connected. Otherwise the distance between these 2 points will be added
+                                       //to the total distance.
+    var locations: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
     var stopWatch = StopWatch()
     var isLocatingStarted = false {
         willSet {
@@ -81,9 +84,15 @@ class ViewController: UIViewController {
     var isPaused = false {
         willSet {
             if newValue {
+                if !locations.isEmpty {
+                    locationsAll.append(locations)
+                }
+                
                 stopWatch.pause()
                 locationManager.stopUpdatingLocation()
                 pauseButton.setTitle("Continue", for: .normal)
+                
+                locations = []
             } else {
                 stopWatch.start()
                 locationManager.startUpdatingLocation()
@@ -98,7 +107,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUpMapView()
         roundCorners()
-        addPolylineToMap(locations: LocationsArray.array)
+        //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
         hidePauseStopStack()
@@ -189,7 +198,11 @@ class ViewController: UIViewController {
             duration = NSDateInterval.init(start: startDate, end: stopDate)
             
             if let duration = duration {
-                let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
+                if !locations.isEmpty {
+                    locationsAll.append(locations)
+                }
+                
+                let activity = Activity(locations: locationsAll)
                 let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
                 
                 CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
@@ -205,6 +218,7 @@ class ViewController: UIViewController {
         completedDistance = 0
         durationWhenLastPaceCounted = 0
         passedKilometers = 0
+        locationsAll = []
         locations = []
 
         distanceTextField.isEnabled = true
@@ -321,7 +335,7 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
             if lastLocation?.coordinate.latitude != location.coordinate.latitude &&
                 lastLocation?.coordinate.longitude != location.coordinate.longitude  {
                 lastLocation = location
-                
+
                 self.locations.append(location)
             }
         }
