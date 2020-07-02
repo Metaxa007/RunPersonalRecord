@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pauseStopStackBottom: NSLayoutConstraint!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseStopStack: UIStackView!
     
     var timer: Timer?
@@ -90,13 +91,15 @@ class ViewController: UIViewController {
                 
                 stopWatch.pause()
                 locationManager.stopUpdatingLocation()
-                pauseButton.setTitle("Continue", for: .normal)
-                
+                pauseButton.setTitle("Resume", for: .normal)
+                pauseButton.backgroundColor = UIColor(red: 114/255, green: 194/255, blue: 0, alpha: 1)
+
                 locations = []
             } else {
                 stopWatch.start()
                 locationManager.startUpdatingLocation()
                 pauseButton.setTitle("Pause", for: .normal)
+                pauseButton.backgroundColor = UIColor(red: 249/255, green: 183/255, blue: 55/255, alpha: 1)
             }
         }
     }
@@ -106,7 +109,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpMapView()
-        roundCorners()
+        roundCornersStartButton()
+        roundCornersStopButton()
+        roundCornersPauseButton()
         //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
@@ -148,7 +153,7 @@ class ViewController: UIViewController {
     
     func showPauseStopStack() {
         pauseStopStackBottom.constant = 38
-        pauseStopStackHeight.constant = 30
+        pauseStopStackHeight.constant = 85
         pauseStopStack.isHidden = false
     }
     
@@ -220,6 +225,7 @@ class ViewController: UIViewController {
         passedKilometers = 0
         locationsAll = []
         locations = []
+//        isPaused = false
 
         distanceTextField.isEnabled = true
         distanceTextField.textColor =  UIColor { textColor in
@@ -290,9 +296,19 @@ class ViewController: UIViewController {
         return distance.isEmpty
     }
     
-    func roundCorners() {
+    func roundCornersStartButton() {
         startButton.layer.cornerRadius = 20
         startButton.clipsToBounds = true
+    }
+    
+    func roundCornersPauseButton() {
+        pauseButton.layer.cornerRadius = 42.5
+        pauseButton.clipsToBounds = true
+    }
+    
+    func roundCornersStopButton() {
+        stopButton.layer.cornerRadius = 42.5
+        stopButton.clipsToBounds = true
     }
     
     func addPolylineToMap(locations: [CLLocation]) {

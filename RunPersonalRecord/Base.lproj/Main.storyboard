@@ -178,9 +178,40 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-Hi-P1L" userLabel="PauseStop">
+                                <rect key="frame" x="82" y="690" width="250" height="85"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                        <color key="backgroundColor" red="0.95826333760000004" green="0.73014515639999999" blue="0.32537809010000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <state key="normal" title="Pause">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pauseActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="619-Bj-4Aw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
+                                        <rect key="frame" x="165" y="0.0" width="85" height="85"/>
+                                        <color key="backgroundColor" red="0.67656242850000003" green="0.28003188969999998" blue="0.19212236999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <state key="normal" title="Stop">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="cIF-s8-96U"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="5hA-cK-Kgq"/>
+                                    <constraint firstAttribute="height" constant="85" id="8Xc-x7-3M2"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-vI-HHE">
                                 <rect key="frame" x="82" y="734" width="250" height="53"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.74117647058823533" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.48123693470000001" green="0.71851330999999996" blue="0.2351528406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="Bt0-ub-NmI"/>
                                     <constraint firstAttribute="width" constant="250" id="Nhm-g2-qka"/>
@@ -193,35 +224,6 @@
                                     <action selector="startStopLocating:" destination="8eo-45-wiJ" eventType="touchUpInside" id="ogw-3m-paa"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-Hi-P1L" userLabel="PauseStop">
-                                <rect key="frame" x="120" y="745" width="174" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.74117647060000003" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Pause">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="pauseActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="619-Bj-4Aw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
-                                        <rect key="frame" x="142" y="0.0" width="32" height="30"/>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.74117647060000003" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Stop">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="stopActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="cIF-s8-96U"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="174" id="5hA-cK-Kgq"/>
-                                    <constraint firstAttribute="height" constant="30" id="8Xc-x7-3M2"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQ5-Wa-PsU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -254,6 +256,7 @@
                         <outlet property="startButton" destination="hKH-vI-HHE" id="ORP-HY-WUH"/>
                         <outlet property="startButtonBottom" destination="a25-BP-4ae" id="nIx-Ix-BVg"/>
                         <outlet property="startButtonHeight" destination="Bt0-ub-NmI" id="pcu-nU-Pm2"/>
+                        <outlet property="stopButton" destination="3Dq-et-Cz8" id="fyM-Bl-RKB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMp-uf-dTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
