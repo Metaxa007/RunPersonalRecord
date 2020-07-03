@@ -16,9 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var paceTextView: UILabel!
     @IBOutlet weak var durationTextView: UILabel!
-    @IBOutlet weak var startStopLocatingButton: UIButton!
     @IBOutlet weak var completedDistanceTextView: UILabel!
     @IBOutlet weak var distanceTextField: UITextField!
+    @IBOutlet weak var startButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var startButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var pauseStopStackHeight: NSLayoutConstraint!
+    @IBOutlet weak var pauseStopStackBottom: NSLayoutConstraint!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseStopStack: UIStackView!
     
     var timer: Timer?
     var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
@@ -54,17 +61,35 @@ class ViewController: UIViewController {
     var startDate: Date?
     var stopDate: Date?
     var lastLocation: CLLocation?
-    var locations: [CLLocation] = []
+    var locationsAll: [[CLLocation]] = [] //Array contains arrays of Locations. Every array of Locations are locations between start and pause. In this case the last position
+                                       //before pause and the first position after continue won't be connected. Otherwise the distance between these 2 points will be added
+                                       //to the total distance.
+    var locationsOfSection: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
     var stopWatch = StopWatch()
     var isLocatingStarted = false {
         willSet {
-            if newValue == true {
-                startStopLocatingButton.setTitle("Stop", for: .normal)
+            if newValue {
+                startButton.setTitle("Stop", for: .normal)
                 startLocating()
+                showPauseStopStack()
+                hideStartButton()
             } else {
-                startStopLocatingButton.setTitle("Start", for: .normal)
+                startButton.setTitle("Start", for: .normal)
                 //if the user stops manualy means he did not reach the finish line, did not complete the planed distance
                 stopLocating(completed: false)
+                showStartButton()
+                hidePauseStopStack()
+            }
+        }
+    }
+    var isPaused = false {
+        willSet {
+            if newValue {
+                pauseButton.setTitle("Resume", for: .normal)
+                pauseButton.backgroundColor = UIColor(red: 114/255, green: 194/255, blue: 0, alpha: 1)
+            } else {
+                pauseButton.setTitle("Pause", for: .normal)
+                pauseButton.backgroundColor = UIColor(red: 249/255, green: 183/255, blue: 55/255, alpha: 1)
             }
         }
     }
@@ -74,9 +99,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpMapView()
-        roundCorners()
-        addPolylineToMap(locations: LocationsArray.array)
+        roundCornersStartButton()
+        roundCornersStopButton()
+        roundCornersPauseButton()
+        //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
+        
+        hidePauseStopStack()
         
         distanceTextField.delegate = self
         stopWatch.delegate = self
@@ -89,7 +118,53 @@ class ViewController: UIViewController {
     @IBAction func startStopLocating(_ sender: UIButton) {
         if distanceTextFieldIsEmtpy() { return }
 
-        isLocatingStarted = !isLocatingStarted
+        isLocatingStarted = true
+    }
+    
+    @IBAction func pauseActivity(_ sender: UIButton) {
+        isPaused = !isPaused
+        
+        //stop,start stopwatch only if user really pressed the button. Not when isPaused was set somewhere in the code i.e. stopLocating
+        if isPaused {
+            if !locationsOfSection.isEmpty {
+                locationsAll.append(locationsOfSection)
+                locationsOfSection = []
+            }
+            
+            stopWatch.pause()
+            locationManager.stopUpdatingLocation()
+        } else {
+            stopWatch.start()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    @IBAction func stopActivity(_ sender: UIButton) {
+        isLocatingStarted = false
+    }
+    
+    func hidePauseStopStack() {
+        pauseStopStackHeight.constant = 0
+        pauseStopStackBottom.constant = 0
+        pauseStopStack.isHidden = true
+    }
+    
+    func hideStartButton() {
+        startButtonBottom.constant = 0
+        startButtonHeight.constant = 0
+        startButton.isHidden = true
+    }
+    
+    func showPauseStopStack() {
+        pauseStopStackBottom.constant = 38
+        pauseStopStackHeight.constant = 85
+        pauseStopStack.isHidden = false
+    }
+    
+    func showStartButton() {
+        startButtonBottom.constant = 26
+        startButtonHeight.constant = 53
+        startButton.isHidden = false
     }
     
     func setUpMapView() {
@@ -132,7 +207,11 @@ class ViewController: UIViewController {
             duration = NSDateInterval.init(start: startDate, end: stopDate)
             
             if let duration = duration {
-                let activity = Activity(locations: Utilities.manager.clLocationToLocation(clLocations: locations))
+                if !locationsOfSection.isEmpty {
+                    locationsAll.append(locationsOfSection)
+                }
+                
+                let activity = Activity(locations: locationsAll)
                 let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
                 
                 CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
@@ -148,7 +227,9 @@ class ViewController: UIViewController {
         completedDistance = 0
         durationWhenLastPaceCounted = 0
         passedKilometers = 0
-        locations = []
+        locationsAll = []
+        locationsOfSection = []
+        isPaused = false
 
         distanceTextField.isEnabled = true
         distanceTextField.textColor =  UIColor { textColor in
@@ -200,10 +281,10 @@ class ViewController: UIViewController {
     func checkWhenDistanceIsCompleted() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
             guard let weakSelf = self else { return }
-            guard weakSelf.locations.count > 0 else { return }
+            guard weakSelf.locationsOfSection.count > 0 else { return }
 
-            if Utilities.manager.getDistance(locations: weakSelf.locations) <= Double(weakSelf.distanceToRun) {
-                weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locations))
+            if Utilities.manager.getDistance(locations: weakSelf.locationsOfSection) <= Double(weakSelf.distanceToRun) {
+                weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locationsOfSection))
             } else {
                 weakSelf.completedDistance = weakSelf.distanceToRun
                 weakSelf.isLocatingStarted = false //stopLocating is called in didSet of isLocatingStarted
@@ -219,9 +300,19 @@ class ViewController: UIViewController {
         return distance.isEmpty
     }
     
-    func roundCorners() {
-        startStopLocatingButton.layer.cornerRadius = 20
-        startStopLocatingButton.clipsToBounds = true
+    func roundCornersStartButton() {
+        startButton.layer.cornerRadius = 20
+        startButton.clipsToBounds = true
+    }
+    
+    func roundCornersPauseButton() {
+        pauseButton.layer.cornerRadius = 42.5
+        pauseButton.clipsToBounds = true
+    }
+    
+    func roundCornersStopButton() {
+        stopButton.layer.cornerRadius = 42.5
+        stopButton.clipsToBounds = true
     }
     
     func addPolylineToMap(locations: [CLLocation]) {
@@ -264,8 +355,8 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
             if lastLocation?.coordinate.latitude != location.coordinate.latitude &&
                 lastLocation?.coordinate.longitude != location.coordinate.longitude  {
                 lastLocation = location
-                
-                self.locations.append(location)
+
+                self.locationsOfSection.append(location)
             }
         }
     }
