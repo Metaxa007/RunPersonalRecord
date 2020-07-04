@@ -193,28 +193,31 @@ class ViewController: UIViewController {
     }
     
     func stopLocating(completed: Bool) {
-        // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
-        if restDistance != 0 {
-            restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+        // Save activity only if user did some progress in it
+        if completedDistance != 0 {
+            // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
+            if restDistance != 0 {
+                restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+
+                // divide by 10 for tests.
+                paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000)) //completed distance in case user did not finish. If finished completedDistance == distanceToRun
+            }
             
-            // divide by 10 for tests.
-            paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(distanceToRun)/1000))
-        }
-        
-        stopDate = Date()
-        
-        if let startDate = startDate, let stopDate = stopDate {
-            duration = NSDateInterval.init(start: startDate, end: stopDate)
+            stopDate = Date()
             
-            if let duration = duration {
-                if !locationsOfSection.isEmpty {
-                    locationsAll.append(locationsOfSection)
+            if let startDate = startDate, let stopDate = stopDate {
+                duration = NSDateInterval.init(start: startDate, end: stopDate)
+                
+                if let duration = duration {
+                    if !locationsOfSection.isEmpty {
+                        locationsAll.append(locationsOfSection)
+                    }
+                    
+                    let activity = Activity(locations: locationsAll)
+                    let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
+                    
+                    CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
                 }
-                
-                let activity = Activity(locations: locationsAll)
-                let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
-                
-                CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
             }
         }
         
