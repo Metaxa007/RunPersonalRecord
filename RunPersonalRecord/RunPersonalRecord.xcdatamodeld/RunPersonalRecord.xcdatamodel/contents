@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ActivityEntity" representedClassName="ActivityEntity" syncable="YES">
-        <attribute name="activityAttribute" attributeType="Transformable" valueTransformerName="" customClassName="Activity"/>
+        <attribute name="activityAttribute" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Activity"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pace" optional="YES" attributeType="Transformable" customClassName="Pace"/>
+        <attribute name="pace" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Pace"/>
     </entity>
     <elements>
         <element name="ActivityEntity" positionX="-36" positionY="9" width="128" height="133"/>
