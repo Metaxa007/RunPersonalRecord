@@ -27,6 +27,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseStopStack: UIStackView!
     
+    var pauseImage: UIImage {
+        get {
+            return UIImage(named: "Pause")! //Crash if image does not exist
+        }
+    }
+    var resumeImage: UIImage {
+        get {
+            return UIImage(named: "Resume")! //Crash if image does not exist
+        }
+    }
     var timer: Timer?
     var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
     var passedKilometers = 0 { // Used as the key for dictonary "pace"
@@ -85,11 +95,9 @@ class ViewController: UIViewController {
     var isPaused = false {
         willSet {
             if newValue {
-                pauseButton.setTitle("Resume", for: .normal)
-                pauseButton.backgroundColor = UIColor(red: 114/255, green: 194/255, blue: 0, alpha: 1)
+                pauseButton.setBackgroundImage(resumeImage, for: .normal)
             } else {
-                pauseButton.setTitle("Pause", for: .normal)
-                pauseButton.backgroundColor = UIColor(red: 249/255, green: 183/255, blue: 55/255, alpha: 1)
+                pauseButton.setBackgroundImage(pauseImage, for: .normal)
             }
         }
     }
