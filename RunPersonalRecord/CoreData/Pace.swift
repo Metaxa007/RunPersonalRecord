@@ -19,6 +19,13 @@ public class Pace : NSObject, NSSecureCoding {
               let restDistancePace = coder.decodeObject(forKey: "restDistancePace") as? [Int: Double] else {
                 return nil
         }
+        
+        // These code makes the app crash. But maybe for reading from CoreData have to use decodeObject(of:.
+        // So probably have to change the format in the future
+//        guard let pace = coder.decodeObject(of: [], forKey: "pace") as? [Int: Double],
+//              let restDistancePace = coder.decodeObject(of: [], forKey: "restDistancePace") as? [Int: Double] else {
+//                return nil
+//        }
 
         self.pace = pace
         self.restDistancePace = restDistancePace
