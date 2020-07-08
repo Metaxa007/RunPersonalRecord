@@ -17,9 +17,9 @@ public class Activity: NSObject, NSSecureCoding {
     private let locations: [[CLLocation]]
 
     public required init?(coder: NSCoder) {
-        guard let locations = coder.decodeObject(forKey: "locations") as? [[CLLocation]] else {
-                return nil
-        }
+//        guard let locations = coder.decodeObject(forKey: "locations") as? [[CLLocation]] else {
+//                return nil
+//        }
         
         // These code makes the app crash. But maybe for reading from CoreData have to use decodeObject(of:.
         // So probably have to change the format in the future
@@ -27,7 +27,7 @@ public class Activity: NSObject, NSSecureCoding {
 //                return nil
 //        }
 
-        self.locations = locations
+        self.locations = []
     }
 
     init(locations: [[CLLocation]]) {
