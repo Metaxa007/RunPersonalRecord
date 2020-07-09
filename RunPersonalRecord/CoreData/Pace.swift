@@ -15,20 +15,13 @@ public class Pace : NSObject, NSSecureCoding {
     private let restDistancePace: [Int: Double]
 
     public required init?(coder: NSCoder) {
-//        guard let pace = coder.decodeObject(forKey: "pace") as? [Int: Double],
-//              let restDistancePace = coder.decodeObject(forKey: "restDistancePace") as? [Int: Double] else {
-//                return nil
-//        }
-        
-        // These code makes the app crash. But maybe for reading from CoreData have to use decodeObject(of:.
-        // So probably have to change the format in the future
-//        guard let pace = coder.decodeObject(of: [], forKey: "pace") as? [Int: Double],
-//              let restDistancePace = coder.decodeObject(of: [], forKey: "restDistancePace") as? [Int: Double] else {
-//                return nil
-//        }
+        guard let pace = coder.decodeObject(of: [NSDictionary.self], forKey: "pace") as? [Int: Double],
+              let restDistancePace = coder.decodeObject(of: [NSDictionary.self], forKey: "restDistancePace") as? [Int: Double] else {
+                return nil
+        }
 
-        self.pace = [:]
-        self.restDistancePace = [:]
+        self.pace = pace
+        self.restDistancePace = restDistancePace
     }
 
     init(pace: [Int: Double], restDistancePace: [Int: Double]) {
