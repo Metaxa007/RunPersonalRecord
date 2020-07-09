@@ -15,8 +15,8 @@ public class Pace : NSObject, NSSecureCoding {
     private let restDistancePace: [Int: Double]
 
     public required init?(coder: NSCoder) {
-        guard let pace = coder.decodeObject(forKey: "pace") as? [Int: Double],
-              let restDistancePace = coder.decodeObject(forKey: "restDistancePace") as? [Int: Double] else {
+        guard let pace = coder.decodeObject(of: [NSDictionary.self], forKey: "pace") as? [Int: Double],
+              let restDistancePace = coder.decodeObject(of: [NSDictionary.self], forKey: "restDistancePace") as? [Int: Double] else {
                 return nil
         }
 

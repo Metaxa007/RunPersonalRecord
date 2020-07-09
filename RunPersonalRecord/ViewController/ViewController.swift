@@ -106,6 +106,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do they need to be registred?
+//        ActivityTransformer.register()
+//        PaceTransformer.register()
         setUpMapView()
         roundCornersStartButton()
         roundCornersStopButton()

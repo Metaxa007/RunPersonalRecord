@@ -17,10 +17,10 @@ public class Activity: NSObject, NSSecureCoding {
     private let locations: [[CLLocation]]
 
     public required init?(coder: NSCoder) {
-        guard let locations = coder.decodeObject(forKey: "locations") as? [[CLLocation]] else {
+        guard let locations = coder.decodeObject(of: [NSArray.self, CLLocation.self], forKey: "locations") as? [[CLLocation]] else {
                 return nil
         }
-
+        
         self.locations = locations
     }
 
