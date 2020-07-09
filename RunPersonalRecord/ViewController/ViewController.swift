@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pauseStopStackHeight: NSLayoutConstraint!
     @IBOutlet weak var pauseStopStackBottom: NSLayoutConstraint!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var pauseResumeButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseStopStack: UIStackView!
     
@@ -72,11 +72,11 @@ class ViewController: UIViewController {
     var stopDate: Date?
     var lastLocation: CLLocation?
     var locationsAll: [[CLLocation]] = [] //Array contains arrays of Locations. Every array of Locations are locations between start and pause. In this case the last position
-                                       //before pause and the first position after continue won't be connected. Otherwise the distance between these 2 points will be added
-                                       //to the total distance.
+                                          //before pause and the first position after continue won't be connected. Otherwise the distance between these 2 points will be added
+                                          //to the total distance.
     var locationsOfSection: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
     var stopWatch = StopWatch()
-    var isLocatingStarted = false {
+    var isActivityStarted = false {
         willSet {
             if newValue {
                 startButton.setTitle("Stop", for: .normal)
@@ -95,9 +95,9 @@ class ViewController: UIViewController {
     var isPaused = false {
         willSet {
             if newValue {
-                pauseButton.setBackgroundImage(resumeImage, for: .normal)
+                pauseResumeButton.setBackgroundImage(resumeImage, for: .normal)
             } else {
-                pauseButton.setBackgroundImage(pauseImage, for: .normal)
+                pauseResumeButton.setBackgroundImage(pauseImage, for: .normal)
             }
         }
     }
@@ -107,8 +107,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do they need to be registred?
-//        ActivityTransformer.register()
-//        PaceTransformer.register()
+        // ActivityTransformer.register()
+        // PaceTransformer.register()
         setUpMapView()
         roundCornersStartButton()
         roundCornersStopButton()
@@ -129,13 +129,13 @@ class ViewController: UIViewController {
     @IBAction func startStopLocating(_ sender: UIButton) {
         if distanceTextFieldIsEmtpy() { return }
 
-        isLocatingStarted = true
+        isActivityStarted = true
     }
     
     @IBAction func pauseActivity(_ sender: UIButton) {
         isPaused = !isPaused
         
-        //stop,start stopwatch only if user really pressed the button. Not when isPaused was set somewhere in the code i.e. stopLocating
+        // Stop, start stopwatch only if user really pressed the button. Not when isPaused was set somewhere in the code i.e. stopLocating
         if isPaused {
             if !locationsOfSection.isEmpty {
                 locationsAll.append(locationsOfSection)
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func stopActivity(_ sender: UIButton) {
-        isLocatingStarted = false
+        isActivityStarted = false
     }
     
     func hidePauseStopStack() {
@@ -301,7 +301,7 @@ class ViewController: UIViewController {
                 weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locationsOfSection))
             } else {
                 weakSelf.completedDistance = weakSelf.distanceToRun
-                weakSelf.isLocatingStarted = false //stopLocating is called in didSet of isLocatingStarted
+                weakSelf.isActivityStarted = false //stopLocating is called in willSet of isActivityStarted
                 
                 timer.invalidate()
             }
@@ -320,8 +320,8 @@ class ViewController: UIViewController {
     }
     
     func roundCornersPauseButton() {
-        pauseButton.layer.cornerRadius = 42.5
-        pauseButton.clipsToBounds = true
+        pauseResumeButton.layer.cornerRadius = 42.5
+        pauseResumeButton.clipsToBounds = true
     }
     
     func roundCornersStopButton() {
