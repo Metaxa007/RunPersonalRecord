@@ -20,13 +20,12 @@
 		AC56B2B12452403100F10921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AF2452403100F10921 /* LaunchScreen.storyboard */; };
 		AC77A2C024A699E300A7793B /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77A2BE24A699E300A7793B /* ActivityEntity+CoreDataClass.swift */; };
 		AC77A2C124A699E300A7793B /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77A2BF24A699E300A7793B /* ActivityEntity+CoreDataProperties.swift */; };
+		AC8E68C024B915DF0080F175 /* RecordsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */; };
 		ACC57D4B249C162F00DD0B1F /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC57D4A249C162F00DD0B1F /* StopWatch.swift */; };
 		ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */; };
 		ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AF245A218200BB3F97 /* Utilities.swift */; };
-		ACE740082490288200B7EE76 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */; };
 		ACF4057C249EB007005BC266 /* Pace.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4057B249EB007005BC266 /* Pace.swift */; };
 		ACF40584249FA560005BC266 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A52452402F00F10921 /* ViewController.swift */; };
-		ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,12 +45,11 @@
 		AC56B2B22452403100F10921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC77A2BE24A699E300A7793B /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AC77A2BF24A699E300A7793B /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCollectionViewController.swift; sourceTree = "<group>"; };
 		ACC57D4A249C162F00DD0B1F /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsArray.swift; sourceTree = "<group>"; };
 		ACE0B7AF245A218200BB3F97 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		ACF4057B249EB007005BC266 /* Pace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pace.swift; sourceTree = "<group>"; };
-		ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +125,8 @@
 		ACF40582249F6EA5005BC266 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ACFFFFA9248D8D37000EAF86 /* RecordsTableViewController.swift */,
 				AC56B2A52452402F00F10921 /* ViewController.swift */,
+				AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -136,7 +134,6 @@
 		ACF40583249F6EB3005BC266 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				ACE740072490288200B7EE76 /* RecordsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF40584249FA560005BC266 /* ViewController.swift in Sources */,
-				ACFFFFAA248D8D37000EAF86 /* RecordsTableViewController.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
 				AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */,
@@ -226,7 +222,7 @@
 				AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */,
 				AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */,
 				AC77A2C124A699E300A7793B /* ActivityEntity+CoreDataProperties.swift in Sources */,
-				ACE740082490288200B7EE76 /* RecordsTableViewCell.swift in Sources */,
+				AC8E68C024B915DF0080F175 /* RecordsCollectionViewController.swift in Sources */,
 				ACF4057C249EB007005BC266 /* Pace.swift in Sources */,
 				AC77A2C024A699E300A7793B /* ActivityEntity+CoreDataClass.swift in Sources */,
 			);
