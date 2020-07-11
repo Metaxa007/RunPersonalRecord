@@ -111,8 +111,6 @@ class ViewController: UIViewController {
         // PaceTransformer.register()
         setUpMapView()
         roundCornersStartButton()
-        roundCornersStopButton()
-        roundCornersPauseButton()
         //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
@@ -317,16 +315,6 @@ class ViewController: UIViewController {
     func roundCornersStartButton() {
         startButton.layer.cornerRadius = 20
         startButton.clipsToBounds = true
-    }
-    
-    func roundCornersPauseButton() {
-        pauseResumeButton.layer.cornerRadius = 42.5
-        pauseResumeButton.clipsToBounds = true
-    }
-    
-    func roundCornersStopButton() {
-        stopButton.layer.cornerRadius = 42.5
-        stopButton.clipsToBounds = true
     }
     
     func addPolylineToMap(locations: [CLLocation]) {
