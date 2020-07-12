@@ -12,11 +12,36 @@ private let reuseIdentifier = "recordsCell"
 
 class RecordsCollectionViewController: UICollectionViewController {
 
+    private var distancesSet: Set<Int32> = []
+    private var distancesArray: Array<Int32> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getDistances()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }    }
+    
+    private func getDistances() {
+        let allActivities = CoreDataManager.manager.getAllEntities()
+        
+        guard let activities = allActivities else { return }
+                
+        for activity in activities {
+            distancesSet.insert(activity.distance)
+        }
 
+        distancesArray = Array(distancesSet)
+        distancesArray.sort {
+            $0 > $1
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -27,14 +52,12 @@ class RecordsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 10
+        return distancesArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RecordsCollectionViewCell {
-            cell.distanceTextView.text = "\(indexPath.item * 1000) m"
-            cell.layer.cornerRadius = 20
-            cell.clipsToBounds = true
+            cell.setupCell(distance: distancesArray[indexPath.item])
 
             return cell
         }
