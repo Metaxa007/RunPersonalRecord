@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UMv-Um-4rf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UMv-Um-4rf">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,7 +60,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyO-Ug-9K0">
-                                                        <rect key="frame" x="32.666666666666664" y="36" width="64.666666666666686" height="20.333333333333329"/>
+                                                        <rect key="frame" x="32.66666666666665" y="36" width="64.333333333333314" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -104,7 +106,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance (m)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70P-cC-0R2">
-                                        <rect key="frame" x="87.333333333333343" y="53.666666666666657" width="96.333333333333343" height="20.333333333333329"/>
+                                        <rect key="frame" x="87.333333333333314" y="53.666666666666657" width="96" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -114,22 +116,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-Hi-P1L" userLabel="PauseStop">
                                 <rect key="frame" x="82" y="690" width="250" height="85"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
-                                        <color key="backgroundColor" red="0.95826333760000004" green="0.73014515639999999" blue="0.32537809010000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                        <state key="normal" title="Pause">
+                                        <state key="normal" image="Pause">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="pauseActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="619-Bj-4Aw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
                                         <rect key="frame" x="165" y="0.0" width="85" height="85"/>
-                                        <color key="backgroundColor" red="0.67656242850000003" green="0.28003188969999998" blue="0.19212236999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                        <state key="normal" title="Stop">
+                                        <state key="normal" image="Stop">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -142,7 +140,7 @@
                                     <constraint firstAttribute="height" constant="85" id="8Xc-x7-3M2"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-vI-HHE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-vI-HHE">
                                 <rect key="frame" x="82" y="734" width="250" height="53"/>
                                 <color key="backgroundColor" red="0.48123693470000001" green="0.71851330999999996" blue="0.2351528406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -158,7 +156,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gQ5-Wa-PsU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CkT-uD-54Q" firstAttribute="top" secondItem="gQ5-Wa-PsU" secondAttribute="top" constant="31" id="1r7-hw-L5a"/>
                             <constraint firstItem="L2x-5p-nTJ" firstAttribute="top" secondItem="kE5-GX-nA4" secondAttribute="bottom" constant="20" id="6e3-aa-49h"/>
@@ -173,7 +172,6 @@
                             <constraint firstItem="zMN-Hi-P1L" firstAttribute="centerX" secondItem="gQ5-Wa-PsU" secondAttribute="centerX" id="kaY-zr-XiR"/>
                             <constraint firstItem="gQ5-Wa-PsU" firstAttribute="bottom" secondItem="zMN-Hi-P1L" secondAttribute="bottom" constant="38" id="vl2-dM-rFo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gQ5-Wa-PsU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" image="bolt.fill" catalog="system" id="Rz1-It-ypt"/>
                     <connections>
@@ -221,7 +219,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JEy-vi-gkc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="gez-qF-z6w">
                             <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -293,7 +291,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pause" width="172" height="171.66667175292969"/>
+        <image name="Stop" width="172" height="172"/>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
         <image name="hare.fill" catalog="system" width="128" height="91"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

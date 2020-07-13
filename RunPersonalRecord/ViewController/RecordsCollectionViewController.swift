@@ -11,31 +11,30 @@ import UIKit
 private let reuseIdentifier = "recordsCell"
 
 class RecordsCollectionViewController: UICollectionViewController {
-
+    
     private var distancesSet: Set<Int32> = []
     private var distancesArray: Array<Int32> = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        getDistances()
-    }
+    private var wasLoaded = false
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }    }
+        getDistances()
+        
+        if wasLoaded {
+            collectionView.reloadData()
+        } else {
+            wasLoaded = true
+        }
+    }
     
     private func getDistances() {
         let allActivities = CoreDataManager.manager.getAllEntities()
         
         guard let activities = allActivities else { return }
-                
+        
         for activity in activities {
             distancesSet.insert(activity.distance)
         }
-
+        
         distancesArray = Array(distancesSet)
         distancesArray.sort {
             $0 > $1
@@ -43,26 +42,26 @@ class RecordsCollectionViewController: UICollectionViewController {
     }
     
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-
+        
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+        
         return distancesArray.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RecordsCollectionViewCell {
             cell.setupCell(distance: distancesArray[indexPath.item])
-
+            
             return cell
         }
-
+        
         return UICollectionViewCell()
     }
-
+    
 }

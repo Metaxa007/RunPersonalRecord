@@ -34,7 +34,7 @@ class StopWatch {
     @objc fileprivate func updateTime() {
         // Save the current time
         let currentTime = Date.timeIntervalSinceReferenceDate
-  
+        
         // Find the difference between current time and start time to get the time elapsed
         let elapsedTime: TimeInterval = currentTime - startTime
         
@@ -44,12 +44,12 @@ class StopWatch {
         strHours = String(format: "%02d", numHours)
         strMinutes = String(format: "%02d", numMinutes)
         strSeconds = String(format: "%02d", numSeconds)
-
+        
         timeText = "\(strHours):\(strMinutes):\(strSeconds)"
         
         delegate?.stopWatch(time: timeText)
     }
-        
+    
     fileprivate func resetTimer() {
         startTime = Date.timeIntervalSinceReferenceDate
         strHours = "00"
@@ -111,7 +111,7 @@ class StopWatch {
     func getTimeInSeconds() -> Int {
         return numHours * 3600 + numMinutes * 60 + numSeconds
     }
-
+    
 }
 
 protocol StopWatchDelegate {
