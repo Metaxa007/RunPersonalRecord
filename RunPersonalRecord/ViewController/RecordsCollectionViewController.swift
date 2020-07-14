@@ -41,6 +41,20 @@ class RecordsCollectionViewController: UICollectionViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
+                let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil,
+                                      discoverabilityTitle: nil, attributes: .destructive, handler: {action in
+                    print("delete clicked.")
+                })
+                
+                return UIMenu(title: "Options", image: nil, identifier: nil, children: [delete])
+            }
+            
+            return configuration
+    }
+    
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
