@@ -27,6 +27,9 @@ class RecordsCollectionViewController: UICollectionViewController {
     }
     
     private func getDistances() {
+        distancesSet = []
+        distancesArray = []
+        
         let allActivities = CoreDataManager.manager.getAllEntities()
         
         guard let activities = allActivities else { return }
@@ -41,18 +44,27 @@ class RecordsCollectionViewController: UICollectionViewController {
         }
     }
     
+    /**
+        Delete corresponding distances in CoreData and reloads CollectionView
+     */
+    private func deleteItem(index: Int) {
+        print(distancesArray[index])
+        CoreDataManager.manager.deleteAll(distance: Int(distancesArray[index]))
+        getDistances()
+        collectionView.reloadData()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-
-            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
-                let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil,
-                                      discoverabilityTitle: nil, attributes: .destructive, handler: {action in
-                    print("delete clicked.")
-                })
-                
-                return UIMenu(title: "Options", image: nil, identifier: nil, children: [delete])
-            }
+        
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil,discoverabilityTitle: nil, attributes: .destructive, handler: {action in
+                self.deleteItem(index: indexPath.item)
+            })
             
-            return configuration
+            return UIMenu(title: "", image: nil, identifier: nil, children: [delete])
+        }
+        
+        return configuration
     }
     
     // MARK: UICollectionViewDataSource
