@@ -97,6 +97,8 @@ struct CoreDataManager {
                 for result in results {
                     context.delete(result)
                 }
+                
+                try context.save()
             }
             catch {
                 print ("fetch task failed", error)
