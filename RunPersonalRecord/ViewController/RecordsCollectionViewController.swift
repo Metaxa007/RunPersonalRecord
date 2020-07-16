@@ -48,10 +48,9 @@ class RecordsCollectionViewController: UICollectionViewController {
         Delete corresponding distances in CoreData and reloads CollectionView
      */
     private func deleteItem(index: Int) {
-        print(distancesArray[index])
         CoreDataManager.manager.deleteAll(distance: Int(distancesArray[index]))
         getDistances()
-        collectionView.reloadData()
+        collectionView.reloadSections(IndexSet(integer: 0))
     }
     
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

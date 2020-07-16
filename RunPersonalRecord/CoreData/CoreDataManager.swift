@@ -92,7 +92,6 @@ struct CoreDataManager {
                 fetchRequest.predicate = NSPredicate(format: "distance == \(distance)")
                 
                 let results = try context.fetch(fetchRequest)
-                print("Tag1 \(results.count)")
                 
                 for result in results {
                     context.delete(result)
