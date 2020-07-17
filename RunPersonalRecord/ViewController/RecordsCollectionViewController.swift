@@ -15,6 +15,12 @@ class RecordsCollectionViewController: UICollectionViewController {
     private var distancesSet: Set<Int32> = []
     private var distancesArray: Array<Int32> = []
     private var wasLoaded = false
+    private let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 216.0))
+    
+    override func viewDidLoad() {
+        pickerView.dataSource = self
+        pickerView.delegate = self
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         getDistances()
@@ -24,6 +30,15 @@ class RecordsCollectionViewController: UICollectionViewController {
         } else {
             wasLoaded = true
         }
+    }
+    
+    @IBAction func addDistanceToCollection(_ sender: UIBarButtonItem) {
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(pickerView)
+
+        pickerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        pickerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        pickerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     private func getDistances() {
@@ -54,7 +69,6 @@ class RecordsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil,discoverabilityTitle: nil, attributes: .destructive, handler: {action in
                 self.deleteItem(index: indexPath.item)
@@ -89,4 +103,26 @@ class RecordsCollectionViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
     
+}
+
+extension RecordsCollectionViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return 10
+        } else {
+            return 100
+        }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return "First \(row)"
+        } else {
+            return "Second \(row)"
+        }
+    }
 }
