@@ -79,12 +79,10 @@ class ViewController: UIViewController {
     var isActivityStarted = false {
         willSet {
             if newValue {
-                startButton.setTitle("Stop", for: .normal)
                 startLocating()
                 showPauseStopStack()
                 hideStartButton()
             } else {
-                startButton.setTitle("Start", for: .normal)
                 //if the user stops manualy means he did not reach the finish line, did not complete the planed distance
                 stopLocating(completed: false)
                 showStartButton()
@@ -95,9 +93,9 @@ class ViewController: UIViewController {
     var isPaused = false {
         willSet {
             if newValue {
-                pauseResumeButton.setBackgroundImage(resumeImage, for: .normal)
+                pauseResumeButton.setImage(resumeImage, for: .normal)
             } else {
-                pauseResumeButton.setBackgroundImage(pauseImage, for: .normal)
+                pauseResumeButton.setImage(pauseImage, for: .normal)
             }
         }
     }
@@ -111,8 +109,6 @@ class ViewController: UIViewController {
         // PaceTransformer.register()
         setUpMapView()
         roundCornersStartButton()
-        roundCornersStopButton()
-        roundCornersPauseButton()
         //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
@@ -317,16 +313,6 @@ class ViewController: UIViewController {
     func roundCornersStartButton() {
         startButton.layer.cornerRadius = 20
         startButton.clipsToBounds = true
-    }
-    
-    func roundCornersPauseButton() {
-        pauseResumeButton.layer.cornerRadius = 42.5
-        pauseResumeButton.clipsToBounds = true
-    }
-    
-    func roundCornersStopButton() {
-        stopButton.layer.cornerRadius = 42.5
-        stopButton.clipsToBounds = true
     }
     
     func addPolylineToMap(locations: [CLLocation]) {

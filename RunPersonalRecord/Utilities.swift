@@ -22,7 +22,7 @@ struct Utilities {
         for i in 0..<locations.count - 1 {
             let coordinateA = locations[i]
             let coordinateB = locations[i+1]
-
+            
             distance += getDistanceBetweenToPoints(start: coordinateA, end: coordinateB)
         }
         
@@ -40,7 +40,7 @@ struct Utilities {
             let location = Location(latitude: clLocation.coordinate.latitude, longitude: clLocation.coordinate.longitude)
             locations.append(location)
         }
-    
+        
         return locations
     }
     
@@ -54,7 +54,7 @@ struct Utilities {
         let hours = Int(duration) / 3600
         let minutes = Int(duration) / 60 % 60
         let seconds = Int(duration) % 60
-              
+        
         return (hours, minutes, seconds)
     }
     

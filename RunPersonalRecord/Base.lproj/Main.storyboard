@@ -3,78 +3,13 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Records-->
-        <scene sceneID="CJl-jn-hoG">
-            <objects>
-                <tableViewController id="ldL-uu-Y1B" customClass="RecordsTableViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1CJ-lj-Nxk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="agZ-hB-3Ys" customClass="RecordsTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="85"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="agZ-hB-3Ys" id="stC-mA-Ivi">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdZ-Rn-Sdt">
-                                            <rect key="frame" x="358" y="32.333333333333336" width="36" height="20.333333333333336"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WS9-YY-oWa">
-                                            <rect key="frame" x="20" y="18" width="66.666666666666671" height="49"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tks-zO-B0H">
-                                                    <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="20.666666666666668"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-so-hhD">
-                                                    <rect key="frame" x="0.0" y="28.666666666666664" width="66.666666666666671" height="20.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="WS9-YY-oWa" firstAttribute="centerY" secondItem="stC-mA-Ivi" secondAttribute="centerY" id="2vU-V5-ZdD"/>
-                                        <constraint firstItem="WS9-YY-oWa" firstAttribute="top" secondItem="stC-mA-Ivi" secondAttribute="top" constant="18" id="C3d-vs-Bsg"/>
-                                        <constraint firstItem="WS9-YY-oWa" firstAttribute="leading" secondItem="stC-mA-Ivi" secondAttribute="leading" constant="20" id="Ghn-qC-BUN"/>
-                                        <constraint firstAttribute="trailing" secondItem="gdZ-Rn-Sdt" secondAttribute="trailing" constant="20" id="OdV-fb-V8h"/>
-                                        <constraint firstItem="gdZ-Rn-Sdt" firstAttribute="centerY" secondItem="stC-mA-Ivi" secondAttribute="centerY" id="ubH-kJ-fYb"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateLabel" destination="gdZ-Rn-Sdt" id="xQl-NA-Oqv"/>
-                                    <outlet property="distanceLabel" destination="tks-zO-B0H" id="mmF-Zr-rPQ"/>
-                                    <outlet property="durationLabel" destination="Vgo-so-hhD" id="Te0-3E-WX5"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ldL-uu-Y1B" id="N9d-3f-pOq"/>
-                            <outlet property="delegate" destination="ldL-uu-Y1B" id="J1y-Cn-mdp"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Records" image="hare.fill" catalog="system" id="xuo-Gn-cPt"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="01H-78-y55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1779.7101449275365" y="711.83035714285711"/>
-        </scene>
         <!--Activity-->
         <scene sceneID="K6Q-46-ksu">
             <objects>
@@ -181,22 +116,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-Hi-P1L" userLabel="PauseStop">
                                 <rect key="frame" x="82" y="690" width="250" height="85"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-lF-ihM">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
-                                        <color key="backgroundColor" red="0.95826333760000004" green="0.73014515639999999" blue="0.32537809010000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                        <state key="normal" title="Pause">
+                                        <state key="normal" image="Pause">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="pauseActivity:" destination="8eo-45-wiJ" eventType="touchUpInside" id="619-Bj-4Aw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-et-Cz8">
                                         <rect key="frame" x="165" y="0.0" width="85" height="85"/>
-                                        <color key="backgroundColor" red="0.67656242850000003" green="0.28003188969999998" blue="0.19212236999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                        <state key="normal" title="Stop">
+                                        <state key="normal" image="Stop">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -249,7 +180,7 @@
                         <outlet property="durationTextView" destination="bR7-z4-OWx" id="IP9-cO-V27"/>
                         <outlet property="mapView" destination="L2x-5p-nTJ" id="LgJ-qs-4JC"/>
                         <outlet property="paceTextView" destination="PFt-ZR-N6Z" id="NNd-yj-CxA"/>
-                        <outlet property="pauseButton" destination="3Ux-lF-ihM" id="Lst-uB-SMV"/>
+                        <outlet property="pauseResumeButton" destination="3Ux-lF-ihM" id="kLQ-tf-CmO"/>
                         <outlet property="pauseStopStack" destination="zMN-Hi-P1L" id="C8A-UZ-Qr0"/>
                         <outlet property="pauseStopStackBottom" destination="vl2-dM-rFo" id="DQn-LW-3fI"/>
                         <outlet property="pauseStopStackHeight" destination="8Xc-x7-3M2" id="yMs-YF-AHi"/>
@@ -274,17 +205,103 @@
                     </tabBar>
                     <connections>
                         <segue destination="8eo-45-wiJ" kind="relationship" relationship="viewControllers" id="vDI-mZ-Ouh"/>
-                        <segue destination="ldL-uu-Y1B" kind="relationship" relationship="viewControllers" id="BGE-W7-Tet"/>
+                        <segue destination="jbL-HZ-yMW" kind="relationship" relationship="viewControllers" id="XPs-Gv-RoR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dje-mY-I1r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="861" y="357"/>
         </scene>
+        <!--Records-->
+        <scene sceneID="CCP-Qk-1aO">
+            <objects>
+                <collectionViewController id="yIM-3F-mLi" customClass="RecordsCollectionViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JEy-vi-gkc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="gez-qF-z6w">
+                            <size key="itemSize" width="150" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="40" minY="30" maxX="40" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordsCell" id="q8U-VP-Bgl" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                <rect key="frame" x="40" y="30" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0R-Ge-gnU" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CA2-Sp-JFZ">
+                                            <rect key="frame" x="46" y="60" width="58" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CA2-Sp-JFZ" firstAttribute="centerY" secondItem="k0R-Ge-gnU" secondAttribute="centerY" id="CwL-mM-oj9"/>
+                                        <constraint firstItem="CA2-Sp-JFZ" firstAttribute="centerX" secondItem="k0R-Ge-gnU" secondAttribute="centerX" id="kji-Jf-y9m"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" red="0.44688302279999997" green="0.75969988109999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="customSize" width="150" height="150"/>
+                                <connections>
+                                    <outlet property="distanceTextView" destination="CA2-Sp-JFZ" id="yfK-dm-0dw"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="yIM-3F-mLi" id="GkH-YL-1KU"/>
+                            <outlet property="delegate" destination="yIM-3F-mLi" id="zut-cE-OFF"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Records" id="FWn-Gw-3LO">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="coJ-gr-djV">
+                            <connections>
+                                <action selector="addDistanceToCollection:" destination="yIM-3F-mLi" id="ohQ-p5-3uN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Zg-Tvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2519" y="865"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dAN-hf-yE0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jbL-HZ-yMW" userLabel="Navigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Records" image="hare.fill" catalog="system" id="nQm-xK-kHU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="rL2-sB-bUx">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yIM-3F-mLi" kind="relationship" relationship="rootViewController" id="mQk-fU-i2N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-eY-voD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1804.3478260869567" y="864.50892857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Pause" width="172" height="171.66667175292969"/>
+        <image name="Stop" width="172" height="172"/>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
         <image name="hare.fill" catalog="system" width="128" height="91"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

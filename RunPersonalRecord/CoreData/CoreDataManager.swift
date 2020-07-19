@@ -79,4 +79,30 @@ struct CoreDataManager {
             }
         }
     }
+    
+    /**
+     Delete all activities with the concrete distance.
+     */
+    func deleteAll(distance: Int) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            
+            do {
+                let fetchRequest : NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "distance == \(distance)")
+                
+                let results = try context.fetch(fetchRequest)
+                
+                for result in results {
+                    context.delete(result)
+                }
+                
+                try context.save()
+            }
+            catch {
+                print ("fetch task failed", error)
+            }
+        }
+    }
+    
 }
