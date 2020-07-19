@@ -34,31 +34,53 @@ class RecordsCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func addDistanceToCollection(_ sender: UIBarButtonItem) {
-        createPickerView()
         createToolBar()
+        createPickerView()
     }
     
     func createPickerView() {
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pickerView)
-
-        pickerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        pickerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        view.addSubview(toolBar)
+        
+        pickerView.alpha = 1
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         pickerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        pickerView.addSubview(toolBar)
+        
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        toolBar.bottomAnchor.constraint(equalTo: pickerView.topAnchor).isActive = true
+        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
     func createToolBar() {
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title:"Add", style: .plain, target: self, action: #selector(addDistance))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissPickerAndToolBar))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
+        toolBar.alpha = 1
         toolBar.sizeToFit()
         toolBar.setItems([cancelButton, flexibleSpace, doneButton], animated: false)
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    @objc func addDistance() {
+        
+    }
+    
+    @objc func dismissPickerAndToolBar() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionCurlDown, animations: { [weak self] in
+            guard let self = self else { return }
+
+            self.pickerView.alpha = 0
+            self.toolBar.alpha = 0
+        }, completion: { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.pickerView.removeFromSuperview()
+            self.toolBar.removeFromSuperview()
+        })
     }
     
     private func getDistances() {
@@ -127,22 +149,26 @@ class RecordsCollectionViewController: UICollectionViewController {
 
 extension RecordsCollectionViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 3
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
-            return 10
+            return 300
         } else {
-            return 100
+            return 10
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
-            return "First \(row)"
+            return "\(row)."
         } else {
-            return "Second \(row)"
+            return "\(row)"
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 100.0
     }
 }
