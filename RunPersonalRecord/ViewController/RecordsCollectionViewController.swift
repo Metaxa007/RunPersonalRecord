@@ -12,7 +12,7 @@ private let reuseIdentifier = "recordsCell"
 
 class RecordsCollectionViewController: UICollectionViewController {
     
-    private var distancesSet: Set<Int32> = []
+    private var distancesSet: Set<Int32> = [] // will set add it to distanceArray
     private var distancesArray: Array<Int32> = []
     private var wasLoaded = false
     private let pickerView = UIPickerView()
@@ -56,17 +56,31 @@ class RecordsCollectionViewController: UICollectionViewController {
     }
     
     func createToolBar() {
+        let label = UILabel()
+        label.text = "Choose distance (km)"
+    
+        let labelButton = UIBarButtonItem(customView: label)
         let doneButton = UIBarButtonItem(title:"Add", style: .plain, target: self, action: #selector(addDistance))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissPickerAndToolBar))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolBar.alpha = 1
         toolBar.sizeToFit()
-        toolBar.setItems([cancelButton, flexibleSpace, doneButton], animated: false)
+        toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
     }
     
     @objc func addDistance() {
+        let firstValue = pickerView.selectedRow(inComponent: 0)
+        let secondValue = pickerView.selectedRow(inComponent: 2)
+        let thirdValue = pickerView.selectedRow(inComponent: 3)
+        let distanceString = "\(firstValue).\(secondValue)\(thirdValue)"
+        let distanceDouble = Double(distanceString)
         
+        if let distance = distanceDouble {
+            distancesArray.append(Int32(distance * 1000))
+            dismissPickerAndToolBar()
+            collectionView.reloadSections(IndexSet(integer: 0))
+        }
     }
     
     @objc func dismissPickerAndToolBar() {
@@ -149,12 +163,14 @@ class RecordsCollectionViewController: UICollectionViewController {
 
 extension RecordsCollectionViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return 4
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
             return 300
+        } else if component == 1 {
+            return 1
         } else {
             return 10
         }
@@ -162,13 +178,28 @@ extension RecordsCollectionViewController: UIPickerViewDelegate, UIPickerViewDat
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
-            return "\(row)."
+//            if pickerView.selectedRow(inComponent: 0) == row {
+//                return "\(row)."
+//            } else {
+//                return "\(row)"
+//            }
+            return "\(row)"
+        } else if component == 1 {
+            return "."
         } else {
             return "\(row)"
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerView.reloadAllComponents()
+    }
+    
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 100.0
+        if component == 1 {
+            return 13
+        } else {
+            return 60
+        }
     }
 }
