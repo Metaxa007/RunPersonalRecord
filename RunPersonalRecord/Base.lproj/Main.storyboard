@@ -259,16 +259,41 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Records" id="FWn-Gw-3LO">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="coJ-gr-djV">
-                            <connections>
-                                <action selector="addDistanceToCollection:" destination="yIM-3F-mLi" id="ohQ-p5-3uN"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="plus" catalog="system" id="coJ-gr-djV">
+                                <connections>
+                                    <action selector="addDistanceToCollection:" destination="yIM-3F-mLi" id="ohQ-p5-3uN"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="TQu-YB-aA1">
+                                <connections>
+                                    <action selector="nextScreen:" destination="yIM-3F-mLi" id="t6h-6o-tdD"/>
+                                    <segue destination="IER-Sy-Vaf" kind="presentation" id="G8Y-k1-31Q"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Zg-Tvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2519" y="865"/>
+        </scene>
+        <!--ADD-->
+        <scene sceneID="0xb-Qp-uyx">
+            <objects>
+                <viewController title="ADD" id="05W-QO-3Hi" customClass="AddRunViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZeP-TT-tk5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jtV-uF-pcW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" title="Add your run" largeTitleDisplayMode="always" id="7S4-xT-jhG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f18-xL-UAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4057" y="865"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dAN-hf-yE0">
@@ -294,6 +319,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-eY-voD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804.3478260869567" y="864.50892857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vUb-ti-BZ1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IER-Sy-Vaf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xVO-fy-p8R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="05W-QO-3Hi" kind="relationship" relationship="rootViewController" id="DQW-pT-h2S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MX7-bf-pKq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="865"/>
         </scene>
     </scenes>
     <resources>

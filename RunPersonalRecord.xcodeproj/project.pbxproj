@@ -12,6 +12,7 @@
 		AC0FD15324714E8700A4D87C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD15124714E3200A4D87C /* Activity.swift */; };
 		AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E339124B23A2B00E81DDE /* ActivityTransformer.swift */; };
 		AC2E339424B23A2B00E81DDE /* PaceTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E339224B23A2B00E81DDE /* PaceTransformer.swift */; };
+		AC533FD824C7901400CCD6CE /* AddRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC533FD724C7901400CCD6CE /* AddRunViewController.swift */; };
 		AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC543F3A2454C51200D2202B /* CoreDataManager.swift */; };
 		AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A12452402F00F10921 /* AppDelegate.swift */; };
 		AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A32452402F00F10921 /* SceneDelegate.swift */; };
@@ -35,6 +36,7 @@
 		AC0FD15124714E3200A4D87C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		AC2E339124B23A2B00E81DDE /* ActivityTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTransformer.swift; sourceTree = "<group>"; };
 		AC2E339224B23A2B00E81DDE /* PaceTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceTransformer.swift; sourceTree = "<group>"; };
+		AC533FD724C7901400CCD6CE /* AddRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRunViewController.swift; sourceTree = "<group>"; };
 		AC543F3A2454C51200D2202B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC56B29E2452402F00F10921 /* RunPersonalRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunPersonalRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC56B2A12452402F00F10921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				AC56B2A52452402F00F10921 /* ViewController.swift */,
 				AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */,
+				AC533FD724C7901400CCD6CE /* AddRunViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC533FD824C7901400CCD6CE /* AddRunViewController.swift in Sources */,
 				ACF40584249FA560005BC266 /* ViewController.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
