@@ -13,6 +13,7 @@
 		AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E339124B23A2B00E81DDE /* ActivityTransformer.swift */; };
 		AC2E339424B23A2B00E81DDE /* PaceTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E339224B23A2B00E81DDE /* PaceTransformer.swift */; };
 		AC533FD824C7901400CCD6CE /* AddRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC533FD724C7901400CCD6CE /* AddRunViewController.swift */; };
+		AC533FDA24C8BBDB00CCD6CE /* AddRunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC533FD924C8BBDB00CCD6CE /* AddRunTableViewCell.swift */; };
 		AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC543F3A2454C51200D2202B /* CoreDataManager.swift */; };
 		AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A12452402F00F10921 /* AppDelegate.swift */; };
 		AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A32452402F00F10921 /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 		AC2E339124B23A2B00E81DDE /* ActivityTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTransformer.swift; sourceTree = "<group>"; };
 		AC2E339224B23A2B00E81DDE /* PaceTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceTransformer.swift; sourceTree = "<group>"; };
 		AC533FD724C7901400CCD6CE /* AddRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRunViewController.swift; sourceTree = "<group>"; };
+		AC533FD924C8BBDB00CCD6CE /* AddRunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRunTableViewCell.swift; sourceTree = "<group>"; };
 		AC543F3A2454C51200D2202B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC56B29E2452402F00F10921 /* RunPersonalRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunPersonalRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC56B2A12452402F00F10921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */,
+				AC533FD924C8BBDB00CCD6CE /* AddRunTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */,
 				AC77A2C124A699E300A7793B /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				AC8E68C024B915DF0080F175 /* RecordsCollectionViewController.swift in Sources */,
+				AC533FDA24C8BBDB00CCD6CE /* AddRunTableViewCell.swift in Sources */,
 				ACF4057C249EB007005BC266 /* Pace.swift in Sources */,
 				AC77A2C024A699E300A7793B /* ActivityEntity+CoreDataClass.swift in Sources */,
 			);
