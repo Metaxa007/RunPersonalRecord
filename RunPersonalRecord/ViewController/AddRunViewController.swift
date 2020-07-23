@@ -15,8 +15,9 @@ class AddRunViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     
-    private let pickerViewDistance = UIPickerView()
-    private let pickerViewDuration = UIPickerView()
+    private let pickerView = UIPickerView()
+    private let datePicker = UIDatePicker()
+    private let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
     private var selectedRow: Int?
     
     override func viewDidLoad() {
@@ -27,28 +28,60 @@ class AddRunViewController: UIViewController {
         tableView.isScrollEnabled = false
         tableView.tableFooterView = UIView()
         
-        pickerViewDistance.delegate = self
-        pickerViewDistance.dataSource = self
-        
-        pickerViewDuration.delegate = self
-        pickerViewDuration.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
     func createPickerView() {
-        view.addSubview(pickerViewDistance)
-//        view.addSubview(toolBar)
+        createToolBar()
+
+        view.addSubview(pickerView)
+        view.addSubview(toolBar)
         
-        pickerViewDistance.alpha = 1
-        pickerViewDistance.translatesAutoresizingMaskIntoConstraints = false
-        pickerViewDistance.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        pickerViewDistance.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        pickerViewDistance.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        pickerView.alpha = 1
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        pickerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
-//        toolBar.translatesAutoresizingMaskIntoConstraints = false
-//        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        toolBar.bottomAnchor.constraint(equalTo: pickerView.topAnchor).isActive = true
-//        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        toolBar.bottomAnchor.constraint(equalTo: pickerView.topAnchor).isActive = true
+        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    
+    func showDatePicker(){
+        createToolBar()
+        
+        view.addSubview(datePicker)
+        view.addSubview(toolBar)
+        
+        datePicker.datePickerMode = .date
+        datePicker.alpha = 1
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        toolBar.bottomAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
+    }
+
+    func createToolBar() {
+        let label = UILabel()
+        label.text = "Choose distance (km)"
+    
+        let labelButton = UIBarButtonItem(customView: label)
+        let doneButton = UIBarButtonItem(title:"Add", style: .plain, target: self, action: nil)
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.alpha = 1
+        toolBar.sizeToFit()
+        toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
     }
 }
 
@@ -70,8 +103,17 @@ extension AddRunViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        selectedRow = indexPath.row
-        createPickerView()
+        if indexPath.row == 0 || indexPath.row == 1 {
+            selectedRow = indexPath.row
+            createPickerView()
+        } else if indexPath.row == 2 {
+            showDatePicker()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+        }
     }
 }
 
