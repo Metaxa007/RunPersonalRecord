@@ -17,7 +17,7 @@ class AddRunViewController: UIViewController {
     
     private let pickerView = UIPickerView()
     private let datePicker = UIDatePicker()
-    private let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    private let toolBar = UIToolbar()
     private var selectedRow: Int?
     
     override func viewDidLoad() {
@@ -32,45 +32,41 @@ class AddRunViewController: UIViewController {
         pickerView.dataSource = self
     }
     
-    func createPickerView() {
-        createToolBar()
-
+    func showPickerView() {
         view.addSubview(pickerView)
         view.addSubview(toolBar)
-        
-        pickerView.alpha = 1
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        pickerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        toolBar.bottomAnchor.constraint(equalTo: pickerView.topAnchor).isActive = true
-        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
+
+        setupPicker(picker: pickerView)
+        setToolBarConstraints(picker: pickerView)
     }
     
     func showDatePicker(){
-        createToolBar()
-        
         view.addSubview(datePicker)
         view.addSubview(toolBar)
         
         datePicker.datePickerMode = .date
-        datePicker.alpha = 1
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        datePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
+        setupPicker(picker: datePicker)
+        setToolBarConstraints(picker: datePicker)
+    }
+    
+    func setupPicker(picker: UIView) {
+        picker.alpha = 1
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        picker.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        picker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
+    func setToolBarConstraints(picker: UIView) {
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        toolBar.bottomAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
+        toolBar.bottomAnchor.constraint(equalTo: picker.topAnchor).isActive = true
+        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 
-    func createToolBar() {
+    func showToolBar() {
         let label = UILabel()
         label.text = "Choose distance (km)"
     
@@ -103,10 +99,13 @@ extension AddRunViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        selectedRow = indexPath.row
+
         if indexPath.row == 0 || indexPath.row == 1 {
-            selectedRow = indexPath.row
-            createPickerView()
+            showToolBar()
+            showPickerView()
         } else if indexPath.row == 2 {
+            showToolBar()
             showDatePicker()
         }
     }
@@ -129,10 +128,16 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return 0
     }
     
+    /**
+     row 1 - Distance
+     row 2 - Duration
+     row 3 - Date
+     */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         guard let selectedRow = selectedRow else { return 0 }
 
-        if selectedRow == 0 {
+        switch selectedRow {
+        case 0:
             if component == 0 {
                 return 300
             } else if component == 1 {
@@ -140,7 +145,7 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             } else {
                 return 10
             }
-        } else if selectedRow == 1 {
+        case 1:
             if component == 0 {
                 return 100
             } else if component == 3 {
@@ -148,13 +153,21 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             } else {
                 return 60
             }
+        default:
+            return 0
         }
-        
-        return 0
     }
     
+    /**
+     row 1 - Distance
+     row 2 - Duration
+     row 3 - Date
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if selectedRow == 0 {
+        guard let selectedRow = selectedRow else { return "" }
+
+        switch selectedRow {
+        case 0:
             if component == 0 {
                 return "\(row)"
             } else if component == 1 {
@@ -162,7 +175,7 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             } else {
                 return "\(row)"
             }
-        } else if selectedRow == 1 {
+        case 1:
             if component == 0 {
                 return "\(row)"
             } else if component == 3 {
@@ -170,8 +183,8 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             } else {
                 return "\(row)"
             }
+        default:
+            return ""
         }
-
-        return ""
     }
 }

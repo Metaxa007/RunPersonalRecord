@@ -16,7 +16,7 @@ class RecordsCollectionViewController: UICollectionViewController {
     private var distancesArray: Array<Int32> = []
     private var wasLoaded = false
     private let pickerView = UIPickerView()
-    private let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    private let toolBar = UIToolbar()
 
     override func viewDidLoad() {
         pickerView.dataSource = self
@@ -34,11 +34,11 @@ class RecordsCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func addDistanceToCollection(_ sender: UIBarButtonItem) {
-        createToolBar()
-        createPickerView()
+        showToolBar()
+        showPickerView()
     }
     
-    func createPickerView() {
+    func showPickerView() {
         view.addSubview(pickerView)
         view.addSubview(toolBar)
         
@@ -55,7 +55,7 @@ class RecordsCollectionViewController: UICollectionViewController {
         toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
-    func createToolBar() {
+    func showToolBar() {
         let label = UILabel()
         label.text = "Choose distance (km)"
     
