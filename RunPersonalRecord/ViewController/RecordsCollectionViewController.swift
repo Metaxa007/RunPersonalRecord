@@ -33,11 +33,6 @@ class RecordsCollectionViewController: UICollectionViewController {
         }
     }
     
-    @IBAction func addDistanceToCollection(_ sender: UIBarButtonItem) {
-        showToolBar()
-        showPickerView()
-    }
-    
     func showPickerView() {
         view.addSubview(pickerView)
         view.addSubview(toolBar)
@@ -158,7 +153,6 @@ class RecordsCollectionViewController: UICollectionViewController {
         
         return UICollectionViewCell()
     }
-    
 }
 
 extension RecordsCollectionViewController: UIPickerViewDelegate, UIPickerViewDataSource {

@@ -259,19 +259,12 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Records" id="FWn-Gw-3LO">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" image="plus" catalog="system" id="coJ-gr-djV">
-                                <connections>
-                                    <action selector="addDistanceToCollection:" destination="yIM-3F-mLi" id="ohQ-p5-3uN"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="TQu-YB-aA1">
-                                <connections>
-                                    <action selector="nextScreen:" destination="yIM-3F-mLi" id="t6h-6o-tdD"/>
-                                    <segue destination="IER-Sy-Vaf" kind="presentation" id="G8Y-k1-31Q"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="TQu-YB-aA1">
+                            <connections>
+                                <action selector="nextScreen:" destination="yIM-3F-mLi" id="t6h-6o-tdD"/>
+                                <segue destination="IER-Sy-Vaf" kind="presentation" id="G8Y-k1-31Q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Zg-Tvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -287,8 +280,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNf-eh-AJW">
-                                <rect key="frame" x="0.0" y="108" width="414" height="549"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="406"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="406" id="NhI-bl-MaI"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addRunCell" rowHeight="80" id="RL4-MT-ZSg" customClass="AddRunTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
@@ -343,9 +339,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYa-dj-Gub">
-                                <rect key="frame" x="82" y="766" width="250" height="42"/>
+                                <rect key="frame" x="82" y="745" width="250" height="53"/>
                                 <color key="backgroundColor" red="0.48123693470000001" green="0.71851330999999996" blue="0.2351528406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="VHB-mh-EbQ"/>
                                     <constraint firstAttribute="width" constant="250" id="iKr-HQ-jfa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
@@ -356,10 +353,9 @@
                         <viewLayoutGuide key="safeArea" id="jtV-uF-pcW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YYa-dj-Gub" firstAttribute="top" secondItem="VNf-eh-AJW" secondAttribute="bottom" constant="109" id="3Zi-mm-8IX"/>
+                            <constraint firstItem="jtV-uF-pcW" firstAttribute="bottom" secondItem="YYa-dj-Gub" secondAttribute="bottom" constant="10" id="Hp2-GN-ehF"/>
                             <constraint firstItem="jtV-uF-pcW" firstAttribute="trailing" secondItem="VNf-eh-AJW" secondAttribute="trailing" id="ayD-sI-Sgv"/>
-                            <constraint firstItem="YYa-dj-Gub" firstAttribute="centerX" secondItem="jtV-uF-pcW" secondAttribute="centerX" id="cIx-1n-nvh"/>
-                            <constraint firstItem="jtV-uF-pcW" firstAttribute="bottom" secondItem="YYa-dj-Gub" secondAttribute="bottom" id="jvp-wQ-tQS"/>
+                            <constraint firstItem="YYa-dj-Gub" firstAttribute="centerX" secondItem="jtV-uF-pcW" secondAttribute="centerX" id="rFY-h0-ccV"/>
                             <constraint firstItem="VNf-eh-AJW" firstAttribute="top" secondItem="jtV-uF-pcW" secondAttribute="top" constant="52" id="rYk-dY-rxe"/>
                             <constraint firstItem="VNf-eh-AJW" firstAttribute="leading" secondItem="jtV-uF-pcW" secondAttribute="leading" id="skJ-iO-UwH"/>
                         </constraints>
@@ -368,6 +364,8 @@
                     <navigationItem key="navigationItem" title="Add your run" largeTitleDisplayMode="always" id="7S4-xT-jhG"/>
                     <connections>
                         <outlet property="saveButton" destination="YYa-dj-Gub" id="Rgj-IR-uPP"/>
+                        <outlet property="saveButtonBottom" destination="Hp2-GN-ehF" id="fRs-vG-EEv"/>
+                        <outlet property="saveButtonHeight" destination="VHB-mh-EbQ" id="gFV-nb-Tz3"/>
                         <outlet property="tableView" destination="VNf-eh-AJW" id="mwl-Pd-8vy"/>
                     </connections>
                 </viewController>
