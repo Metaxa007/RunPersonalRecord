@@ -33,6 +33,8 @@ class AddRunViewController: UIViewController {
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+        roundCornersSaveButton()
     }
     
     func showPickerView() {
@@ -48,6 +50,7 @@ class AddRunViewController: UIViewController {
         view.addSubview(toolBar)
         
         datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
         
         setupPicker(picker: datePicker)
         setToolBarConstraints(picker: datePicker)
@@ -98,6 +101,12 @@ class AddRunViewController: UIViewController {
         saveButton.isHidden = true
     }
     
+    func roundCornersSaveButton() {
+        saveButton.layer.cornerRadius = 25
+        saveButton.clipsToBounds = true
+    }
+
+    
     @objc func dismissPickerAndToolBar() {
         UIView.animate(withDuration: 0.3, delay: 0, options: .transitionCurlDown, animations: { [weak self] in
             guard let self = self else { return }
@@ -108,7 +117,7 @@ class AddRunViewController: UIViewController {
         }, completion: { [weak self] _ in
             guard let self = self else { return }
             guard let shownPicker = self.shownPicker else { return }
-            
+            print("remove from superview")
             shownPicker.removeFromSuperview()
             self.toolBar.removeFromSuperview()
             
@@ -167,9 +176,10 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         guard let selectedRow = selectedRow else { return 0 }
         
-        if selectedRow == 0 || selectedRow == 1  {
-
+        if selectedRow == 0 {
             return 4
+        } else if selectedRow == 1  {
+            return 3
         }
         
         return 0
@@ -224,14 +234,29 @@ extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
         case 1:
             if component == 0 {
-                return "\(row)"
-            } else if component == 3 {
-                return "hh/mm/ss"
+                return "\(row)h"
+            } else if component == 1 {
+                return "\(row)m"
             } else {
-                return "\(row)"
+                return "\(row)s"
             }
         default:
             return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        switch selectedRow {
+        case 0:
+            if component == 1 {
+                return 13
+            } else {
+                return 70
+            }
+        case 1:
+            return 100
+        default:
+            return 0
         }
     }
 }

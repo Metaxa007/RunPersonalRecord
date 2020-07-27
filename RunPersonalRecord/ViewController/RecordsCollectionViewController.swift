@@ -20,7 +20,7 @@ class RecordsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         pickerView.dataSource = self
-        pickerView.delegate = self
+        pickerView.delegate = self        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +64,24 @@ class RecordsCollectionViewController: UICollectionViewController {
         toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
     }
     
+    private func getDistances() {
+        distancesSet = []
+        distancesArray = []
+        
+        let allActivities = CoreDataManager.manager.getAllEntities()
+        
+        guard let activities = allActivities else { return }
+        
+        for activity in activities {
+            distancesSet.insert(activity.distance)
+        }
+        
+        distancesArray = Array(distancesSet)
+        distancesArray.sort {
+            $0 > $1
+        }
+    }
+    
     @objc func addDistance() {
         let firstValue = pickerView.selectedRow(inComponent: 0)
         let secondValue = pickerView.selectedRow(inComponent: 2)
@@ -90,24 +108,6 @@ class RecordsCollectionViewController: UICollectionViewController {
             self.pickerView.removeFromSuperview()
             self.toolBar.removeFromSuperview()
         })
-    }
-    
-    private func getDistances() {
-        distancesSet = []
-        distancesArray = []
-        
-        let allActivities = CoreDataManager.manager.getAllEntities()
-        
-        guard let activities = allActivities else { return }
-        
-        for activity in activities {
-            distancesSet.insert(activity.distance)
-        }
-        
-        distancesArray = Array(distancesSet)
-        distancesArray.sort {
-            $0 > $1
-        }
     }
     
     /**
