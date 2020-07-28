@@ -22,6 +22,7 @@ class AddRunViewController: UIViewController {
     private let toolBar = UIToolbar()
     private var shownPicker: UIView?
     private var selectedRow: Int?
+    private var pickerToolbarShown = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,6 @@ class AddRunViewController: UIViewController {
         view.addSubview(toolBar)
 
         setupPicker(picker: pickerView)
-        setToolBarConstraints(picker: pickerView)
     }
     
     func showDatePicker(){
@@ -53,7 +53,6 @@ class AddRunViewController: UIViewController {
         datePicker.maximumDate = Date()
         
         setupPicker(picker: datePicker)
-        setToolBarConstraints(picker: datePicker)
     }
     
     func setupPicker(picker: UIView) {
@@ -65,17 +64,8 @@ class AddRunViewController: UIViewController {
         
         pickerView.reloadAllComponents()
     }
-    
-    func setToolBarConstraints(picker: UIView) {
-        toolBar.alpha = 1
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        toolBar.bottomAnchor.constraint(equalTo: picker.topAnchor).isActive = true
-        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
-    }
 
-    func showToolBar(labelText: String) {
+    func showToolBar(labelText: String, picker: UIView) {
         let label = UILabel()
         label.text = labelText
     
@@ -85,6 +75,11 @@ class AddRunViewController: UIViewController {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolBar.alpha = 1
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        toolBar.bottomAnchor.constraint(equalTo: picker.topAnchor).isActive = true
+        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
         toolBar.sizeToFit()
         toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
     }
@@ -106,23 +101,17 @@ class AddRunViewController: UIViewController {
         saveButton.clipsToBounds = true
     }
 
-    
     @objc func dismissPickerAndToolBar() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionCurlDown, animations: { [weak self] in
-            guard let self = self else { return }
-            guard let shownPicker = self.shownPicker else { return }
+        guard let shownPicker = self.shownPicker else { return }
 
-            shownPicker.alpha = 0
-            self.toolBar.alpha = 0
-        }, completion: { [weak self] _ in
-            guard let self = self else { return }
-            guard let shownPicker = self.shownPicker else { return }
-            print("remove from superview")
-            shownPicker.removeFromSuperview()
-            self.toolBar.removeFromSuperview()
-            
-            self.showSaveButton()
-        })
+        shownPicker.alpha = 0
+        toolBar.alpha = 0
+
+        shownPicker.removeFromSuperview()
+        toolBar.removeFromSuperview()
+        showSaveButton()
+        
+        pickerToolbarShown = false
     }
 }
 
@@ -144,31 +133,31 @@ extension AddRunViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if pickerToolbarShown {
+            dismissPickerAndToolBar()
+        }
+        
         selectedRow = indexPath.row
 
         switch indexPath.row {
         case 0:
-            showToolBar(labelText: "Choose distance (km)")
+            showPickerView()
+            showToolBar(labelText: "Choose distance (km)", picker: pickerView)
+            shownPicker = pickerView
         case 1:
-            showToolBar(labelText: "Duration")
+            showPickerView()
+            showToolBar(labelText: "Duration", picker: pickerView)
+            shownPicker = pickerView
         case 2:
-            shownPicker = datePicker
-            
-            showToolBar(labelText: "Pick date")
             showDatePicker()
+            showToolBar(labelText: "Pick date", picker: datePicker)
+            shownPicker = datePicker
         default:
             return
         }
         
-        shownPicker = pickerView
-        
         hideSaveButton()
-        showPickerView()
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-        }
+        pickerToolbarShown = true
     }
 }
 
