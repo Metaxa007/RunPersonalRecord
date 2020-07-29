@@ -304,9 +304,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-BM-FDN">
-                                                    <rect key="frame" x="294" y="27" width="100" height="26"/>
+                                                    <rect key="frame" x="284" y="27" width="110" height="26"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="ukf-o7-LdF"/>
+                                                        <constraint firstAttribute="width" constant="110" id="ukf-o7-LdF"/>
                                                         <constraint firstAttribute="height" constant="26" id="vhV-fv-nep"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
