@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AUPickerCell
 
 private let reuseIdentifier = "addRunCell"
 
