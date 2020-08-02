@@ -16,11 +16,11 @@ class RecordsCollectionViewController: UICollectionViewController {
     private var distancesArray: Array<Int32> = []
     private var wasLoaded = false
     private let pickerView = UIPickerView()
-    var toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    private let toolBar = UIToolbar()
 
     override func viewDidLoad() {
         pickerView.dataSource = self
-        pickerView.delegate = self
+        pickerView.delegate = self        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,12 +33,7 @@ class RecordsCollectionViewController: UICollectionViewController {
         }
     }
     
-    @IBAction func addDistanceToCollection(_ sender: UIBarButtonItem) {
-        createToolBar()
-        createPickerView()
-    }
-    
-    func createPickerView() {
+    func showPickerView() {
         view.addSubview(pickerView)
         view.addSubview(toolBar)
         
@@ -55,7 +50,7 @@ class RecordsCollectionViewController: UICollectionViewController {
         toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
-    func createToolBar() {
+    func showToolBar() {
         let label = UILabel()
         label.text = "Choose distance (km)"
     
@@ -67,6 +62,24 @@ class RecordsCollectionViewController: UICollectionViewController {
         toolBar.alpha = 1
         toolBar.sizeToFit()
         toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
+    }
+    
+    private func getDistances() {
+        distancesSet = []
+        distancesArray = []
+        
+        let allActivities = CoreDataManager.manager.getAllEntities()
+        
+        guard let activities = allActivities else { return }
+        
+        for activity in activities {
+            distancesSet.insert(activity.distance)
+        }
+        
+        distancesArray = Array(distancesSet)
+        distancesArray.sort {
+            $0 > $1
+        }
     }
     
     @objc func addDistance() {
@@ -95,24 +108,6 @@ class RecordsCollectionViewController: UICollectionViewController {
             self.pickerView.removeFromSuperview()
             self.toolBar.removeFromSuperview()
         })
-    }
-    
-    private func getDistances() {
-        distancesSet = []
-        distancesArray = []
-        
-        let allActivities = CoreDataManager.manager.getAllEntities()
-        
-        guard let activities = allActivities else { return }
-        
-        for activity in activities {
-            distancesSet.insert(activity.distance)
-        }
-        
-        distancesArray = Array(distancesSet)
-        distancesArray.sort {
-            $0 > $1
-        }
     }
     
     /**
@@ -158,7 +153,6 @@ class RecordsCollectionViewController: UICollectionViewController {
         
         return UICollectionViewCell()
     }
-    
 }
 
 extension RecordsCollectionViewController: UIPickerViewDelegate, UIPickerViewDataSource {
