@@ -23,7 +23,7 @@ class AddRunViewController: UIViewController {
 
 extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Tag1 number of rows table")
+
         return 3
     }
     
@@ -36,18 +36,15 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("Tag1 heightForRowAt")
-
         if let cell = tableView.cellForRow(at: indexPath) as? AddRunTableViewCell {
-            print("Tag1 \(cell.height)")
+
             return cell.height
         }
 
-        return 70
+        return 44
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tag1 did select row")
         tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? AddRunTableViewCell {
             cell.selectedInTableView(tableView)

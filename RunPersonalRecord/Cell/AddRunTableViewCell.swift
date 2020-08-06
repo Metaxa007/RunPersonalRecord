@@ -78,14 +78,11 @@ class AddRunTableViewCell: UITableViewCell {
 
 extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("numberOfComponents")
         
         return 3
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print("numberOfRowsInComponent")
-
         return 10
     }
     
