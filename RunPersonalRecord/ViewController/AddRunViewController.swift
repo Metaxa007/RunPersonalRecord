@@ -9,12 +9,13 @@
 import UIKit
 
 class AddRunViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    var selectedRowIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -23,7 +24,6 @@ class AddRunViewController: UIViewController {
 
 extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return 3
     }
     
@@ -32,22 +32,39 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.setupCell(indexPath: indexPath.row)
         
+        if indexPath.row == 0 {
+            cell.leftLabel.text = "Distance"
+            cell.rightLabel.text = "0.00 km"
+        } else if indexPath.row == 1 {
+            cell.leftLabel.text = "Duration"
+            cell.rightLabel.text = "00:00:00"
+        } else if indexPath.row == 2 {
+            cell.leftLabel.text = "Date"
+            cell.rightLabel.text = "19.10.1994"
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let cell = tableView.cellForRow(at: indexPath) as? AddRunTableViewCell {
-
-            return cell.height
+        if indexPath.row == selectedRowIndex {
+            if indexPath.row == 2 {
+                return 400
+            }
+            return 260 //Expanded
         }
-
-        return 44
+        
+        return 44 //Not expanded
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let cell = tableView.cellForRow(at: indexPath) as? AddRunTableViewCell {
-            cell.selectedInTableView(tableView)
+        
+        if selectedRowIndex == indexPath.row {
+            selectedRowIndex = -1
+        } else {
+            selectedRowIndex = indexPath.row
         }
+        tableView.reloadData()
     }
 }
