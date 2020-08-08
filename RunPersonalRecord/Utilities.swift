@@ -58,4 +58,10 @@ struct Utilities {
         return (hours, minutes, seconds)
     }
     
+    func getCurrentDateDDMMYYYY() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        return dateFormatter.string(from: Date())
+    }
 }
