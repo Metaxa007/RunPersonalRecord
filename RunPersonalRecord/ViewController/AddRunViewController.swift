@@ -40,7 +40,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             cell.rightLabel.text = "00:00:00"
         } else if indexPath.row == 2 {
             cell.leftLabel.text = "Date"
-            cell.rightLabel.text = Utilities.manager.getCurrentDateDDMMYYYY()
+            cell.rightLabel.text = Utilities.manager.getCurrentDateddMMMyyyy()
         }
         
         return cell
