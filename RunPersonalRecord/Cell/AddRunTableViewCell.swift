@@ -10,6 +10,7 @@ import UIKit
 
 class AddRunTableViewCell: UITableViewCell {
     
+    private let icon = UIImageView()
     public var leftLabel = UILabel()
     public var rightLabel = UILabel()
     private let picker = UIPickerView()
@@ -50,13 +51,20 @@ class AddRunTableViewCell: UITableViewCell {
         leftLabel.translatesAutoresizingMaskIntoConstraints = false
         rightLabel.translatesAutoresizingMaskIntoConstraints = false
         separator.translatesAutoresizingMaskIntoConstraints = false
+        icon.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(leftLabel)
         contentView.addSubview(rightLabel)
         contentView.addSubview(separator)
         contentView.addSubview(picker)
         
-        leftLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
+        icon.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
+        icon.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+
+
+        leftLabel.leadingAnchor.constraint(equalTo: icon.layoutMarginsGuide.leadingAnchor).isActive = true
         leftLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         leftLabel.heightAnchor.constraint(equalToConstant: unexpandedHeight).isActive = true
         
