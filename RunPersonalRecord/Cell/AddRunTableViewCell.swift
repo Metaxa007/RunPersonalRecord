@@ -10,7 +10,8 @@ import UIKit
 
 class AddRunTableViewCell: UITableViewCell {
     
-    private let icon = UIImageView()
+    // icon, leftLabel, rightLabel are set from AddRunViewController.swift
+    public var icon = UIImageView()
     public var leftLabel = UILabel()
     public var rightLabel = UILabel()
     private let picker = UIPickerView()
@@ -57,14 +58,14 @@ class AddRunTableViewCell: UITableViewCell {
         contentView.addSubview(rightLabel)
         contentView.addSubview(separator)
         contentView.addSubview(picker)
+        contentView.addSubview(icon)
         
         icon.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
-        icon.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
 
-
-        leftLabel.leadingAnchor.constraint(equalTo: icon.layoutMarginsGuide.leadingAnchor).isActive = true
+        leftLabel.leadingAnchor.constraint(equalTo: icon.layoutMarginsGuide.trailingAnchor, constant: 20).isActive = true
         leftLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         leftLabel.heightAnchor.constraint(equalToConstant: unexpandedHeight).isActive = true
         
