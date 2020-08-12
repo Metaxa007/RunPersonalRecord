@@ -52,8 +52,12 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectedRowIndex {
             if indexPath.row == 2 {
-                return 400
+                // new DatePicker introduced in iOS 14. If indexPath == 2 and iOS < 14 return 260
+                if #available(iOS 14.0, *) {
+                    return 370
+                }
             }
+            
             return 260 //Expanded
         }
         

@@ -40,14 +40,25 @@ class AddRunTableViewCell: UITableViewCell {
         index = indexPath
         
         if indexPath == 2 {
-            setupCellWithDatePicker()
+            setupDatePicker()
+            setupCellWith(picker: datePicker)
         } else {
-            setupCellWithPickerView()
+            setupCellWith(picker: picker)
         }
     }
     
-    private func setupCellWithPickerView() {
-        print("setupcell")
+    private func setupDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        
+        if #available(iOS 14.0, *) {
+            datePicker.preferredDatePickerStyle = .inline
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    private func setupCellWith(picker: UIView) {
         picker.translatesAutoresizingMaskIntoConstraints = false
         leftLabel.translatesAutoresizingMaskIntoConstraints = false
         rightLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +72,8 @@ class AddRunTableViewCell: UITableViewCell {
         contentView.addSubview(icon)
         
         icon.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
-        icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        // if center icon in cell, then while expanding the icon moves
+        icon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
 
@@ -82,44 +94,6 @@ class AddRunTableViewCell: UITableViewCell {
         picker.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         picker.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
         picker.topAnchor.constraint(equalTo: separator.bottomAnchor).isActive = true
-    }
-    
-    private func setupCellWithDatePicker() {
-        datePicker.datePickerMode = .date
-        if #available(iOS 14.0, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        } else {
-            // Fallback on earlier versions
-        }
-        datePicker.maximumDate = Date()
-        
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        leftLabel.translatesAutoresizingMaskIntoConstraints = false
-        rightLabel.translatesAutoresizingMaskIntoConstraints = false
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        
-        contentView.addSubview(leftLabel)
-        contentView.addSubview(rightLabel)
-        contentView.addSubview(separator)
-        contentView.addSubview(datePicker)
-        
-        leftLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
-        leftLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        leftLabel.heightAnchor.constraint(equalToConstant: unexpandedHeight).isActive = true
-        
-        rightLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        rightLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        rightLabel.heightAnchor.constraint(equalToConstant: unexpandedHeight).isActive = true
-        
-        separator.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
-        separator.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        separator.topAnchor.constraint(equalTo: leftLabel.bottomAnchor).isActive = true
-        separator.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        datePicker.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
-        datePicker.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        datePicker.topAnchor.constraint(equalTo: separator.bottomAnchor).isActive = true
     }
     
     public func selectedInTableView(_ tableView: UITableView) {

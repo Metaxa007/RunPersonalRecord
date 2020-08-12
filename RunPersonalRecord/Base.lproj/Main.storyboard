@@ -281,11 +281,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNf-eh-AJW">
-                                <rect key="frame" x="0.0" y="108" width="414" height="406"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="406" id="NhI-bl-MaI"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addRunCell" id="caR-9t-M1Z" customClass="AddRunTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="45"/>
@@ -301,9 +298,12 @@
                         <viewLayoutGuide key="safeArea" id="jtV-uF-pcW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="VNf-eh-AJW" firstAttribute="top" secondItem="jtV-uF-pcW" secondAttribute="top" id="0Ea-ZX-VzI"/>
+                            <constraint firstAttribute="bottom" secondItem="VNf-eh-AJW" secondAttribute="bottom" id="DeP-Kj-Dr3"/>
                             <constraint firstItem="jtV-uF-pcW" firstAttribute="trailing" secondItem="VNf-eh-AJW" secondAttribute="trailing" id="ayD-sI-Sgv"/>
-                            <constraint firstItem="VNf-eh-AJW" firstAttribute="top" secondItem="jtV-uF-pcW" secondAttribute="top" constant="52" id="rYk-dY-rxe"/>
+                            <constraint firstItem="VNf-eh-AJW" firstAttribute="leading" secondItem="jtV-uF-pcW" secondAttribute="leading" id="sKY-NO-XtV"/>
                             <constraint firstItem="VNf-eh-AJW" firstAttribute="leading" secondItem="jtV-uF-pcW" secondAttribute="leading" id="skJ-iO-UwH"/>
+                            <constraint firstItem="VNf-eh-AJW" firstAttribute="trailing" secondItem="jtV-uF-pcW" secondAttribute="trailing" id="xWX-PW-61x"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
