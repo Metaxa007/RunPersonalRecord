@@ -17,6 +17,7 @@ class AddRunTableViewCell: UITableViewCell {
     private let picker = UIPickerView()
     private let datePicker = UIDatePicker()
     private var separator = UIView()
+    //Index represents a tableView row, that is selected
     private var index = -1
     private var expanded = false
     private var unexpandedHeight: CGFloat = 44.0
@@ -25,7 +26,9 @@ class AddRunTableViewCell: UITableViewCell {
         
         return expanded ? expandedHeight : unexpandedHeight
     }
-    
+    private var km = 0
+    private var tenths = 0
+    private var hundredths = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -174,6 +177,28 @@ extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
             return 100
         default:
             return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch index {
+        case 0:
+            
+            if component == 0 {
+                km = row
+            } else if component == 2 {
+                tenths = row
+            } else if component == 3 {
+                hundredths = row
+            }
+            
+            print("Tag1 \(km)")
+            print("Tag1 \(tenths)")
+            print("Tag1 \(hundredths)")
+
+            
+        default:
+            return
         }
     }
 }
