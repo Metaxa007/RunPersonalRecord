@@ -29,6 +29,9 @@ class AddRunTableViewCell: UITableViewCell {
     private var km = 0
     private var tenths = 0
     private var hundredths = 0
+    private var hours = 0
+    private var minutes = 0
+    private var seconds = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -104,6 +107,14 @@ class AddRunTableViewCell: UITableViewCell {
         
         tableView.beginUpdates()
         tableView.endUpdates()
+    }
+    
+    private func updateDistanceLabel() {
+        rightLabel.text = String(format: "%d.%d%d km", arguments: [km, tenths, hundredths])
+    }
+    
+    private func updateTimeLabel() {
+        rightLabel.text = String(format: "%02d:%02d:%02d", arguments: [hours, minutes, seconds])
     }
 }
 
@@ -183,7 +194,7 @@ extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch index {
         case 0:
-            
+            // Component 1 is a dot
             if component == 0 {
                 km = row
             } else if component == 2 {
@@ -192,11 +203,17 @@ extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
                 hundredths = row
             }
             
-            print("Tag1 \(km)")
-            print("Tag1 \(tenths)")
-            print("Tag1 \(hundredths)")
-
+            updateDistanceLabel()
+        case 1:
+            if component == 0 {
+                hours = row
+            } else if component == 1 {
+                minutes = row
+            } else if component == 2 {
+                seconds = row
+            }
             
+            updateTimeLabel()
         default:
             return
         }
