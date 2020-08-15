@@ -32,6 +32,7 @@ class AddRunTableViewCell: UITableViewCell {
     private var hours = 0
     private var minutes = 0
     private var seconds = 0
+    private var selectedDate = Date()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,12 +57,19 @@ class AddRunTableViewCell: UITableViewCell {
     private func setupDatePicker() {
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
+        datePicker.addTarget(self, action: #selector(AddRunTableViewCell.datePickerValueChanged), for: .valueChanged)
         
         if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    @objc private func datePickerValueChanged(sender: UIDatePicker) {
+        selectedDate = sender.date
+        
+        updateDateLabel()
     }
     
     private func setupCellWith(picker: UIView) {
@@ -109,12 +117,19 @@ class AddRunTableViewCell: UITableViewCell {
         tableView.endUpdates()
     }
     
-    private func updateDistanceLabel() {
+    public func updateDistanceLabel() {
         rightLabel.text = String(format: "%d.%d%d km", arguments: [km, tenths, hundredths])
     }
     
-    private func updateTimeLabel() {
+    public func updateTimeLabel() {
         rightLabel.text = String(format: "%02d:%02d:%02d", arguments: [hours, minutes, seconds])
+    }
+    
+    public func updateDateLabel() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MMM, yyyy"
+        
+        rightLabel.text = dateFormatter.string(from: selectedDate)
     }
 }
 
