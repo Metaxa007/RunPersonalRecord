@@ -34,15 +34,15 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.row == 0 {
             cell.leftLabel.text = "Distance"
-            cell.rightLabel.text = "0.00 km"
+            cell.updateDistanceLabel()
             cell.icon.image = UIImage(named: "Stop")!
         } else if indexPath.row == 1 {
             cell.leftLabel.text = "Duration"
-            cell.rightLabel.text = "00:00:00"
+            cell.updateTimeLabel()
             cell.icon.image = UIImage(named: "Pause")!
         } else if indexPath.row == 2 {
             cell.leftLabel.text = "Date"
-            cell.rightLabel.text = Utilities.manager.getCurrentDateddMMMyyyy()
+            cell.updateDateLabel()
             cell.icon.image = UIImage(named: "Resume")!
         }
         
