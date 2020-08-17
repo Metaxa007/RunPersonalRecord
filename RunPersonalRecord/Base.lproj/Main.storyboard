@@ -274,14 +274,13 @@
         <!--ADD-->
         <scene sceneID="0xb-Qp-uyx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f18-xL-UAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="ADD" id="05W-QO-3Hi" customClass="AddRunViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZeP-TT-tk5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNf-eh-AJW">
-                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="679"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addRunCell" id="caR-9t-M1Z" customClass="AddRunTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
@@ -294,16 +293,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-2j-u8Q">
+                                <rect key="frame" x="20" y="750" width="374" height="51"/>
+                                <color key="backgroundColor" red="0.48123693470000001" green="0.71851330999999996" blue="0.2351528406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="Iyg-pH-evn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="05W-QO-3Hi" eventType="touchUpInside" id="Oeg-3K-2Es"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jtV-uF-pcW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VNf-eh-AJW" firstAttribute="top" secondItem="jtV-uF-pcW" secondAttribute="top" id="0Ea-ZX-VzI"/>
-                            <constraint firstAttribute="bottom" secondItem="VNf-eh-AJW" secondAttribute="bottom" id="DeP-Kj-Dr3"/>
-                            <constraint firstItem="jtV-uF-pcW" firstAttribute="trailing" secondItem="VNf-eh-AJW" secondAttribute="trailing" id="ayD-sI-Sgv"/>
-                            <constraint firstItem="VNf-eh-AJW" firstAttribute="leading" secondItem="jtV-uF-pcW" secondAttribute="leading" id="sKY-NO-XtV"/>
+                            <constraint firstItem="Sq8-2j-u8Q" firstAttribute="top" secondItem="VNf-eh-AJW" secondAttribute="bottom" constant="15" id="ALl-xr-iCs"/>
+                            <constraint firstItem="Sq8-2j-u8Q" firstAttribute="centerX" secondItem="jtV-uF-pcW" secondAttribute="centerX" id="ATs-Tp-0jD"/>
+                            <constraint firstItem="Sq8-2j-u8Q" firstAttribute="leading" secondItem="jtV-uF-pcW" secondAttribute="leading" constant="20" id="aYT-9h-fX2"/>
+                            <constraint firstItem="jtV-uF-pcW" firstAttribute="trailing" secondItem="Sq8-2j-u8Q" secondAttribute="trailing" constant="20" id="gRA-gF-Vuo"/>
                             <constraint firstItem="VNf-eh-AJW" firstAttribute="leading" secondItem="jtV-uF-pcW" secondAttribute="leading" id="skJ-iO-UwH"/>
                             <constraint firstItem="VNf-eh-AJW" firstAttribute="trailing" secondItem="jtV-uF-pcW" secondAttribute="trailing" id="xWX-PW-61x"/>
+                            <constraint firstItem="jtV-uF-pcW" firstAttribute="bottom" secondItem="Sq8-2j-u8Q" secondAttribute="bottom" constant="7" id="zyI-0f-6YH"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
@@ -312,6 +326,7 @@
                         <outlet property="tableView" destination="VNf-eh-AJW" id="jP7-ck-Fwa"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f18-xL-UAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4056.521739130435" y="864.50892857142856"/>
         </scene>

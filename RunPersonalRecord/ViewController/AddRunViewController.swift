@@ -20,6 +20,10 @@ class AddRunViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
     }
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+        
+    }
 }
 
 extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
