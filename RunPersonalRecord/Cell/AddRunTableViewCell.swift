@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol AddRunTableViewCellDelegate {
+    func addRunTableViewCell(duration: Double)
+    func addRunTableViewCell(distance: Int)
+    func addRunTableViewCell(date: Date)
+}
+
 class AddRunTableViewCell: UITableViewCell {
     
     // icon, leftLabel, rightLabel are set from AddRunViewController.swift
@@ -33,6 +39,7 @@ class AddRunTableViewCell: UITableViewCell {
     private var minutes = 0
     private var seconds = 0
     private var selectedDate = Date()
+    public var delegate: AddRunTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,7 +75,8 @@ class AddRunTableViewCell: UITableViewCell {
     
     @objc private func datePickerValueChanged(sender: UIDatePicker) {
         selectedDate = sender.date
-        
+
+        delegate?.addRunTableViewCell(date: selectedDate)
         updateDateLabel()
     }
     
@@ -130,6 +138,14 @@ class AddRunTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "dd.MMM, yyyy"
         
         rightLabel.text = dateFormatter.string(from: selectedDate)
+    }
+    
+    private func calculateDistance() -> Int {
+        return km * 1000 + tenths * 100 + hundredths * 10
+    }
+    
+    private func calculateDuration() -> Double {
+        return Double(hours * 3600 + minutes * 60 + seconds)
     }
 }
 
@@ -218,6 +234,9 @@ extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
                 hundredths = row
             }
             
+            let distance = calculateDistance()
+            
+            delegate?.addRunTableViewCell(distance: distance)
             updateDistanceLabel()
         case 1:
             if component == 0 {
@@ -228,6 +247,9 @@ extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
                 seconds = row
             }
             
+            let duration = calculateDuration()
+            
+            delegate?.addRunTableViewCell(duration: duration)
             updateTimeLabel()
         default:
             return
