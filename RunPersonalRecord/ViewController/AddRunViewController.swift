@@ -8,22 +8,52 @@
 
 import UIKit
 
-class AddRunViewController: UIViewController {
-    
+class AddRunViewController: UIViewController, AddRunTableViewCellDelegate {
+
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var saveButton: UIButton!
     var selectedRowIndex = -1
+    var duration = 0.0
+    var distance = 0
+    var date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        roundCornersSaveButton()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
     }
     
-    @IBAction func saveButton(_ sender: UIButton) {
-        
+    private func roundCornersSaveButton() {
+        saveButton.layer.cornerRadius = 20
+        saveButton.clipsToBounds = true
     }
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+        if duration == 0 {
+            let alert = UIAlertController(title: nil, message: "Please enter a duration for your activity", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
+    }
+    
+    func addRunTableViewCell(duration: Double) {
+        self.duration = duration
+    }
+    
+    func addRunTableViewCell(distance: Int) {
+        self.distance = distance
+    }
+    
+    func addRunTableViewCell(date: Date) {
+        self.date = date
+    }
+    
 }
 
 extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
@@ -33,7 +63,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addRunCell") as! AddRunTableViewCell
-        
+        cell.delegate = self
         cell.setupCell(indexPath: indexPath.row)
         
         if indexPath.row == 0 {
