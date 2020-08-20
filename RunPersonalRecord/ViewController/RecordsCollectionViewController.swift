@@ -20,17 +20,11 @@ class RecordsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         pickerView.dataSource = self
-        pickerView.delegate = self        
+        pickerView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getDistances()
-        
-        if wasLoaded {
-            collectionView.reloadData()
-        } else {
-            wasLoaded = true
-        }
+        reloadCollectionView()
     }
     
     func showPickerView() {
@@ -110,6 +104,27 @@ class RecordsCollectionViewController: UICollectionViewController {
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAddRunVCsegue" {
+            let navigationController = segue.destination as! UINavigationController
+            
+            // AddRunViewController is the first VC in the NavigationController
+            if let destinationVC = navigationController.viewControllers[0] as? AddRunViewController {
+                destinationVC.delegate = self
+            }
+        }
+    }
+    
+    func reloadCollectionView() {
+        getDistances()
+        
+        if wasLoaded {
+            collectionView.reloadData()
+        } else {
+            wasLoaded = true
+        }
+    }
+    
     /**
         Delete corresponding distances in CoreData and reloads CollectionView
      */
@@ -152,6 +167,12 @@ class RecordsCollectionViewController: UICollectionViewController {
         }
         
         return UICollectionViewCell()
+    }
+}
+
+extension RecordsCollectionViewController: AddRunViewControllerDelegate {
+    func addRunViewControllerDismiss() {
+        reloadCollectionView()
     }
 }
 

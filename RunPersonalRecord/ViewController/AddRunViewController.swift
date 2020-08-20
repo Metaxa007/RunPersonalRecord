@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol AddRunViewControllerDelegate {
+    func addRunViewControllerDismiss()
+}
+
 class AddRunViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
-    var selectedRowIndex = -1
-    var duration = 0.0
-    var distance = 0
-    var date = Date()
+    private var selectedRowIndex = -1
+    private var duration = 0.0
+    private var distance = 0
+    private var date = Date()
+    public var delegate: AddRunViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +51,8 @@ class AddRunViewController: UIViewController {
                                           date: date, duration: duration, distance: distance, completed: true)
         
         dismiss(animated: true, completion: nil)
+        print("Tag1 call delegate?.addRunViewControllerDismiss()")
+        delegate?.addRunViewControllerDismiss()
     }
 }
 
