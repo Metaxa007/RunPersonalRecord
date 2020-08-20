@@ -43,9 +43,7 @@ class AddRunTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        print("awakeFromNib")
-        
+        // Initialization code        
         picker.dataSource = self
         picker.delegate = self
     }

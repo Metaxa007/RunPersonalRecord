@@ -8,8 +8,8 @@
 
 import UIKit
 
-class AddRunViewController: UIViewController, AddRunTableViewCellDelegate {
-
+class AddRunViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     var selectedRowIndex = -1
@@ -40,20 +40,13 @@ class AddRunViewController: UIViewController, AddRunTableViewCellDelegate {
             
             return
         }
+        
+        // No locations and pace information for this activity
+        CoreDataManager.manager.addEntity(activity: Activity.init(locations: [[]]), pace: Pace.init(pace: [:], restDistancePace: [:]),
+                                          date: date, duration: duration, distance: distance, completed: true)
+        
+        dismiss(animated: true, completion: nil)
     }
-    
-    func addRunTableViewCell(duration: Double) {
-        self.duration = duration
-    }
-    
-    func addRunTableViewCell(distance: Int) {
-        self.distance = distance
-    }
-    
-    func addRunTableViewCell(date: Date) {
-        self.date = date
-    }
-    
 }
 
 extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
@@ -107,5 +100,19 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             selectedRowIndex = indexPath.row
         }
         tableView.reloadData()
+    }
+}
+
+extension AddRunViewController:AddRunTableViewCellDelegate {
+    func addRunTableViewCell(duration: Double) {
+        self.duration = duration
+    }
+    
+    func addRunTableViewCell(distance: Int) {
+        self.distance = distance
+    }
+    
+    func addRunTableViewCell(date: Date) {
+        self.date = date
     }
 }
