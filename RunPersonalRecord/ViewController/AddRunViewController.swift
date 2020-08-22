@@ -12,6 +12,8 @@ protocol AddRunViewControllerDelegate {
     func addRunViewControllerDismiss()
 }
 
+private let reuseIdentifier = "addRunCell"
+
 class AddRunViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -51,7 +53,6 @@ class AddRunViewController: UIViewController {
                                           date: date, duration: duration, distance: distance, completed: true)
         
         dismiss(animated: true, completion: nil)
-        print("Tag1 call delegate?.addRunViewControllerDismiss()")
         delegate?.addRunViewControllerDismiss()
     }
 }
@@ -62,7 +63,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addRunCell") as! AddRunTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! AddRunTableViewCell
         cell.delegate = self
         cell.setupCell(indexPath: indexPath.row)
         

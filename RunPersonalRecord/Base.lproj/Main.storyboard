@@ -262,7 +262,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="TQu-YB-aA1">
                             <connections>
                                 <action selector="nextScreen:" destination="yIM-3F-mLi" id="t6h-6o-tdD"/>
-                                <segue destination="IER-Sy-Vaf" kind="presentation" id="G8Y-k1-31Q"/>
+                                <segue destination="IER-Sy-Vaf" kind="presentation" identifier="showAddRunVCsegue" id="G8Y-k1-31Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -323,6 +323,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Add your run" largeTitleDisplayMode="always" id="7S4-xT-jhG"/>
                     <connections>
+                        <outlet property="saveButton" destination="Sq8-2j-u8Q" id="Td5-Wj-Yk4"/>
                         <outlet property="tableView" destination="VNf-eh-AJW" id="jP7-ck-Fwa"/>
                     </connections>
                 </viewController>
