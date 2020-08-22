@@ -10,6 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "recordsCell"
 private let showAddRunVCsegue = "showAddRunVCsegue"
+private let showRecordsTVCsegue = "showRecordsTVCsegue"
 
 class RecordsCollectionViewController: UICollectionViewController {
     
@@ -47,6 +48,8 @@ class RecordsCollectionViewController: UICollectionViewController {
             if let destinationVC = navigationController.viewControllers[0] as? AddRunViewController {
                 destinationVC.delegate = self
             }
+        } else if segue.identifier == showRecordsTVCsegue {
+            print("showRecordsTVCsegue")
         }
     }
     
@@ -103,6 +106,16 @@ class RecordsCollectionViewController: UICollectionViewController {
         
         return UICollectionViewCell()
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didselect")
+        performSegue(withIdentifier: showRecordsTVCsegue, sender: self)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("did deselect")
+    }
+    
 }
 
 extension RecordsCollectionViewController: AddRunViewControllerDelegate {

@@ -216,7 +216,7 @@
         <scene sceneID="CCP-Qk-1aO">
             <objects>
                 <collectionViewController id="yIM-3F-mLi" customClass="RecordsCollectionViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JEy-vi-gkc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" id="JEy-vi-gkc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -266,6 +266,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="IJ1-Wc-Vl5" kind="show" identifier="showRecordsTVCsegue" id="fDe-N5-DFS"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Zg-Tvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f18-xL-UAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4056.521739130435" y="864.50892857142856"/>
+            <point key="canvasLocation" x="4506" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dAN-hf-yE0">
@@ -372,7 +375,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MX7-bf-pKq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3281" y="865"/>
+            <point key="canvasLocation" x="3619" y="357"/>
+        </scene>
+        <!--Records-->
+        <scene sceneID="slh-bF-UVk">
+            <objects>
+                <viewController id="IJ1-Wc-Vl5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nef-g9-XdA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bkB-if-2GY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Records" id="K9A-OK-7U9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7iX-tR-hHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3619" y="1332"/>
         </scene>
     </scenes>
     <resources>
