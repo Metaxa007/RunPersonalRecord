@@ -81,7 +81,7 @@ struct CoreDataManager {
     }
     
     /**
-     Delete all activities with the concrete distance.
+     Delete all activities with the specific distance.
      */
     func deleteAll(distance: Int) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {

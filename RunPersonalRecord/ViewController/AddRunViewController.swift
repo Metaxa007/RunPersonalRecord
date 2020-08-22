@@ -2,12 +2,15 @@
 //  AddRunViewController.swift
 //  RunPersonalRecord
 //
-//  Created by Artsem Lemiasheuski on 21.07.20.
+//  Created by Artsem Lemiasheuski on 05.08.20.
 //  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
 //
 
 import UIKit
-import AUPickerCell
+
+protocol AddRunViewControllerDelegate {
+    func addRunViewControllerDismiss()
+}
 
 private let reuseIdentifier = "addRunCell"
 
@@ -15,239 +18,109 @@ class AddRunViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var saveButtonHeight: NSLayoutConstraint!
-    @IBOutlet weak var saveButtonBottom: NSLayoutConstraint!
+    private var selectedRowIndex = -1
+    private var duration = 0.0
+    private var distance = 0
+    private var date = Date()
+    public var delegate: AddRunViewControllerDelegate?
     
-    private let pickerView = UIPickerView()
-    private let datePicker = UIDatePicker()
-    private let toolBar = UIToolbar()
-    private var shownPicker: UIView?
-    private var selectedRow: Int?
-    private var pickerToolbarShown = false
-    
-//    test comment
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        roundCornersSaveButton()
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.isScrollEnabled = false
         tableView.tableFooterView = UIView()
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        roundCornersSaveButton()
     }
     
-    func showPickerView() {
-        view.addSubview(pickerView)
-        view.addSubview(toolBar)
-
-        setupPicker(picker: pickerView)
-    }
-    
-    func showDatePicker(){
-        view.addSubview(datePicker)
-        view.addSubview(toolBar)
-        
-        datePicker.datePickerMode = .date
-        datePicker.maximumDate = Date()
-        
-        setupPicker(picker: datePicker)
-    }
-    
-    func setupPicker(picker: UIView) {
-        picker.alpha = 1
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        picker.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        picker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        pickerView.reloadAllComponents()
-    }
-
-    func showToolBar(labelText: String, picker: UIView) {
-        let label = UILabel()
-        label.text = labelText
-    
-        let labelButton = UIBarButtonItem(customView: label)
-        let doneButton = UIBarButtonItem(title:"Add", style: .plain, target: self, action: nil)
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissPickerAndToolBar))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolBar.alpha = 1
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        toolBar.bottomAnchor.constraint(equalTo: picker.topAnchor).isActive = true
-        toolBar.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        toolBar.sizeToFit()
-        toolBar.setItems([cancelButton, flexibleSpace, labelButton, flexibleSpace, doneButton], animated: false)
-    }
-    
-    func showSaveButton() {
-        saveButtonHeight.constant = 53
-        saveButtonBottom.constant = 10
-        saveButton.isHidden = false
-    }
-    
-    func hideSaveButton() {
-        saveButtonHeight.constant = 0
-        saveButtonBottom.constant = 0
-        saveButton.isHidden = true
-    }
-    
-    func roundCornersSaveButton() {
-        saveButton.layer.cornerRadius = 25
+    private func roundCornersSaveButton() {
+        saveButton.layer.cornerRadius = 20
         saveButton.clipsToBounds = true
     }
-
-    @objc func dismissPickerAndToolBar() {
-        guard let shownPicker = self.shownPicker else { return }
-
-        shownPicker.alpha = 0
-        toolBar.alpha = 0
-
-        shownPicker.removeFromSuperview()
-        toolBar.removeFromSuperview()
-        showSaveButton()
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+        if duration == 0 {
+            let alert = UIAlertController(title: nil, message: "Please enter a duration for your activity", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
         
-        pickerToolbarShown = false
+        // No locations and pace information for this activity
+        CoreDataManager.manager.addEntity(activity: Activity.init(locations: [[]]), pace: Pace.init(pace: [:], restDistancePace: [:]),
+                                          date: date, duration: duration, distance: distance, completed: true)
+        
+        dismiss(animated: true, completion: nil)
+        delegate?.addRunViewControllerDismiss()
     }
 }
 
-extension AddRunViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? AddRunTableViewCell {
-            cell.setupCell(index: indexPath.row)
-            
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! AddRunTableViewCell
+        cell.delegate = self
+        cell.setupCell(indexPath: indexPath.row)
+        
+        if indexPath.row == 0 {
+            cell.leftLabel.text = "Distance"
+            cell.updateDistanceLabel()
+            cell.icon.image = UIImage(named: "Stop")!
+        } else if indexPath.row == 1 {
+            cell.leftLabel.text = "Duration"
+            cell.updateTimeLabel()
+            cell.icon.image = UIImage(named: "Pause")!
+        } else if indexPath.row == 2 {
+            cell.leftLabel.text = "Date"
+            cell.updateDateLabel()
+            cell.icon.image = UIImage(named: "Resume")!
         }
         
-        return UITableViewCell()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectedRowIndex {
+            if indexPath.row == 2 {
+                // new DatePicker introduced in iOS 14. If indexPath == 2 and iOS < 14 return 260
+                if #available(iOS 14.0, *) {
+                    return 370
+                }
+            }
+            
+            return 260 //Expanded
+        }
+        
+        return 44 //Not expanded
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if pickerToolbarShown {
-            dismissPickerAndToolBar()
+        if selectedRowIndex == indexPath.row {
+            selectedRowIndex = -1
+        } else {
+            selectedRowIndex = indexPath.row
         }
-        
-        selectedRow = indexPath.row
-
-        switch indexPath.row {
-        case 0:
-            showPickerView()
-            showToolBar(labelText: "Choose distance (km)", picker: pickerView)
-            shownPicker = pickerView
-        case 1:
-            showPickerView()
-            showToolBar(labelText: "Duration", picker: pickerView)
-            shownPicker = pickerView
-        case 2:
-            showDatePicker()
-            showToolBar(labelText: "Pick date", picker: datePicker)
-            shownPicker = datePicker
-        default:
-            return
-        }
-        
-        hideSaveButton()
-        pickerToolbarShown = true
+        tableView.reloadData()
     }
 }
 
-extension AddRunViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        guard let selectedRow = selectedRow else { return 0 }
-        
-        if selectedRow == 0 {
-            return 4
-        } else if selectedRow == 1  {
-            return 3
-        }
-        
-        return 0
+extension AddRunViewController:AddRunTableViewCellDelegate {
+    func addRunTableViewCell(duration: Double) {
+        self.duration = duration
     }
     
-    /**
-     row 1 - Distance
-     row 2 - Duration
-     row 3 - Date
-     */
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let selectedRow = selectedRow else { return 0 }
-
-        switch selectedRow {
-        case 0:
-            if component == 0 {
-                return 300
-            } else if component == 1 {
-                return 1
-            } else {
-                return 10
-            }
-        case 1:
-            if component == 0 {
-                return 100
-            } else if component == 3 {
-                return 1
-            } else {
-                return 60
-            }
-        default:
-            return 0
-        }
+    func addRunTableViewCell(distance: Int) {
+        self.distance = distance
     }
     
-    /**
-     row 1 - Distance
-     row 2 - Duration
-     row 3 - Date
-     */
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let selectedRow = selectedRow else { return "" }
-
-        switch selectedRow {
-        case 0:
-            if component == 0 {
-                return "\(row)"
-            } else if component == 1 {
-                return "."
-            } else {
-                return "\(row)"
-            }
-        case 1:
-            if component == 0 {
-                return "\(row)h"
-            } else if component == 1 {
-                return "\(row)m"
-            } else {
-                return "\(row)s"
-            }
-        default:
-            return ""
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        switch selectedRow {
-        case 0:
-            if component == 1 {
-                return 13
-            } else {
-                return 70
-            }
-        case 1:
-            return 100
-        default:
-            return 0
-        }
+    func addRunTableViewCell(date: Date) {
+        self.date = date
     }
 }
