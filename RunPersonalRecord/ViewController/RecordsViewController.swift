@@ -9,10 +9,15 @@
 import UIKit
 
 class RecordsViewController: UIViewController {
+    
+    private var distance = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "Records \(Utilities.manager.distanceAsString(distance: distance))"
+    }
+    
+    public func setDistance(distance: Int) {
+        self.distance = distance
     }
 }

@@ -230,7 +230,7 @@
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordsCell" id="q8U-VP-Bgl" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
                                 <rect key="frame" x="40" y="30" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0R-Ge-gnU" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0R-Ge-gnU">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -380,7 +380,7 @@
         <!--Records-->
         <scene sceneID="slh-bF-UVk">
             <objects>
-                <viewController id="IJ1-Wc-Vl5" sceneMemberID="viewController">
+                <viewController id="IJ1-Wc-Vl5" customClass="RecordsViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nef-g9-XdA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

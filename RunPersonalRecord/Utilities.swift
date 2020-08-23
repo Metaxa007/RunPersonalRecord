@@ -57,11 +57,17 @@ struct Utilities {
         
         return (hours, minutes, seconds)
     }
-    
-    func getCurrentDateddMMMyyyy() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MMM, yyyy"
+
+    func distanceAsString(distance: Int) -> String {
+        let formatter = NumberFormatter()
         
-        return dateFormatter.string(from: Date())
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        
+        if distance >= 1000 {
+            return "\(formatter.string(from: NSNumber(value: Double(distance) / 1000)) ?? "") km"
+        } else {
+            return "\(distance) m"
+        }
     }
 }
