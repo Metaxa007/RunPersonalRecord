@@ -13,6 +13,7 @@
 		AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E339124B23A2B00E81DDE /* ActivityTransformer.swift */; };
 		AC2E339424B23A2B00E81DDE /* PaceTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E339224B23A2B00E81DDE /* PaceTransformer.swift */; };
 		AC3D7EBE24F1B3B200539298 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D7EBD24F1B3B200539298 /* RecordsViewController.swift */; };
+		AC48415324F459A5007B98E1 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */; };
 		AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC543F3A2454C51200D2202B /* CoreDataManager.swift */; };
 		AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A12452402F00F10921 /* AppDelegate.swift */; };
 		AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A32452402F00F10921 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 		AC2E339124B23A2B00E81DDE /* ActivityTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTransformer.swift; sourceTree = "<group>"; };
 		AC2E339224B23A2B00E81DDE /* PaceTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceTransformer.swift; sourceTree = "<group>"; };
 		AC3D7EBD24F1B3B200539298 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		AC543F3A2454C51200D2202B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC56B29E2452402F00F10921 /* RunPersonalRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunPersonalRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC56B2A12452402F00F10921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,8 +146,9 @@
 		ACF40583249F6EB3005BC266 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */,
 				ACFC32D524DB536300B326CF /* AddRunTableViewCell.swift */,
+				AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */,
+				AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				ACFC32D424DB533700B326CF /* AddRunViewController.swift in Sources */,
 				ACF40584249FA560005BC266 /* ViewController.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
+				AC48415324F459A5007B98E1 /* RecordsTableViewCell.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
 				AC8E68C224BA26C40080F175 /* RecordsCollectionViewCell.swift in Sources */,
 				AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */,

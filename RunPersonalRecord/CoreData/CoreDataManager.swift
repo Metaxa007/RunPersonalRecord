@@ -47,6 +47,26 @@ struct CoreDataManager {
         return nil
     }
     
+    func getAllEntities(for distance: Int) -> [ActivityEntity]? {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            
+            do {
+                let fetchRequest : NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "distance == \(distance)")
+                
+                let results = try context.fetch(fetchRequest)
+                
+                return results
+            }
+            catch {
+                print ("fetch task failed", error)
+            }
+        }
+        
+        return nil
+    }
+    
     func deleteActivity(activity: ActivityEntity) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext

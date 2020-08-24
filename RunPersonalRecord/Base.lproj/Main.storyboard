@@ -384,14 +384,39 @@
                     <view key="view" contentMode="scaleToFill" id="nef-g9-XdA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7aB-Ep-2yl">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordsCell" rowHeight="60" id="TBk-H6-dX7" customClass="RecordsTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBk-H6-dX7" id="jNV-6U-xfk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bkB-if-2GY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="leading" secondItem="bkB-if-2GY" secondAttribute="leading" id="PqP-ZA-cuF"/>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="trailing" secondItem="bkB-if-2GY" secondAttribute="trailing" id="YSB-BP-v4a"/>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="bottom" secondItem="bkB-if-2GY" secondAttribute="bottom" id="jdU-kU-C6q"/>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="top" secondItem="bkB-if-2GY" secondAttribute="top" id="jfe-p8-kgF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Records" id="K9A-OK-7U9"/>
+                    <connections>
+                        <outlet property="tableView" destination="7aB-Ep-2yl" id="S8I-Ya-EIg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iX-tR-hHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3619" y="1332"/>
+            <point key="canvasLocation" x="3618.840579710145" y="1331.9196428571429"/>
         </scene>
     </scenes>
     <resources>
