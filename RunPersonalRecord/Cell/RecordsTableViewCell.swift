@@ -12,7 +12,7 @@ class RecordsTableViewCell: UITableViewCell {
 
     private let reward = UIImageView()
     private let distanceLabel = UILabel()
-    private let duration = UILabel()
+    private let durationLabel = UILabel()
     private let completion = UIImageView()
     private let dateLabel = UILabel()
     
@@ -24,46 +24,59 @@ class RecordsTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
+        let stackViewDistanceDuration = UIStackView()
+        stackViewDistanceDuration.axis = NSLayoutConstraint.Axis.vertical
+        stackViewDistanceDuration.distribution = UIStackView.Distribution.equalSpacing
+        stackViewDistanceDuration.alignment = UIStackView.Alignment.center
+        stackViewDistanceDuration.spacing = 10
+        stackViewDistanceDuration.addArrangedSubview(distanceLabel)
+        stackViewDistanceDuration.addArrangedSubview(durationLabel)
+        
+        let stackViewCompletionDate = UIStackView()
+        stackViewDistanceDuration.axis = NSLayoutConstraint.Axis.vertical
+        stackViewDistanceDuration.distribution = UIStackView.Distribution.equalSpacing
+        stackViewDistanceDuration.alignment = UIStackView.Alignment.center
+        stackViewDistanceDuration.spacing = 10
+        stackViewDistanceDuration.addArrangedSubview(completion)
+        stackViewDistanceDuration.addArrangedSubview(dateLabel)
+        
+        stackViewDistanceDuration.translatesAutoresizingMaskIntoConstraints = false
+        stackViewDistanceDuration.translatesAutoresizingMaskIntoConstraints = false
         reward.translatesAutoresizingMaskIntoConstraints = false
         distanceLabel.translatesAutoresizingMaskIntoConstraints = false
-        duration.translatesAutoresizingMaskIntoConstraints = false
+        durationLabel.translatesAutoresizingMaskIntoConstraints = false
         completion.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(reward)
-        contentView.addSubview(distanceLabel)
-        contentView.addSubview(duration)
-        contentView.addSubview(completion)
-        contentView.addSubview(dateLabel)
+        contentView.addSubview(stackViewDistanceDuration)
+        contentView.addSubview(stackViewCompletionDate)
         
         reward.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         reward.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         reward.heightAnchor.constraint(equalToConstant: 30).isActive = true
         reward.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
-        distanceLabel.leadingAnchor.constraint(equalTo: reward.layoutMarginsGuide.leadingAnchor, constant: 40).isActive = true
-        distanceLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor).isActive = true
         distanceLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        durationLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
-        duration.leadingAnchor.constraint(equalTo: distanceLabel.layoutMarginsGuide.leadingAnchor, constant: 50).isActive = true
-        duration.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor).isActive = true
-        duration.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        dateLabel.leadingAnchor.constraint(equalTo: duration.layoutMarginsGuide.leadingAnchor, constant: 40).isActive = true
-        dateLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
-        completion.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        completion.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         completion.heightAnchor.constraint(equalToConstant: 30).isActive = true
         completion.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        stackViewDistanceDuration.leadingAnchor.constraint(equalTo: reward.layoutMarginsGuide.trailingAnchor).isActive = true
+        stackViewDistanceDuration.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        
+        stackViewCompletionDate.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
+//        stackViewCompletionDate.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
     
     public func setupCell(activity: ActivityEntity) {
         print("setupCell")
         reward.image = UIImage(named: "Pause")
         distanceLabel.text = String(activity.distance)
-        duration.text = String(activity.duration)
+        durationLabel.text = String(activity.duration)
         dateLabel.text = "19/10/1994"
         completion.image = UIImage(named: "Resume")
     }
