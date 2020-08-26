@@ -28,20 +28,20 @@ class RecordsTableViewCell: UITableViewCell {
         stackViewDistanceDuration.axis = NSLayoutConstraint.Axis.vertical
         stackViewDistanceDuration.distribution = UIStackView.Distribution.equalSpacing
         stackViewDistanceDuration.alignment = UIStackView.Alignment.center
-        stackViewDistanceDuration.spacing = 10
+        stackViewDistanceDuration.spacing = 15
         stackViewDistanceDuration.addArrangedSubview(distanceLabel)
         stackViewDistanceDuration.addArrangedSubview(durationLabel)
         
         let stackViewCompletionDate = UIStackView()
-        stackViewDistanceDuration.axis = NSLayoutConstraint.Axis.vertical
-        stackViewDistanceDuration.distribution = UIStackView.Distribution.equalSpacing
-        stackViewDistanceDuration.alignment = UIStackView.Alignment.center
-        stackViewDistanceDuration.spacing = 10
-        stackViewDistanceDuration.addArrangedSubview(completion)
-        stackViewDistanceDuration.addArrangedSubview(dateLabel)
+        stackViewCompletionDate.axis = NSLayoutConstraint.Axis.vertical
+        stackViewCompletionDate.distribution = UIStackView.Distribution.equalSpacing
+        stackViewCompletionDate.alignment = UIStackView.Alignment.center
+        stackViewCompletionDate.spacing = 15
+        stackViewCompletionDate.addArrangedSubview(completion)
+        stackViewCompletionDate.addArrangedSubview(dateLabel)
         
         stackViewDistanceDuration.translatesAutoresizingMaskIntoConstraints = false
-        stackViewDistanceDuration.translatesAutoresizingMaskIntoConstraints = false
+        stackViewCompletionDate.translatesAutoresizingMaskIntoConstraints = false
         reward.translatesAutoresizingMaskIntoConstraints = false
         distanceLabel.translatesAutoresizingMaskIntoConstraints = false
         durationLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -65,11 +65,11 @@ class RecordsTableViewCell: UITableViewCell {
         completion.heightAnchor.constraint(equalToConstant: 30).isActive = true
         completion.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
-        stackViewDistanceDuration.leadingAnchor.constraint(equalTo: reward.layoutMarginsGuide.trailingAnchor).isActive = true
+        stackViewDistanceDuration.leadingAnchor.constraint(equalTo: reward.layoutMarginsGuide.trailingAnchor, constant: 30).isActive = true
         stackViewDistanceDuration.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
         stackViewCompletionDate.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-//        stackViewCompletionDate.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        stackViewCompletionDate.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
     
     public func setupCell(activity: ActivityEntity) {

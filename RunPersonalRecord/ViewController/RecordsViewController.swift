@@ -13,9 +13,11 @@ private let reusableIdentifier = "recordsCell"
 class RecordsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     private var distance = 0
-    private var activities: [ActivityEntity]?
+    private var activities = [ActivityEntity]()
+    private var uncompletedActivities = [ActivityEntity]()
+    private var sortedActivites = [ActivityEntity]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,17 @@ class RecordsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        activities = CoreDataManager.manager.getAllEntities(for: distance)
+        activities = CoreDataManager.manager.getAllEntities(for: distance) ?? []
+    }
+    
+    private func sortActivitesByTime() {
+        for i in 0..<activities.count {
+            if !activities[i].completed {
+                uncompletedActivities.append(activities[i])
+            }
+        }
+        
+        
     }
     
     public func setDistance(distance: Int) {
@@ -35,14 +47,12 @@ class RecordsViewController: UIViewController {
 extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return activities != nil ? activities!.count : 0
+        return activities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) as? RecordsTableViewCell {
-            if let activity = activities?[indexPath.row] {
-                cell.setupCell(activity: activity)
-            }
+            cell.setupCell(activity: activities[indexPath.row])
             
             return cell
         }
@@ -51,6 +61,6 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 80
     }
 }
