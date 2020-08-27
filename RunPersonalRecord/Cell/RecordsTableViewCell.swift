@@ -76,8 +76,8 @@ class RecordsTableViewCell: UITableViewCell {
         print("setupCell")
         reward.image = UIImage(named: "Pause")
         distanceLabel.text = String(activity.distance)
-        durationLabel.text = String(activity.duration)
-        dateLabel.text = "19/10/1994"
+        durationLabel.text = String(Utilities.manager.getTimeInPaceFormat(duration: TimeInterval(activity.duration)))
+        dateLabel.text = Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date())
         completion.image = UIImage(named: "Resume")
     }
 
