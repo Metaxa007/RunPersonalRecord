@@ -50,6 +50,13 @@ struct Utilities {
         return String(format: "%02i:%02i", minutes, seconds)
     }
     
+    func getTimeInRegularFormat(duration:TimeInterval) -> String {
+        let (hours, minutes, seconds) = getTime(duration: duration)
+        
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
+
+    
     func getTime(duration: TimeInterval) -> (Int, Int, Int) {
         let hours = Int(duration) / 3600
         let minutes = Int(duration) / 60 % 60

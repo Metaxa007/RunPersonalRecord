@@ -72,11 +72,19 @@ class RecordsTableViewCell: UITableViewCell {
         stackViewCompletionDate.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
     
-    public func setupCell(activity: ActivityEntity) {
-        print("setupCell")
-        reward.image = UIImage(named: "Pause")
+    public func setupCell(activity: ActivityEntity, place: Int) {
+        switch place {
+        case 0:
+            reward.image = UIImage(named: "Resume")
+        case 1:
+            reward.image = UIImage(named: "Pause")
+        case 2:
+            reward.image = UIImage(named: "Stop")
+        default:
+            break;
+        }
         distanceLabel.text = String(activity.distance)
-        durationLabel.text = String(Utilities.manager.getTimeInPaceFormat(duration: TimeInterval(activity.duration)))
+        durationLabel.text = String(Utilities.manager.getTimeInRegularFormat(duration: TimeInterval(activity.duration)))
         dateLabel.text = Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date())
         completion.image = UIImage(named: "Resume")
     }

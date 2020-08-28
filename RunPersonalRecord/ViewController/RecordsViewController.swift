@@ -28,7 +28,7 @@ class RecordsViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         activities = CoreDataManager.manager.getAllEntities(for: distance) ?? []
-        
+
         sortActivitesByTime()
     }
     
@@ -66,8 +66,9 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cellforrowat")
         if let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) as? RecordsTableViewCell {
-            cell.setupCell(activity: sortedActivites[indexPath.row])
+            cell.setupCell(activity: sortedActivites[indexPath.row], place: indexPath.row)
             
             return cell
         }
@@ -82,4 +83,21 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, view, completion) in
+            guard let weakSelf = self else { return }
+            
+            CoreDataManager.manager.deleteActivity(activity: weakSelf.sortedActivites[indexPath.row])
+            weakSelf.sortedActivites.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+            completion(true)
+        }
+        
+      deleteAction.backgroundColor = UIColor.red
+        
+      return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+
 }
