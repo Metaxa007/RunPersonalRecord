@@ -10,12 +10,14 @@ import UIKit
 
 private let reuseIdentifier = "recordsCell"
 private let showAddRunVCsegue = "showAddRunVCsegue"
+private let showRecordsTVCsegue = "showRecordsTVCsegue"
 
 class RecordsCollectionViewController: UICollectionViewController {
     
     private var distancesSet: Set<Int32> = []
     private var distancesArray: Array<Int32> = []
     private var wasLoaded = false
+    private var selectedDistance = 0
     
     override func viewWillAppear(_ animated: Bool) {
         reloadCollectionView()
@@ -42,10 +44,14 @@ class RecordsCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showAddRunVCsegue {
             let navigationController = segue.destination as! UINavigationController
-            
+
             // AddRunViewController is the first VC in the NavigationController
             if let destinationVC = navigationController.viewControllers[0] as? AddRunViewController {
                 destinationVC.delegate = self
+            }
+        } else if segue.identifier == showRecordsTVCsegue {
+            if let destinationVC = segue.destination as? RecordsViewController {
+                destinationVC.setDistance(distance: selectedDistance)
             }
         }
     }
@@ -103,6 +109,12 @@ class RecordsCollectionViewController: UICollectionViewController {
         
         return UICollectionViewCell()
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedDistance = Int(distancesArray[indexPath.item])
+        performSegue(withIdentifier: showRecordsTVCsegue, sender: self)
+    }
+    
 }
 
 extension RecordsCollectionViewController: AddRunViewControllerDelegate {

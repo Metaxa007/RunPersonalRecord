@@ -50,6 +50,13 @@ struct Utilities {
         return String(format: "%02i:%02i", minutes, seconds)
     }
     
+    func getTimeInRegularFormat(duration:TimeInterval) -> String {
+        let (hours, minutes, seconds) = getTime(duration: duration)
+        
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
+
+    
     func getTime(duration: TimeInterval) -> (Int, Int, Int) {
         let hours = Int(duration) / 3600
         let minutes = Int(duration) / 60 % 60
@@ -58,10 +65,23 @@ struct Utilities {
         return (hours, minutes, seconds)
     }
     
-    func getCurrentDateddMMMyyyy() -> String {
+    func getDateAsddMMMyyyy(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MMM, yyyy"
         
-        return dateFormatter.string(from: Date())
+        return dateFormatter.string(from: date)
+    }
+
+    func getDistanceInKmAsString(distance: Int) -> String {
+        let formatter = NumberFormatter()
+        
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        
+        if distance >= 1000 {
+            return "\(formatter.string(from: NSNumber(value: Double(distance) / 1000)) ?? "") km"
+        } else {
+            return "\(distance) m"
+        }
     }
 }

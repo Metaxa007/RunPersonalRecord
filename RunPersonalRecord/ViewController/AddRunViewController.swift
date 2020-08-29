@@ -63,25 +63,28 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! AddRunTableViewCell
-        cell.delegate = self
-        cell.setupCell(indexPath: indexPath.row)
-        
-        if indexPath.row == 0 {
-            cell.leftLabel.text = "Distance"
-            cell.updateDistanceLabel()
-            cell.icon.image = UIImage(named: "Stop")!
-        } else if indexPath.row == 1 {
-            cell.leftLabel.text = "Duration"
-            cell.updateTimeLabel()
-            cell.icon.image = UIImage(named: "Pause")!
-        } else if indexPath.row == 2 {
-            cell.leftLabel.text = "Date"
-            cell.updateDateLabel()
-            cell.icon.image = UIImage(named: "Resume")!
+        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? AddRunTableViewCell {
+            cell.delegate = self
+            cell.setupCell(indexPath: indexPath.row)
+            
+            if indexPath.row == 0 {
+                cell.leftLabel.text = "Distance"
+                cell.updateDistanceLabel()
+                cell.icon.image = UIImage(named: "Stop")!
+            } else if indexPath.row == 1 {
+                cell.leftLabel.text = "Duration"
+                cell.updateTimeLabel()
+                cell.icon.image = UIImage(named: "Pause")!
+            } else if indexPath.row == 2 {
+                cell.leftLabel.text = "Date"
+                cell.updateDateLabel()
+                cell.icon.image = UIImage(named: "Resume")!
+            }
+            
+            return cell
         }
         
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

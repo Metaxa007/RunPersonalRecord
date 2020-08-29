@@ -132,10 +132,7 @@ class AddRunTableViewCell: UITableViewCell {
     }
     
     public func updateDateLabel() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MMM, yyyy"
-        
-        rightLabel.text = dateFormatter.string(from: selectedDate)
+        rightLabel.text = Utilities.manager.getDateAsddMMMyyyy(date: selectedDate)
     }
     
     private func calculateDistance() -> Int {

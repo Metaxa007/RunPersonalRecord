@@ -216,7 +216,7 @@
         <scene sceneID="CCP-Qk-1aO">
             <objects>
                 <collectionViewController id="yIM-3F-mLi" customClass="RecordsCollectionViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JEy-vi-gkc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" id="JEy-vi-gkc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -230,7 +230,7 @@
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordsCell" id="q8U-VP-Bgl" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
                                 <rect key="frame" x="40" y="30" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0R-Ge-gnU" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0R-Ge-gnU">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -266,6 +266,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="IJ1-Wc-Vl5" kind="show" identifier="showRecordsTVCsegue" id="fDe-N5-DFS"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWq-Zg-Tvo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f18-xL-UAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4056.521739130435" y="864.50892857142856"/>
+            <point key="canvasLocation" x="4506" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dAN-hf-yE0">
@@ -372,7 +375,99 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MX7-bf-pKq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3281" y="865"/>
+            <point key="canvasLocation" x="3619" y="357"/>
+        </scene>
+        <!--Records-->
+        <scene sceneID="slh-bF-UVk">
+            <objects>
+                <viewController id="IJ1-Wc-Vl5" customClass="RecordsViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nef-g9-XdA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7aB-Ep-2yl">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordsCell" rowHeight="60" id="TBk-H6-dX7" customClass="RecordsTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBk-H6-dX7" id="jNV-6U-xfk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bkB-if-2GY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="leading" secondItem="bkB-if-2GY" secondAttribute="leading" id="PqP-ZA-cuF"/>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="trailing" secondItem="bkB-if-2GY" secondAttribute="trailing" id="YSB-BP-v4a"/>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="bottom" secondItem="bkB-if-2GY" secondAttribute="bottom" id="jdU-kU-C6q"/>
+                            <constraint firstItem="7aB-Ep-2yl" firstAttribute="top" secondItem="bkB-if-2GY" secondAttribute="top" id="jfe-p8-kgF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Records" id="K9A-OK-7U9"/>
+                    <connections>
+                        <outlet property="tableView" destination="7aB-Ep-2yl" id="S8I-Ya-EIg"/>
+                        <segue destination="GNm-Df-osw" kind="show" identifier="detailedRecordSegue" id="AWb-m0-Q6b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7iX-tR-hHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3618.840579710145" y="1331.9196428571429"/>
+        </scene>
+        <!--Record Detailed Info View Controller-->
+        <scene sceneID="ysP-lS-X5x">
+            <objects>
+                <viewController id="GNm-Df-osw" customClass="RecordDetailedInfoViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bg7-N6-0yL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="VRf-3Q-E3X">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r73-DS-4Oq">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="336"/>
+                                    </mapView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7mf-do-eEU">
+                                        <rect key="frame" x="0.0" y="337" width="414" height="336"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wbc-rH-O57">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wbc-rH-O57" id="vYr-6c-Ify">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cxN-gS-our"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VRf-3Q-E3X" firstAttribute="leading" secondItem="cxN-gS-our" secondAttribute="leading" id="8Ik-6B-688"/>
+                            <constraint firstItem="VRf-3Q-E3X" firstAttribute="trailing" secondItem="cxN-gS-our" secondAttribute="trailing" id="EfV-AV-SJi"/>
+                            <constraint firstItem="VRf-3Q-E3X" firstAttribute="top" secondItem="cxN-gS-our" secondAttribute="top" id="Hbe-P7-M5F"/>
+                            <constraint firstItem="VRf-3Q-E3X" firstAttribute="bottom" secondItem="cxN-gS-our" secondAttribute="bottom" id="OHk-VT-aBI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="4V7-NI-iXT"/>
+                    <connections>
+                        <outlet property="mapView" destination="r73-DS-4Oq" id="gcU-bW-kuh"/>
+                        <outlet property="tableView" destination="7mf-do-eEU" id="rnX-TW-ZUC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rlq-l7-QTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4505.7971014492759" y="1331.9196428571429"/>
         </scene>
     </scenes>
     <resources>
