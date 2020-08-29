@@ -15,7 +15,7 @@ class RecordsCollectionViewCell: UICollectionViewCell {
     let formatter = NumberFormatter()
     
     func setupCell(distance: Int32) {
-        self.distanceTextView.text = Utilities.manager.distanceAsString(distance: Int(distance))
+        self.distanceTextView.text = Utilities.manager.getDistanceInKmAsString(distance: Int(distance))
         self.layer.cornerRadius = 25
         self.clipsToBounds = true
     }

@@ -72,7 +72,7 @@ struct Utilities {
         return dateFormatter.string(from: date)
     }
 
-    func distanceAsString(distance: Int) -> String {
+    func getDistanceInKmAsString(distance: Int) -> String {
         let formatter = NumberFormatter()
         
         formatter.minimumFractionDigits = 0

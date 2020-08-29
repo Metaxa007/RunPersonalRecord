@@ -18,8 +18,7 @@ class RecordsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+
         setupConstraints()
     }
     
@@ -83,7 +82,7 @@ class RecordsTableViewCell: UITableViewCell {
         default:
             break;
         }
-        distanceLabel.text = String(activity.distance)
+        distanceLabel.text = String(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distance)))
         durationLabel.text = String(Utilities.manager.getTimeInRegularFormat(duration: TimeInterval(activity.duration)))
         dateLabel.text = Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date())
         completion.image = UIImage(named: "Resume")

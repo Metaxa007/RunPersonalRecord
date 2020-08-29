@@ -9,6 +9,7 @@
 import UIKit
 
 private let reusableIdentifier = "recordsCell"
+private let detailedRecordSegue = "detailedRecordSegue"
 
 class RecordsViewController: UIViewController {
     
@@ -19,11 +20,12 @@ class RecordsViewController: UIViewController {
     private var completedActivites = [ActivityEntity]()
     private var uncompletedActivities = [ActivityEntity]()
     private var sortedActivites = [ActivityEntity]()
+    private var selectedActivity = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Records \(Utilities.manager.distanceAsString(distance: distance))"
+        title = "Records \(Utilities.manager.getDistanceInKmAsString(distance: distance))"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -56,6 +58,14 @@ class RecordsViewController: UIViewController {
     
     public func setDistance(distance: Int) {
         self.distance = distance
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == detailedRecordSegue {
+            if let destinationVC = segue.destination as? RecordDetailedInfoViewController {
+                destinationVC.setActivity(activity: sortedActivites[selectedActivity])
+            }
+        }
     }
 }
 
@@ -90,7 +100,6 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
             
             CoreDataManager.manager.deleteActivity(activity: weakSelf.sortedActivites[indexPath.row])
             weakSelf.sortedActivites.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
             completion(true)
         }
@@ -98,6 +107,12 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
       deleteAction.backgroundColor = UIColor.red
         
       return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("didselectrow")
+        selectedActivity = indexPath.row
+        performSegue(withIdentifier: detailedRecordSegue, sender: self)
     }
 
 }
