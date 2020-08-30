@@ -92,6 +92,8 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        selectedActivity = indexPath.row
+        performSegue(withIdentifier: detailedRecordSegue, sender: self)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -108,11 +110,4 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
         
       return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print("didselectrow")
-        selectedActivity = indexPath.row
-        performSegue(withIdentifier: detailedRecordSegue, sender: self)
-    }
-
 }
