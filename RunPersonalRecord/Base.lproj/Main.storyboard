@@ -419,7 +419,7 @@
             </objects>
             <point key="canvasLocation" x="3618.840579710145" y="1331.9196428571429"/>
         </scene>
-        <!--Record Detailed Info View Controller-->
+        <!--Your Activity-->
         <scene sceneID="ysP-lS-X5x">
             <objects>
                 <viewController id="GNm-Df-osw" customClass="RecordDetailedInfoViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
@@ -427,15 +427,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="VRf-3Q-E3X">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VRf-3Q-E3X">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r73-DS-4Oq">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="217"/>
                                     </mapView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7mf-do-eEU">
-                                        <rect key="frame" x="0.0" y="337" width="414" height="336"/>
+                                        <rect key="frame" x="0.0" y="232" width="414" height="441"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7mf-do-eEU" secondAttribute="height" multiplier="46:49" id="Sq5-56-dtb"/>
+                                        </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wbc-rH-O57">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
@@ -448,6 +451,12 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="7mf-do-eEU" firstAttribute="leading" secondItem="VRf-3Q-E3X" secondAttribute="leading" id="Ppv-mf-9BO"/>
+                                    <constraint firstAttribute="bottom" secondItem="7mf-do-eEU" secondAttribute="bottom" id="YwJ-Wj-0ye"/>
+                                    <constraint firstItem="7mf-do-eEU" firstAttribute="top" secondItem="r73-DS-4Oq" secondAttribute="bottom" constant="15" id="ZdC-I7-fLH"/>
+                                    <constraint firstAttribute="trailing" secondItem="7mf-do-eEU" secondAttribute="trailing" id="wbU-Jd-0KK"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cxN-gS-our"/>
@@ -459,7 +468,7 @@
                             <constraint firstItem="VRf-3Q-E3X" firstAttribute="bottom" secondItem="cxN-gS-our" secondAttribute="bottom" id="OHk-VT-aBI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4V7-NI-iXT"/>
+                    <navigationItem key="navigationItem" title="Your Activity" id="4V7-NI-iXT"/>
                     <connections>
                         <outlet property="mapView" destination="r73-DS-4Oq" id="gcU-bW-kuh"/>
                         <outlet property="tableView" destination="7mf-do-eEU" id="rnX-TW-ZUC"/>
