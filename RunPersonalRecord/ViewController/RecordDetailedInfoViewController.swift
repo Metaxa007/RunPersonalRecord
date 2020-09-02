@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+// Good ScrollView tutorial https://fluffy.es/scrollview-storyboard-xcode-11/
+
 class RecordDetailedInfoViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
