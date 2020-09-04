@@ -480,7 +480,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8za-jR-HfS">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg. Pace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8za-jR-HfS">
                                                                         <rect key="frame" x="0.0" y="33.333333333333371" width="100" height="23"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                                                         <color key="textColor" red="0.30556509640000001" green="0.31563372140000001" blue="0.31836928930000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -629,6 +629,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Your Activity" id="4V7-NI-iXT"/>
                     <size key="freeformSize" width="414" height="1200"/>
+                    <connections>
+                        <outlet property="dateDistanceLabel" destination="rVY-Pe-djJ" id="8RC-Yz-I4J"/>
+                        <outlet property="durationLabel" destination="GnF-kL-Dcx" id="JYU-w3-xdz"/>
+                        <outlet property="mapView" destination="ysm-AB-jSn" id="KHz-OD-0tb"/>
+                        <outlet property="paceLabel" destination="MKe-85-NU8" id="mJb-lL-7rT"/>
+                        <outlet property="placeImageView" destination="Mg7-Fr-EJl" id="beP-5q-sTT"/>
+                        <outlet property="placeLabel" destination="CL5-l5-ejz" id="ewe-vi-nf7"/>
+                        <outlet property="speedLabel" destination="2tu-w8-rmd" id="sKA-Ca-PdU"/>
+                        <outlet property="tableView" destination="3n5-56-1fT" id="O5m-Rj-WfO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlq-l7-QTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
