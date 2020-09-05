@@ -70,15 +70,30 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 cell.leftLabel.text = "Distance"
                 cell.updateDistanceLabel()
-                cell.icon.image = UIImage(named: "Stop")!
+                
+                if traitCollection.userInterfaceStyle == .light {
+                    cell.icon.image = UIImage(named: "Distance")!
+                } else {
+                    cell.icon.image = UIImage(named: "Distance_dark")!
+                }
             } else if indexPath.row == 1 {
                 cell.leftLabel.text = "Duration"
                 cell.updateTimeLabel()
-                cell.icon.image = UIImage(named: "Pause")!
+                
+                if traitCollection.userInterfaceStyle == .light {
+                    cell.icon.image = UIImage(named: "Duration")!
+                } else {
+                    cell.icon.image = UIImage(named: "Duration_dark")!
+                }
             } else if indexPath.row == 2 {
                 cell.leftLabel.text = "Date"
                 cell.updateDateLabel()
-                cell.icon.image = UIImage(named: "Resume")!
+                
+                if traitCollection.userInterfaceStyle == .light {
+                    cell.icon.image = UIImage(named: "Date")!
+                } else {
+                    cell.icon.image = UIImage(named: "Date_dark")!
+                }
             }
             
             return cell
@@ -99,7 +114,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             return 260 //Expanded
         }
         
-        return 44 //Not expanded
+        return 55 //Not expanded
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

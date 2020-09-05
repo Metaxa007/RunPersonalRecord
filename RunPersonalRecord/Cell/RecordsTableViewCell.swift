@@ -53,8 +53,8 @@ class RecordsTableViewCell: UITableViewCell {
         
         reward.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         reward.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        reward.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        reward.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        reward.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        reward.widthAnchor.constraint(equalToConstant: 35).isActive = true
         
         distanceLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         durationLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
@@ -74,11 +74,11 @@ class RecordsTableViewCell: UITableViewCell {
     public func setupCell(activity: ActivityEntity, place: Int) {
         switch place {
         case 0:
-            reward.image = UIImage(named: "Resume")
+            reward.image = UIImage(named: "Cup_gold")
         case 1:
-            reward.image = UIImage(named: "Pause")
+            reward.image = UIImage(named: "Cup_silver")
         case 2:
-            reward.image = UIImage(named: "Stop")
+            reward.image = UIImage(named: "Cup_bronze")
         default:
             break;
         }

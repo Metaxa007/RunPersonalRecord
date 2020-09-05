@@ -93,21 +93,21 @@ class AddRunTableViewCell: UITableViewCell {
         
         icon.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         // if center icon in cell, then while expanding the icon moves
-        icon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
-        icon.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-        icon.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+        icon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 11).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 35.0).isActive = true
 
         leftLabel.leadingAnchor.constraint(equalTo: icon.layoutMarginsGuide.trailingAnchor, constant: 20).isActive = true
-        leftLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        leftLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
         leftLabel.heightAnchor.constraint(equalToConstant: unexpandedHeight).isActive = true
         
         rightLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        rightLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        rightLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
         rightLabel.heightAnchor.constraint(equalToConstant: unexpandedHeight).isActive = true
         
         separator.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         separator.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
-        separator.topAnchor.constraint(equalTo: leftLabel.bottomAnchor).isActive = true
+        separator.topAnchor.constraint(equalTo: leftLabel.bottomAnchor, constant: 11).isActive = true
         separator.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
