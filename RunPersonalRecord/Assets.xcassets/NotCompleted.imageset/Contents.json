@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Cup_silver.png",
+      "filename" : "NotCompleted.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Cup_silver-1.png",
+      "filename" : "NotCompleted-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Cup_silver-2.png",
+      "filename" : "NotCompleted-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

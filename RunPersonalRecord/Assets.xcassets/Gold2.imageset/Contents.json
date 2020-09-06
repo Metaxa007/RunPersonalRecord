@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Cup_transparent.png",
+      "filename" : "Gold2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Cup_transparent-1.png",
+      "filename" : "Gold2-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Cup_transparent-2.png",
+      "filename" : "Gold2-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
