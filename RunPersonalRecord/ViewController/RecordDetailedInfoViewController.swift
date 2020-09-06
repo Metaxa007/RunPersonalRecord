@@ -11,6 +11,8 @@ import MapKit
 
 // Good ScrollView tutorial https://fluffy.es/scrollview-storyboard-xcode-11/
 
+private let paceCell = "paceCell"
+
 class RecordDetailedInfoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +23,7 @@ class RecordDetailedInfoViewController: UIViewController {
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     private var activity: ActivityEntity!
     private var place: Int!
@@ -37,6 +40,12 @@ class RecordDetailedInfoViewController: UIViewController {
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
         speedLabel.text = getSpeedAsString()
         paceLabel.text = getPaceAsString()
+        placeImageView.image = UIImage(named: "Cup")!
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        tableViewHeight.constant = tableView.rowHeight * CGFloat(getNumberOfRows())
+//        tableViewHeight.constant = 400
     }
     
     // Called before viewDidLoad()
@@ -52,14 +61,34 @@ class RecordDetailedInfoViewController: UIViewController {
     private func getPaceAsString() -> String {
         return "\(Utilities.manager.getTimeInPaceFormat(duration: activity.duration / Double(activity.distance / 1000)))"
     }
+    
+    private func getNumberOfRows() -> Int{
+        return (activity.pace?.getPace().count ?? 0) + (activity.pace?.getRestDistance().count ?? 0)
+    }
 }
 
 extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        print("count = \((activity.pace?.getPace().count ?? 0) + (activity.pace?.getRestDistance().count ?? 0))" )
+//        return getNumberOfRows()
+        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "paceCell") as? PaceTableViewCell {
+            cell.setCell(distance: 1000, pace: 250.0)
+            
+            return cell
+        }
+        
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

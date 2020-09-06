@@ -21,6 +21,7 @@
 		AC56B2A92452402F00F10921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2A72452402F00F10921 /* Main.storyboard */; };
 		AC56B2AE2452403100F10921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AD2452403100F10921 /* Assets.xcassets */; };
 		AC56B2B12452403100F10921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC56B2AF2452403100F10921 /* LaunchScreen.storyboard */; };
+		AC57348325058414001F19DC /* PaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57348225058414001F19DC /* PaceTableViewCell.swift */; };
 		AC77A2C024A699E300A7793B /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77A2BE24A699E300A7793B /* ActivityEntity+CoreDataClass.swift */; };
 		AC77A2C124A699E300A7793B /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77A2BF24A699E300A7793B /* ActivityEntity+CoreDataProperties.swift */; };
 		AC8E68C024B915DF0080F175 /* RecordsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */; };
@@ -52,6 +53,7 @@
 		AC56B2AD2452403100F10921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC56B2B02452403100F10921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC56B2B22452403100F10921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC57348225058414001F19DC /* PaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceTableViewCell.swift; sourceTree = "<group>"; };
 		AC77A2BE24A699E300A7793B /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AC77A2BF24A699E300A7793B /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				ACFC32D524DB536300B326CF /* AddRunTableViewCell.swift */,
 				AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */,
 				AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */,
+				AC57348225058414001F19DC /* PaceTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				ACF40584249FA560005BC266 /* ViewController.swift in Sources */,
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				AC48415324F459A5007B98E1 /* RecordsTableViewCell.swift in Sources */,
+				AC57348325058414001F19DC /* PaceTableViewCell.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
 				AC8E68C224BA26C40080F175 /* RecordsCollectionViewCell.swift in Sources */,
 				AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */,
