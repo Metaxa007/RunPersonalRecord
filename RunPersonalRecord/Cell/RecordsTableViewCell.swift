@@ -53,8 +53,8 @@ class RecordsTableViewCell: UITableViewCell {
         
         reward.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         reward.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        reward.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        reward.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        reward.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        reward.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
         distanceLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         durationLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
@@ -74,18 +74,23 @@ class RecordsTableViewCell: UITableViewCell {
     public func setupCell(activity: ActivityEntity, place: Int) {
         switch place {
         case 0:
-            reward.image = UIImage(named: "Resume")
+            reward.image = UIImage(named: "GoldMedal")
         case 1:
-            reward.image = UIImage(named: "Pause")
+            reward.image = UIImage(named: "SilverMedal")
         case 2:
-            reward.image = UIImage(named: "Stop")
+            reward.image = UIImage(named: "BronzeMedal")
         default:
             break;
         }
         distanceLabel.text = String(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distance)))
         durationLabel.text = String(Utilities.manager.getTimeInRegularFormat(duration: TimeInterval(activity.duration)))
         dateLabel.text = Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date())
-        completion.image = UIImage(named: "Resume")
+
+        if activity.completed {
+            completion.image = UIImage(named: "Completed")
+        } else {
+            completion.image = UIImage(named: "NotCompleted")
+        }
     }
 
 }
