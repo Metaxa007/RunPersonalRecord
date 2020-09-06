@@ -74,11 +74,11 @@ class RecordsTableViewCell: UITableViewCell {
     public func setupCell(activity: ActivityEntity, place: Int) {
         switch place {
         case 0:
-            reward.image = UIImage(named: "Gold")
+            reward.image = UIImage(named: "GoldMedal")
         case 1:
-            reward.image = UIImage(named: "Silver")
+            reward.image = UIImage(named: "SilverMedal")
         case 2:
-            reward.image = UIImage(named: "Bronze")
+            reward.image = UIImage(named: "BronzeMedal")
         default:
             break;
         }
