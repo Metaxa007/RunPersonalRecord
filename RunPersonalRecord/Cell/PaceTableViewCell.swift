@@ -18,12 +18,9 @@ class PaceTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    public func setCell(distance: Int, pace: TimeInterval) {
-//        distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance)
-//        paceLabel.text = Utilities.manager.getTimeInPaceFormat(duration: pace)
-        print("setcell")
-        distanceLabel.text = "1"
-        paceLabel.text = "5:41"
+    public func setCell(distance: Double, pace: TimeInterval) {
+        paceLabel.text = Utilities.manager.getTimeInPaceFormat(duration: pace)
+        distanceLabel.text = floor(distance) == distance ? String(format: "%.0f", distance) : String(format:"%.2f", distance)
     }
 
 }

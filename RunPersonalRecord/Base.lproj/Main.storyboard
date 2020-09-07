@@ -452,20 +452,20 @@
                                                 <rect key="frame" x="47" y="364" width="320" height="186.33333333333337"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="QRh-VA-C6b" userLabel="Stack View Place Pace">
-                                                        <rect key="frame" x="0.0" y="17" width="100" height="169.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="9" width="100" height="177.33333333333334"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c9j-ii-e9O" userLabel="Stack View Place">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="71"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="79"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-Fr-EJl">
-                                                                        <rect key="frame" x="30" y="0.0" width="40" height="40"/>
+                                                                        <rect key="frame" x="37.666666666666671" y="0.0" width="25" height="48"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="40" id="34u-Ob-HfN"/>
-                                                                            <constraint firstAttribute="width" constant="40" id="3l0-fw-du6"/>
+                                                                            <constraint firstAttribute="height" constant="48" id="34u-Ob-HfN"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="3l0-fw-du6"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st place" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CL5-l5-ejz">
-                                                                        <rect key="frame" x="13.333333333333336" y="48" width="73.333333333333314" height="23"/>
+                                                                        <rect key="frame" x="13.333333333333336" y="56" width="73.333333333333314" height="23"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                                                         <color key="textColor" red="0.30556509640000001" green="0.31563372140000001" blue="0.31836928930000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -476,7 +476,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mTN-o2-Oii" userLabel="Stack View Pace">
-                                                                <rect key="frame" x="0.0" y="112.99999999999999" width="100" height="56.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="120.99999999999999" width="100" height="56.333333333333329"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKe-85-NU8">
                                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="25.333333333333332"/>
@@ -554,15 +554,15 @@
                                                     <constraint firstAttribute="height" constant="336.66666666666663" id="p8X-n2-xsm"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" rowHeight="72" id="ap1-BA-2FO" customClass="PaceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="414" height="72"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" id="ap1-BA-2FO" customClass="PaceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ap1-BA-2FO" id="RLa-zz-77m">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="5eH-oy-dLU">
-                                                                    <rect key="frame" x="27.999999999999993" y="23.333333333333336" width="96.333333333333314" height="25.333333333333336"/>
+                                                                    <rect key="frame" x="27.999999999999993" y="9.3333333333333339" width="96.333333333333314" height="25.333333333333329"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvh-HD-RiQ">
                                                                             <rect key="frame" x="0.0" y="0.0" width="9" height="25.333333333333332"/>
@@ -664,6 +664,7 @@
                     <navigationItem key="navigationItem" title="Your Activity" id="4V7-NI-iXT"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="contentViewHeight" destination="jeK-nm-mgA" id="VoN-N5-kIh"/>
                         <outlet property="dateDistanceLabel" destination="rVY-Pe-djJ" id="8RC-Yz-I4J"/>
                         <outlet property="durationLabel" destination="GnF-kL-Dcx" id="JYU-w3-xdz"/>
                         <outlet property="mapView" destination="ysm-AB-jSn" id="KHz-OD-0tb"/>
