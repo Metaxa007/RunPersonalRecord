@@ -34,6 +34,7 @@ class RecordDetailedInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -43,6 +44,12 @@ class RecordDetailedInfoViewController: UIViewController {
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
         speedLabel.text = getSpeedAsString()
         paceLabel.text = getPaceAsString()
+        
+        if let locations = activity.activityAttribute?.getLocations() {
+            print("addpolylinetomap")
+            print("count = \(locations[0].count)")
+            addPolylineToMap(locations: locations[0])
+        }
         
         switch place {
         case 1:
@@ -82,6 +89,15 @@ class RecordDetailedInfoViewController: UIViewController {
     private func getNumberOfRows() -> Int {
         return paceDic.count + restDistpaceDic.count
     }
+    
+    func addPolylineToMap(locations: [CLLocation]) {
+        let coordinates = locations.map { $0.coordinate }
+        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        let region = MKCoordinateRegion(center: coordinates[0], span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        mapView.setRegion(region, animated: true)
+        mapView.addOverlay(polyline)
+    }
 }
 
 extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -116,5 +132,21 @@ extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension RecordDetailedInfoViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .green
+        renderer.lineWidth = 3.0
+        
+        return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let region = MKCoordinateRegion(center: userLocation.coordinate,
+                                      span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+        mapView.setRegion(region, animated: true)
     }
 }
