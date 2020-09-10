@@ -20,9 +20,9 @@ class RecordDetailedInfoViewController: UIViewController {
     @IBOutlet weak var dateDistanceLabel: UILabel!
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var avgPaceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var avgSpeedLabel: UILabel!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
@@ -42,13 +42,20 @@ class RecordDetailedInfoViewController: UIViewController {
         dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distance))) on \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
         placeLabel.text = "\(place ?? 0) place"
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
-        speedLabel.text = getSpeedAsString()
-        paceLabel.text = getPaceAsString()
+        avgSpeedLabel.text = getSpeedAsString()
+        avgPaceLabel.text = getPaceAsString()
         
-        if let locations = activity.activityAttribute?.getLocations() {
-            print("addpolylinetomap")
-            print("count = \(locations[0].count)")
-            addPolylineToMap(locations: locations[0])
+        print("Tag1 \(activity.pace?.getPace())")
+        
+        if let locationsAll = activity.activityAttribute?.getLocations() {
+            print("Tag1 count section \(locationsAll.count)")
+            for locationsSection in locationsAll {
+                if !locationsSection.isEmpty {
+                    print("Tag1 section ")
+
+                    addPolylineToMap(locations: locationsSection)
+                }
+            }
         }
         
         switch place {
@@ -83,7 +90,7 @@ class RecordDetailedInfoViewController: UIViewController {
     }
     
     private func getPaceAsString() -> String {
-        return "\(Utilities.manager.getTimeInPaceFormat(duration: activity.duration / Double(activity.distance / 1000)))"
+        return "\(Utilities.manager.getTimeInPaceFormat(duration: activity.duration / (Double(activity.distance) / 1000)))"
     }
     
     private func getNumberOfRows() -> Int {
@@ -91,6 +98,7 @@ class RecordDetailedInfoViewController: UIViewController {
     }
     
     func addPolylineToMap(locations: [CLLocation]) {
+        print("Tag1 count = \(locations.count)")
         let coordinates = locations.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
         let region = MKCoordinateRegion(center: coordinates[0], span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
