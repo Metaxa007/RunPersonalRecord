@@ -57,7 +57,6 @@ class ViewController: UIViewController {
     }
     var completedDistance = 0 {
         willSet {
-            print("Tag1 new value = \(newValue)")
             completedDistanceTextView.text = String(newValue)
 
             // divide by 10 for tests.
@@ -236,7 +235,6 @@ class ViewController: UIViewController {
         paceDict.removeAll()
         restDistancePaceDict.removeAll()
 
-        print("Tag1 stop locating")
         completedDistance = 0
         durationWhenLastPaceCounted = 0
         passedKilometers = 0
@@ -296,8 +294,20 @@ class ViewController: UIViewController {
             guard let weakSelf = self else { return }
             guard weakSelf.locationsInSection.count > 0 else { return }
 
-            if Utilities.manager.getDistance(locations: weakSelf.locationsInSection) <= Double(weakSelf.distanceToRun) {
-                weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locationsInSection))
+            var completedDistance = 0.0
+
+            if !weakSelf.locationsAll.isEmpty {
+                for locationsInSection in weakSelf.locationsAll {
+                    guard locationsInSection.count > 0 else { break }
+                    
+                    completedDistance += Utilities.manager.getDistance(locations: locationsInSection)
+                }
+            }
+            
+            completedDistance += Utilities.manager.getDistance(locations: weakSelf.locationsInSection)
+            
+            if completedDistance <= Double(weakSelf.distanceToRun) {
+                weakSelf.completedDistance = Int(completedDistance)
             } else {
                 weakSelf.completedDistance = weakSelf.distanceToRun
                 weakSelf.isActivityStarted = false //stopLocating is called in willSet of isActivityStarted
