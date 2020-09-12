@@ -41,10 +41,15 @@ class ViewController: UIViewController {
     var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
     var passedKilometers = 0 { // Used as the key for dictonary "pace"
         willSet {
-            paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            // Do not add 0km. It happens when passedKilometers is set to 0 in stopLocating.
+            if newValue > 0 {
+                paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            }
         }
     }
     var restDistance = 0  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
+                          // We need 2 different dictionaries, because collision may occur, if user wants to run for example 10010m.
+                          // Pace 10km is 10 key in dictionary and 10m is 10 key as well.
     var restDistancePaceDict: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
     var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
                                           // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
@@ -203,8 +208,8 @@ class ViewController: UIViewController {
         // Save activity only if user did some progress in it
         if completedDistance != 0 {
             // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
-            if restDistance != 0 {
-                restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            if completedDistance % 1000 != 0 {
+                restDistancePaceDict[completedDistance % 1000] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
 
                 // divide by 10 for tests.
                 paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000)) //completed distance in case user did not finish. If finished completedDistance == distanceToRun
