@@ -113,7 +113,6 @@ class ViewController: UIViewController {
         // PaceTransformer.register()
         setUpMapView()
         roundCornersStartButton()
-        //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
         hidePauseStopStack()
