@@ -88,8 +88,7 @@ class ViewController: UIViewController {
                 showPauseStopStack()
                 hideStartButton()
             } else {
-                //if the user stops manualy means he did not reach the finish line, did not complete the planed distance
-                stopLocating(completed: false)
+                stopLocating(completed: completedDistance == distanceToRun)
                 showStartButton()
                 hidePauseStopStack()
             }
@@ -229,7 +228,7 @@ class ViewController: UIViewController {
                     let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
                     
                     CoreDataManager.manager.addEntity(
-                        activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
+                        activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: completedDistance, completed: completed)
                 }
             }
         }
