@@ -29,7 +29,7 @@ class RecordDetailedInfoViewController: UIViewController {
     private var activity: ActivityEntity!
     private var place: Int!
     private var paceDic = [Int : Double]()
-    private var restDistpaceDic = [Int : Double]()
+    private var restDistPaceDic = [Int : Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +44,10 @@ class RecordDetailedInfoViewController: UIViewController {
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
         avgSpeedLabel.text = getSpeedAsString()
         avgPaceLabel.text = getPaceAsString()
-        
-        print("Tag1 \(activity.pace?.getPace())")
-        
+                
         if let locationsAll = activity.activityAttribute?.getLocations() {
-            print("Tag1 count section \(locationsAll.count)")
             for locationsSection in locationsAll {
                 if !locationsSection.isEmpty {
-                    print("Tag1 section ")
-
                     addPolylineToMap(locations: locationsSection)
                 }
             }
@@ -83,9 +78,6 @@ class RecordDetailedInfoViewController: UIViewController {
         self.place = place + 1 // row beginns from 0
         self.paceDic = activity.pace?.getPace() ?? [:]
         self.restDistpaceDic = activity.pace?.getRestDistance() ?? [:]
-        
-        print("Tag2 paceDic \(paceDic)")
-        print("Tag2 restDistpaceDic \(restDistpaceDic)")
     }
     
     private func getSpeedAsString() -> String {
@@ -97,11 +89,10 @@ class RecordDetailedInfoViewController: UIViewController {
     }
     
     private func getNumberOfRows() -> Int {
-        return paceDic.count + restDistpaceDic.count
+        return paceDic.count + restDistPaceDic.count
     }
     
     func addPolylineToMap(locations: [CLLocation]) {
-        print("Tag1 count = \(locations.count)")
         let coordinates = locations.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
         let region = MKCoordinateRegion(center: coordinates[0], span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -128,9 +119,11 @@ extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "paceCell") as? PaceTableViewCell {
-            if indexPath.row + 1 == getNumberOfRows() && !restDistpaceDic.isEmpty {
-                let distance = (restDistpaceDic.first?.value ?? 0.0) / 1000
-                cell.setCell(distance: distance, pace: restDistpaceDic.first?.value ?? 0)
+            if indexPath.row + 1 == getNumberOfRows() && !restDistPaceDic.isEmpty {
+                let distance = Double(restDistPaceDic.first?.key ?? 0) / 1000
+                let pace = restDistPaceDic.first?.value ?? 0
+
+                cell.setCell(distance: distance, pace: pace)
             } else {
                 cell.setCell(distance: Double(indexPath.row + 1), pace: paceDic[indexPath.row + 1] ?? 0)
             }

@@ -226,9 +226,7 @@ class ViewController: UIViewController {
                     
                     let activity = Activity(locations: locationsAll)
                     let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
-                    
-                    print("Tag1 com dist = \(completedDistance)")
-                    
+                                        
                     CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distanceToRun:
                                                         distanceToRun, completedDistance: completedDistance, completed: completed)
                 }

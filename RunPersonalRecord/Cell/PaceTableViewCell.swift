@@ -20,6 +20,8 @@ class PaceTableViewCell: UITableViewCell {
 
     public func setCell(distance: Double, pace: TimeInterval) {
         paceLabel.text = Utilities.manager.getTimeInPaceFormat(duration: pace)
+        
+        //if distance is 1km, 2km etc. leave it like that. Otherwise if it is rest distance like 0.1, 0.125 etc. show only 2 digits after 0.
         distanceLabel.text = floor(distance) == distance ? String(format: "%.0f", distance) : String(format:"%.2f", distance)
     }
 
