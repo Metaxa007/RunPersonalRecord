@@ -32,7 +32,7 @@ class RecordsCollectionViewController: UICollectionViewController {
         guard let activities = allActivities else { return }
         
         for activity in activities {
-            distancesSet.insert(activity.distance)
+            distancesSet.insert(activity.distanceToRun)
         }
         
         distancesArray = Array(distancesSet)

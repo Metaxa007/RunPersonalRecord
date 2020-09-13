@@ -39,7 +39,7 @@ class RecordDetailedInfoViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distance))) on \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
+        dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distanceToRun))) on \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
         placeLabel.text = "\(place ?? 0) place"
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
         avgSpeedLabel.text = getSpeedAsString()
@@ -83,14 +83,17 @@ class RecordDetailedInfoViewController: UIViewController {
         self.place = place + 1 // row beginns from 0
         self.paceDic = activity.pace?.getPace() ?? [:]
         self.restDistpaceDic = activity.pace?.getRestDistance() ?? [:]
+        
+        print("Tag2 paceDic \(paceDic)")
+        print("Tag2 restDistpaceDic \(restDistpaceDic)")
     }
     
     private func getSpeedAsString() -> String {
-        return "\(String(format: "%.1f", Double(activity.distance) / activity.duration * 3.6)) km/h"
+        return "\(String(format: "%.1f", Double(activity.completedDistance) / activity.duration * 3.6)) km/h"
     }
     
     private func getPaceAsString() -> String {
-        return "\(Utilities.manager.getTimeInPaceFormat(duration: activity.duration / (Double(activity.distance) / 1000)))"
+        return "\(Utilities.manager.getTimeInPaceFormat(duration: activity.duration / (Double(activity.completedDistance) / 1000)))"
     }
     
     private func getNumberOfRows() -> Int {
