@@ -68,7 +68,7 @@ class RecordDetailedInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.rowHeight = 55 // for some reason even if heightForRowAt is set rowHeight return -1
         contentViewHeight.constant =
-            664 + tableView.rowHeight * (CGFloat(getNumberOfRows()) == 0 ? 2 : CGFloat(getNumberOfRows())) // 664 is ContentHeight without tableView
+            664 + tableView.rowHeight * (CGFloat(getNumberOfRows()) == 0  ? 2 : CGFloat(getNumberOfRows())) + 10 // 664 is ContentHeight without tableView. 10 is some safe area. Otherwise scrollView stucks while scrolling if only 1 object in the tableView
         tableViewHeight.constant = 55 * (CGFloat(getNumberOfRows()) == 0 ? 2 : CGFloat(getNumberOfRows())) // Multiply by 2 to show emplyLabel
     }
     
@@ -77,7 +77,7 @@ class RecordDetailedInfoViewController: UIViewController {
         self.activity = activity
         self.place = place + 1 // row beginns from 0
         self.paceDic = activity.pace?.getPace() ?? [:]
-        self.restDistpaceDic = activity.pace?.getRestDistance() ?? [:]
+        self.restDistPaceDic = activity.pace?.getRestDistance() ?? [:]
     }
     
     private func getSpeedAsString() -> String {
