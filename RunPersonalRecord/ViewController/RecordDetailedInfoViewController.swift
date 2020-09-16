@@ -80,7 +80,6 @@ class RecordDetailedInfoViewController: UIViewController {
     }
     
     @objc func mapViewTapped() {
-        print("Tag1 mapViewTapped")
         performSegue(withIdentifier: detailedMapInfoSegue, sender: self)
     }
     
