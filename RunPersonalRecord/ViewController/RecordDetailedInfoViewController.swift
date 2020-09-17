@@ -65,11 +65,9 @@ class RecordDetailedInfoViewController: UIViewController {
             placeImageView.image = UIImage(named: "DefaultMedal")!
         }
         
-//        let gestureRecognizer = UIGestureRecognizer(target: self, action: #selector(mapViewTapped))
-//        mapView.isUserInteractionEnabled = true
-//        mapView.addGestureRecognizer(gestureRecognizer)
-        
-        mapView.
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
+        mapView.isUserInteractionEnabled = true
+        mapView.addGestureRecognizer(gestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
