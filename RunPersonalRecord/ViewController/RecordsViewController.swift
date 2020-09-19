@@ -20,7 +20,7 @@ class RecordsViewController: UIViewController {
     private var completedActivites = [ActivityEntity]()
     private var uncompletedActivities = [ActivityEntity]()
     private var sortedActivites = [ActivityEntity]()
-    private var selectedActivity = -1
+    private var selectedActivityRow = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class RecordsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == detailedRecordSegue {
             if let destinationVC = segue.destination as? RecordDetailedInfoViewController {
-                destinationVC.setActivity(activity: sortedActivites[selectedActivity])
+                destinationVC.setActivity(activity: sortedActivites[selectedActivityRow], place: selectedActivityRow)
             }
         }
     }
@@ -76,7 +76,6 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellforrowat")
         if let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) as? RecordsTableViewCell {
             cell.setupCell(activity: sortedActivites[indexPath.row], place: indexPath.row)
             
@@ -92,7 +91,7 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedActivity = indexPath.row
+        selectedActivityRow = indexPath.row
         performSegue(withIdentifier: detailedRecordSegue, sender: self)
     }
     

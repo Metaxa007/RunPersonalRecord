@@ -82,7 +82,7 @@ class RecordsTableViewCell: UITableViewCell {
         default:
             break;
         }
-        distanceLabel.text = String(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distance)))
+        distanceLabel.text = String(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.completedDistance)))
         durationLabel.text = String(Utilities.manager.getTimeInRegularFormat(duration: TimeInterval(activity.duration)))
         dateLabel.text = Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date())
 

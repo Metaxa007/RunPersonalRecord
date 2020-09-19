@@ -2,7 +2,7 @@
 //  ActivityEntity+CoreDataClass.swift
 //  RunPersonalRecord
 //
-//  Created by Artsem Lemiasheuski on 26.06.20.
+//  Created by Artsem Lemiasheuski on 13.09.20.
 //  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
 //
 //

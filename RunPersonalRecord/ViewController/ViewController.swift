@@ -41,10 +41,15 @@ class ViewController: UIViewController {
     var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
     var passedKilometers = 0 { // Used as the key for dictonary "pace"
         willSet {
-            paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            // Do not add 0km. It happens when passedKilometers is set to 0 in stopLocating.
+            if newValue > 0 {
+                paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            }
         }
     }
     var restDistance = 0  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
+                          // We need 2 different dictionaries, because collision may occur, if user wants to run for example 10010m.
+                          // Pace 10km is 10 key in dictionary and 10m is 10 key as well.
     var restDistancePaceDict: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
     var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
                                           // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
@@ -74,7 +79,7 @@ class ViewController: UIViewController {
     var locationsAll: [[CLLocation]] = [] //Array contains arrays of Locations. Every array of Locations are locations between start and pause. In this case the last position
                                           //before pause and the first position after continue won't be connected. Otherwise the distance between these 2 points will be added
                                           //to the total distance.
-    var locationsOfSection: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
+    var locationsInSection: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
     var stopWatch = StopWatch()
     var isActivityStarted = false {
         willSet {
@@ -83,8 +88,7 @@ class ViewController: UIViewController {
                 showPauseStopStack()
                 hideStartButton()
             } else {
-                //if the user stops manualy means he did not reach the finish line, did not complete the planed distance
-                stopLocating(completed: false)
+                stopLocating(completed: completedDistance == distanceToRun)
                 showStartButton()
                 hidePauseStopStack()
             }
@@ -133,9 +137,9 @@ class ViewController: UIViewController {
         
         // Stop, start stopwatch only if user really pressed the button. Not when isPaused was set somewhere in the code i.e. stopLocating
         if isPaused {
-            if !locationsOfSection.isEmpty {
-                locationsAll.append(locationsOfSection)
-                locationsOfSection = []
+            if !locationsInSection.isEmpty {
+                locationsAll.append(locationsInSection)
+                locationsInSection = []
             }
             
             stopWatch.pause()
@@ -203,8 +207,8 @@ class ViewController: UIViewController {
         // Save activity only if user did some progress in it
         if completedDistance != 0 {
             // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
-            if restDistance != 0 {
-                restDistancePaceDict[restDistance] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+            if completedDistance % 1000 != 0 {
+                restDistancePaceDict[completedDistance % 1000] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
 
                 // divide by 10 for tests.
                 paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000)) //completed distance in case user did not finish. If finished completedDistance == distanceToRun
@@ -216,14 +220,15 @@ class ViewController: UIViewController {
                 duration = NSDateInterval.init(start: startDate, end: stopDate)
                 
                 if let duration = duration {
-                    if !locationsOfSection.isEmpty {
-                        locationsAll.append(locationsOfSection)
+                    if !locationsInSection.isEmpty {
+                        locationsAll.append(locationsInSection)
                     }
                     
                     let activity = Activity(locations: locationsAll)
                     let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
-                    
-                    CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distance: distanceToRun, completed: completed)
+                                        
+                    CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distanceToRun:
+                                                        distanceToRun, completedDistance: completedDistance, completed: completed)
                 }
             }
         }
@@ -238,7 +243,7 @@ class ViewController: UIViewController {
         durationWhenLastPaceCounted = 0
         passedKilometers = 0
         locationsAll = []
-        locationsOfSection = []
+        locationsInSection = []
         isPaused = false
 
         distanceTextField.isEnabled = true
@@ -291,10 +296,22 @@ class ViewController: UIViewController {
     func checkWhenDistanceIsCompleted() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
             guard let weakSelf = self else { return }
-            guard weakSelf.locationsOfSection.count > 0 else { return }
+            guard weakSelf.locationsInSection.count > 0 else { return }
 
-            if Utilities.manager.getDistance(locations: weakSelf.locationsOfSection) <= Double(weakSelf.distanceToRun) {
-                weakSelf.completedDistance = Int(Utilities.manager.getDistance(locations: weakSelf.locationsOfSection))
+            var completedDistance = 0.0
+
+            if !weakSelf.locationsAll.isEmpty {
+                for locationsInSection in weakSelf.locationsAll {
+                    guard locationsInSection.count > 0 else { break }
+                    
+                    completedDistance += Utilities.manager.getDistance(locations: locationsInSection)
+                }
+            }
+            
+            completedDistance += Utilities.manager.getDistance(locations: weakSelf.locationsInSection)
+            
+            if completedDistance <= Double(weakSelf.distanceToRun) {
+                weakSelf.completedDistance = Int(completedDistance)
             } else {
                 weakSelf.completedDistance = weakSelf.distanceToRun
                 weakSelf.isActivityStarted = false //stopLocating is called in willSet of isActivityStarted
@@ -356,7 +373,7 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
                 lastLocation?.coordinate.longitude != location.coordinate.longitude  {
                 lastLocation = location
 
-                self.locationsOfSection.append(location)
+                self.locationsInSection.append(location)
             }
         }
     }

@@ -10,7 +10,7 @@ struct CoreDataManager {
     
     private init(){}
     
-    func addEntity(activity: Activity, pace: Pace, date: Date, duration: Double, distance: Int, completed: Bool) {
+    func addEntity(activity: Activity, pace: Pace, date: Date, duration: Double, distanceToRun: Int, completedDistance: Int, completed: Bool) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
 
@@ -19,7 +19,8 @@ struct CoreDataManager {
                 activityEntity.activityAttribute = activity
                 activityEntity.date = date
                 activityEntity.duration = duration
-                activityEntity.distance = Int32(distance)
+                activityEntity.distanceToRun = Int32(distanceToRun)
+                activityEntity.completedDistance = Int32(completedDistance)
                 activityEntity.completed = completed
                 activityEntity.pace = pace
                 
@@ -53,7 +54,7 @@ struct CoreDataManager {
             
             do {
                 let fetchRequest : NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "distance == \(distance)")
+                fetchRequest.predicate = NSPredicate(format: "distanceToRun == \(distance)")
                 
                 let results = try context.fetch(fetchRequest)
                 
