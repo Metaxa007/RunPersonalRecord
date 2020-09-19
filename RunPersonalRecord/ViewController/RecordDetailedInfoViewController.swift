@@ -95,9 +95,19 @@ class RecordDetailedInfoViewController: UIViewController {
     func addPolylineToMap(locations: [CLLocation]) {
         let coordinates = locations.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-        let region = MKCoordinateRegion(center: coordinates[0], span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        var regionRect = polyline.boundingMapRect
+        let wPadding = regionRect.size.width
+        let hPadding = regionRect.size.height
         
-        mapView.setRegion(region, animated: true)
+        //Add padding to region
+        regionRect.size.width += wPadding
+        regionRect.size.height += hPadding
+
+        //Center the region on the line. X,Y coordinates on the map.
+        regionRect.origin.x -= wPadding / 2
+        regionRect.origin.y -= hPadding / 2
+        
+        mapView.setRegion(MKCoordinateRegion(regionRect), animated: true)
         mapView.addOverlay(polyline)
     }
 }
@@ -146,11 +156,5 @@ extension RecordDetailedInfoViewController: MKMapViewDelegate {
         renderer.lineWidth = 3.0
         
         return renderer
-    }
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        let region = MKCoordinateRegion(center: userLocation.coordinate,
-                                      span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-        mapView.setRegion(region, animated: true)
     }
 }
