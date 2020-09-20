@@ -12,6 +12,7 @@ import MapKit
 // Good ScrollView tutorial https://fluffy.es/scrollview-storyboard-xcode-11/
 
 private let paceCell = "paceCell"
+private let detailedMapInfoSegue = "detailedMapInfoSegue"
 
 class RecordDetailedInfoViewController: UIViewController {
     
@@ -63,6 +64,12 @@ class RecordDetailedInfoViewController: UIViewController {
         default:
             placeImageView.image = UIImage(named: "DefaultMedal")!
         }
+        
+//        let gestureRecognizer = UIGestureRecognizer(target: self, action: #selector(mapViewTapped))
+//        mapView.isUserInteractionEnabled = true
+//        mapView.addGestureRecognizer(gestureRecognizer)
+        
+        mapView.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +77,11 @@ class RecordDetailedInfoViewController: UIViewController {
         contentViewHeight.constant =
             664 + tableView.rowHeight * (CGFloat(getNumberOfRows()) == 0  ? 2 : CGFloat(getNumberOfRows())) + 10 // 664 is ContentHeight without tableView. 10 is some safe area. Otherwise scrollView stucks while scrolling if only 1 object in the tableView
         tableViewHeight.constant = 55 * (CGFloat(getNumberOfRows()) == 0 ? 2 : CGFloat(getNumberOfRows())) // Multiply by 2 to show emplyLabel
+    }
+    
+    @objc func mapViewTapped() {
+        print("Tag1 mapViewTapped")
+        performSegue(withIdentifier: detailedMapInfoSegue, sender: self)
     }
     
     // Called before viewDidLoad()
@@ -109,6 +121,14 @@ class RecordDetailedInfoViewController: UIViewController {
         
         mapView.setRegion(MKCoordinateRegion(regionRect), animated: true)
         mapView.addOverlay(polyline)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == detailedMapInfoSegue {
+            if let destinationSegue = segue.destination as? MapViewDetailedInfoViewController {
+                destinationSegue.setActivity(activity: activity)
+            }
+        }
     }
 }
 
