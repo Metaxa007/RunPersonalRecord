@@ -703,6 +703,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="yZv-MJ-Kzh"/>
+                    <connections>
+                        <outlet property="mapView" destination="2V8-s6-i4Y" id="NCe-ev-oYx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xID-mx-G6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -47,9 +47,9 @@ class RecordDetailedInfoViewController: UIViewController {
         avgPaceLabel.text = getPaceAsString()
                 
         if let locationsAll = activity.activityAttribute?.getLocations() {
-            for locationsSection in locationsAll {
-                if !locationsSection.isEmpty {
-                    addPolylineToMap(locations: locationsSection)
+            for locationsInSection in locationsAll {
+                if !locationsInSection.isEmpty {
+                    addPolylineToMap(locations: locationsInSection)
                 }
             }
         }
@@ -122,7 +122,9 @@ class RecordDetailedInfoViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == detailedMapInfoSegue {
-            if let destinationSegue = segue.destination as? MapViewDetailedInfoViewController {
+            let navigationController = segue.destination as! UINavigationController
+
+            if let destinationSegue = navigationController.viewControllers[0] as? MapViewDetailedInfoViewController {
                 destinationSegue.setActivity(activity: activity)
             }
         }
