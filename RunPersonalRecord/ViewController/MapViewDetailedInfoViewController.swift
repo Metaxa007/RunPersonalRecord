@@ -16,6 +16,7 @@ class MapViewDetailedInfoViewController: UIViewController {
     private var activity: ActivityEntity!
     private var startCoordinate: CLLocationCoordinate2D?
     private var finishCoordinate: CLLocationCoordinate2D?
+    private var annotationsDict: [Int:CLLocationCoordinate2D] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,35 @@ class MapViewDetailedInfoViewController: UIViewController {
         }
         
         setStartFinishLocations()
+        setAnnotationsDict()
         createAnnotations()
     }
     
     public func setActivity(activity: ActivityEntity) {
         self.activity = activity
+    }
+    
+    private func setAnnotationsDict() {
+        let locations = activity.activityAttribute?.getLocations()
+        
+        if let locations = locations {
+            var totalDistance = 0.0
+            var kilometers = 0.0
+            
+            for locationsInSection in locations {
+                for i in 0..<locationsInSection.count - 1 {
+                    let coordinateA = locationsInSection[i]
+                    let coordinateB = locationsInSection[i+1]
+                    
+                    totalDistance += coordinateA.distance(from: coordinateB)
+
+                    if totalDistance / 1000 >= kilometers + 1 {
+                        kilometers += 1
+                        annotationsDict[Int(kilometers)] = coordinateB.coordinate
+                    }
+                }
+            }
+        }
     }
     
     private func addPolylineToMap(locations: [CLLocation]) {
@@ -58,22 +83,28 @@ class MapViewDetailedInfoViewController: UIViewController {
     }
     
     private func createAnnotations() {
-        let startAnnotation = MKPointAnnotation()
-        
         if let startCoordinate = startCoordinate {
+            let startAnnotation = CustomPointAnnotation()
             startAnnotation.coordinate = startCoordinate
-            startAnnotation.title = "Start"
+            startAnnotation.tag = "Start"
             
             mapView.addAnnotation(startAnnotation)
         }
 
-        let finishAnnotation = MKPointAnnotation()
-        
         if let finishCoordinate = finishCoordinate {
+            let finishAnnotation = CustomPointAnnotation()
             finishAnnotation.coordinate = finishCoordinate
-            finishAnnotation.title = "Finish"
+            finishAnnotation.tag = "Finish"
             
             mapView.addAnnotation(finishAnnotation)
+        }
+        
+        for annotationDict in annotationsDict {
+            let annotation = CustomPointAnnotation()
+            annotation.tag = String(annotationDict.key)
+            annotation.coordinate = annotationDict.value
+            
+            mapView.addAnnotation(annotation)
         }
     }
     
@@ -97,6 +128,24 @@ class MapViewDetailedInfoViewController: UIViewController {
         }
     }
     
+    private func getAnnotationLabel(distance: String) -> UILabel {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
+        label.text = "\(distance) km"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.textColor = UIColor.black
+        label.backgroundColor = UIColor.white
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 0
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
+
+        label.center.x = 10
+        label.center.y = 0.5 * label.frame.height;
+        
+        return label
+    }
+    
 }
 
 extension MapViewDetailedInfoViewController: MKMapViewDelegate {
@@ -110,29 +159,38 @@ extension MapViewDetailedInfoViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // Don't want to show a custom image if the annotation is the user's location.
-        guard !(annotation is MKUserLocation) else {
-            return nil
-        }
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        guard let anno = annotation as? CustomPointAnnotation else { return nil }
         
         let annotaionIdentifier = "AnnotationView"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotaionIdentifier)
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotaionIdentifier)
+            annotationView = MKAnnotationView(annotation: anno, reuseIdentifier: annotaionIdentifier)
         }
         
-        if let title = annotation.title, title == "Start" {
+        if let tag = anno.tag, tag == "Start" {
             annotationView?.image = UIImage(named: "Green_dot")
             
             let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             annotationView?.transform = transform
-        } else if let title = annotation.title, title == "Finish" {
+        } else if let tag = anno.tag, tag == "Finish" {
             annotationView?.image = UIImage(named: "Red_dot")
             
             let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             annotationView?.transform = transform
+        } else  {
+            let distance = anno.tag ?? ""
+            
+            annotationView?.addSubview(getAnnotationLabel(distance: distance))
         }
 
         return annotationView
     }
+}
+
+class CustomPointAnnotation: MKPointAnnotation {
+    // Tag is used to save distance for all pins except of Start and Stop pins
+    var tag: String?
 }
