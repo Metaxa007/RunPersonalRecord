@@ -113,7 +113,6 @@ class ViewController: UIViewController {
         // PaceTransformer.register()
         setUpMapView()
         roundCornersStartButton()
-        //addPolylineToMap(locations: LocationsArray.array)
         addToolBarToKeyBoard()
         
         hidePauseStopStack()
@@ -344,7 +343,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
-    
     //MARK:UITextFieldDelegate
     //range {1,0} 1 - starting location, 0 - length to replace. Replacement string normally just 1 character that user typed.
     //User type 5. Range {0,0}. Current text "". First 0 is the starting location, because the current string is empty.

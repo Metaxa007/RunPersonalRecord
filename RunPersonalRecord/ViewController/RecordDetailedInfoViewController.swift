@@ -12,6 +12,7 @@ import MapKit
 // Good ScrollView tutorial https://fluffy.es/scrollview-storyboard-xcode-11/
 
 private let paceCell = "paceCell"
+private let detailedMapInfoSegue = "detailedMapInfoSegue"
 
 class RecordDetailedInfoViewController: UIViewController {
     
@@ -46,9 +47,9 @@ class RecordDetailedInfoViewController: UIViewController {
         avgPaceLabel.text = getPaceAsString()
                 
         if let locationsAll = activity.activityAttribute?.getLocations() {
-            for locationsSection in locationsAll {
-                if !locationsSection.isEmpty {
-                    addPolylineToMap(locations: locationsSection)
+            for locationsInSection in locationsAll {
+                if !locationsInSection.isEmpty {
+                    addPolylineToMap(locations: locationsInSection)
                 }
             }
         }
@@ -63,6 +64,10 @@ class RecordDetailedInfoViewController: UIViewController {
         default:
             placeImageView.image = UIImage(named: "DefaultMedal")!
         }
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
+        mapView.isUserInteractionEnabled = true
+        mapView.addGestureRecognizer(gestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +75,10 @@ class RecordDetailedInfoViewController: UIViewController {
         contentViewHeight.constant =
             664 + tableView.rowHeight * (CGFloat(getNumberOfRows()) == 0  ? 2 : CGFloat(getNumberOfRows())) + 10 // 664 is ContentHeight without tableView. 10 is some safe area. Otherwise scrollView stucks while scrolling if only 1 object in the tableView
         tableViewHeight.constant = 55 * (CGFloat(getNumberOfRows()) == 0 ? 2 : CGFloat(getNumberOfRows())) // Multiply by 2 to show emplyLabel
+    }
+    
+    @objc func mapViewTapped() {
+        performSegue(withIdentifier: detailedMapInfoSegue, sender: self)
     }
     
     // Called before viewDidLoad()
@@ -109,6 +118,16 @@ class RecordDetailedInfoViewController: UIViewController {
         
         mapView.setRegion(MKCoordinateRegion(regionRect), animated: true)
         mapView.addOverlay(polyline)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == detailedMapInfoSegue {
+            let navigationController = segue.destination as! UINavigationController
+
+            if let destinationSegue = navigationController.viewControllers[0] as? MapViewDetailedInfoViewController {
+                destinationSegue.setActivity(activity: activity)
+            }
+        }
     }
 }
 
