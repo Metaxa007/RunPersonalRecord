@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -43,7 +44,10 @@ class ViewController: UIViewController {
         willSet {
             // Do not add 0km. It happens when passedKilometers is set to 0 in stopLocating.
             if newValue > 0 {
-                paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+                let pace = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+                paceDict[newValue] = pace
+                
+                textToSpeech(distance: newValue, pace: pace)
             }
         }
     }
@@ -63,6 +67,11 @@ class ViewController: UIViewController {
     var completedDistance = 0 {
         willSet {
             completedDistanceTextView.text = String(newValue)
+            
+            if newValue > 10 {
+                print("Tag1 new value")
+                textToSpeech(distance: newValue, pace: 456.23)
+            }
 
             // divide by 10 for tests.
             if newValue / 1000 >= passedKilometers + 1 {
@@ -254,6 +263,17 @@ class ViewController: UIViewController {
                 return UIColor.black
             }
         }
+    }
+    
+    func textToSpeech(distance: Int, pace: TimeInterval) {
+        print("Tag1 text to speech")
+        let pace = Utilities.manager.getTime(duration: pace)
+        let utterance = AVSpeechUtterance(string: "\(distance) km done. Average pace \(pace.1) minutes \(pace.2) seconds")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
     }
  
     func addToolBarToKeyBoard() {
