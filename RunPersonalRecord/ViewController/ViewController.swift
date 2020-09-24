@@ -47,7 +47,10 @@ class ViewController: UIViewController {
                 let pace = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
                 paceDict[newValue] = pace
                 
-                textToSpeech(distance: newValue, pace: pace)
+                let time = Utilities.manager.getTime(duration: pace)
+                let averagePaceTime = Utilities.manager.getTime(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000))
+                
+                textToSpeech(utterance: "Pace for \(newValue == 1 ? "kilometer" : "kilometers") \(newValue) is \(time.0 > 0 ? "\(time.0) hours)" : "") \(time.1) minutes and \(time.2) seconds. Average pace is  \(averagePaceTime.1) minutes \(averagePaceTime.2) seconds." )
             }
         }
     }
@@ -67,11 +70,6 @@ class ViewController: UIViewController {
     var completedDistance = 0 {
         willSet {
             completedDistanceTextView.text = String(newValue)
-            
-            if newValue > 10 {
-                print("Tag1 new value")
-                textToSpeech(distance: newValue, pace: 456.23)
-            }
 
             // divide by 10 for tests.
             if newValue / 1000 >= passedKilometers + 1 {
@@ -265,10 +263,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func textToSpeech(distance: Int, pace: TimeInterval) {
-        print("Tag1 text to speech")
-        let pace = Utilities.manager.getTime(duration: pace)
-        let utterance = AVSpeechUtterance(string: "\(distance) km done. Average pace \(pace.1) minutes \(pace.2) seconds")
+    func textToSpeech(utterance: String) {
+        do {
+           try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: AVAudioSession.CategoryOptions.duckOthers)
+           try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print(error)
+        }
+        
+        let utterance = AVSpeechUtterance(string: utterance)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = 0.4
 
