@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -43,7 +44,13 @@ class ViewController: UIViewController {
         willSet {
             // Do not add 0km. It happens when passedKilometers is set to 0 in stopLocating.
             if newValue > 0 {
-                paceDict[newValue] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+                let pace = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
+                paceDict[newValue] = pace
+                
+                let time = Utilities.manager.getTime(duration: pace)
+                let averagePaceTime = Utilities.manager.getTime(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000))
+                
+                textToSpeech(utterance: "Pace for \(newValue == 1 ? "kilometer" : "kilometers") \(newValue) is \(time.0 > 0 ? "\(time.0) hours)" : "") \(time.1) minutes and \(time.2) seconds. Average pace is  \(averagePaceTime.1) minutes \(averagePaceTime.2) seconds." )
             }
         }
     }
@@ -254,6 +261,22 @@ class ViewController: UIViewController {
                 return UIColor.black
             }
         }
+    }
+    
+    func textToSpeech(utterance: String) {
+        do {
+           try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: AVAudioSession.CategoryOptions.duckOthers)
+           try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print(error)
+        }
+        
+        let utterance = AVSpeechUtterance(string: utterance)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
     }
  
     func addToolBarToKeyBoard() {
