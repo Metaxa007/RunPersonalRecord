@@ -188,7 +188,7 @@
                         <outlet property="startButtonBottom" destination="a25-BP-4ae" id="nIx-Ix-BVg"/>
                         <outlet property="startButtonHeight" destination="Bt0-ub-NmI" id="pcu-nU-Pm2"/>
                         <outlet property="stopButton" destination="3Dq-et-Cz8" id="fyM-Bl-RKB"/>
-                        <segue destination="nhh-m3-Nfl" kind="presentation" id="Tiz-t4-XQ1"/>
+                        <segue destination="nhh-m3-Nfl" kind="presentation" identifier="activityDoneSegue" id="Tiz-t4-XQ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMp-uf-dTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
