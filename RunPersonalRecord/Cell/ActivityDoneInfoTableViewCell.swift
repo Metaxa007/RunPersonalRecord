@@ -24,16 +24,15 @@ class ActivityDoneInfoTableViewCell: UITableViewCell {
         case 0:
             iconImageView.image = UIImage(named: "Resume")
             infoLabel.text = "Completed Distance"
-            print("Tag1 \(activity.completedDistance)")
-            infoDetailsLabel.text = "\(activity.completedDistance)m"
+            infoDetailsLabel.text = Utilities.manager.getDistanceInKmAsString(distance: Int((activity.completedDistance)))
         case 1:
             iconImageView.image = UIImage(named: "Pause")
             infoLabel.text = "Duration"
-            infoDetailsLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
+            infoDetailsLabel.text = Utilities.manager.getTimeInRegularFormat(duration: activity.duration)
         case 2:
             iconImageView.image = UIImage(named: "Stop")
             infoLabel.text = "Avg. Pace"
-            infoDetailsLabel.text = "\(Utilities.manager.getTimeInPaceFormat(duration: activity.duration / (Double(activity.completedDistance) / 1000)))"
+            infoDetailsLabel.text = Utilities.manager.getTimeInPaceFormat(duration: activity.duration / (Double(activity.completedDistance) / 1000))
         case 3:
             iconImageView.image = UIImage(named: "Stop")
             infoLabel.text = "Avg. Speed"
