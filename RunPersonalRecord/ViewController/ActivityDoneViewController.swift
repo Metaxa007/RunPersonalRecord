@@ -35,6 +35,9 @@ class ActivityDoneViewController: UIViewController {
         splitsTableView.dataSource = self
         mapView.delegate = self
         
+        infoTableView.tableFooterView = UIView()
+        splitsTableView.tableFooterView = UIView()
+        
         setDoneLabel()
         
         if let locationsAll = activity.activityAttribute?.getLocations() {
@@ -82,6 +85,10 @@ class ActivityDoneViewController: UIViewController {
         mapView.addOverlay(polyline)
     }
     
+    private func getSplitsNumberOfRows() -> Int {
+        return paceDic.count + restDistPaceDic.count
+    }
+    
 }
 
 extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource {
@@ -89,7 +96,7 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
         if tableView == infoTableView {
             return 4
         } else if tableView == splitsTableView {
-            return paceDic.count + restDistPaceDic.count
+            return getSplitsNumberOfRows()
         }
         
         return 0
@@ -117,7 +124,7 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
         if tableView == infoTableView {
             return 80
         } else if tableView == splitsTableView {
-            return 44
+            return 55
         }
 
         return 0

@@ -299,13 +299,40 @@
                                                     <constraint firstAttribute="height" constant="296" id="b6i-On-lWm"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hzR-01-pyg">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" id="hzR-01-pyg" customClass="ActivityDonePaceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hzR-01-pyg" id="qB8-91-K66">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-Pf-7TF">
+                                                                    <rect key="frame" x="20" y="9" width="103.5" height="25.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12J-2W-mm6">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55:50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-EL-eiI">
+                                                                            <rect key="frame" x="49" y="0.0" width="54.5" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Lrf-Pf-7TF" firstAttribute="centerY" secondItem="qB8-91-K66" secondAttribute="centerY" id="91I-Hc-wvW"/>
+                                                                <constraint firstItem="Lrf-Pf-7TF" firstAttribute="leading" secondItem="qB8-91-K66" secondAttribute="leading" constant="20" symbolic="YES" id="k7X-Up-cFa"/>
+                                                            </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="distanceLabel" destination="12J-2W-mm6" id="q00-oz-tca"/>
+                                                            <outlet property="paceLabel" destination="BwN-EL-eiI" id="emY-Bz-HoJ"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
