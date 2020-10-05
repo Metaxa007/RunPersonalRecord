@@ -101,7 +101,7 @@ class RecordDetailedInfoViewController: UIViewController {
         return paceDic.count + restDistPaceDic.count
     }
     
-    func addPolylineToMap(locations: [CLLocation]) {
+    private func addPolylineToMap(locations: [CLLocation]) {
         let coordinates = locations.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
         var regionRect = polyline.boundingMapRect

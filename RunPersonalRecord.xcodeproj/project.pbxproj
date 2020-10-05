@@ -16,6 +16,7 @@
 		AC3D7EBE24F1B3B200539298 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D7EBD24F1B3B200539298 /* RecordsViewController.swift */; };
 		AC46672B24FA73CE00B24B22 /* RecordDetailedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46672A24FA73CE00B24B22 /* RecordDetailedInfoViewController.swift */; };
 		AC48415324F459A5007B98E1 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */; };
+		AC528C07252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC528C06252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift */; };
 		AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC543F3A2454C51200D2202B /* CoreDataManager.swift */; };
 		AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A12452402F00F10921 /* AppDelegate.swift */; };
 		AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56B2A32452402F00F10921 /* SceneDelegate.swift */; };
@@ -47,6 +48,7 @@
 		AC3D7EBD24F1B3B200539298 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		AC46672A24FA73CE00B24B22 /* RecordDetailedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailedInfoViewController.swift; sourceTree = "<group>"; };
 		AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
+		AC528C06252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDoneInfoTableViewCell.swift; sourceTree = "<group>"; };
 		AC543F3A2454C51200D2202B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC56B29E2452402F00F10921 /* RunPersonalRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunPersonalRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC56B2A12452402F00F10921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				ACFC32D524DB536300B326CF /* AddRunTableViewCell.swift */,
 				AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */,
 				AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */,
+				AC528C06252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift */,
 				AC57348225058414001F19DC /* PaceTableViewCell.swift */,
 			);
 			path = Cell;
@@ -244,6 +247,7 @@
 				AC48415324F459A5007B98E1 /* RecordsTableViewCell.swift in Sources */,
 				AC57348325058414001F19DC /* PaceTableViewCell.swift in Sources */,
 				ACBB3405250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift in Sources */,
+				AC528C07252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
 				AC8E68C224BA26C40080F175 /* RecordsCollectionViewCell.swift in Sources */,
 				AC2E339324B23A2B00E81DDE /* ActivityTransformer.swift in Sources */,
