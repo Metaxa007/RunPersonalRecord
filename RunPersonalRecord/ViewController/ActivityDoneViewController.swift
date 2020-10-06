@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 private let infoCell = "infoCell"
+private let paceCell = "paceCell"
 
 class ActivityDoneViewController: UIViewController {
     
@@ -96,7 +97,17 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
         if tableView == infoTableView {
             return 4
         } else if tableView == splitsTableView {
-            return getSplitsNumberOfRows()
+            if getSplitsNumberOfRows() == 0 {
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+                emptyLabel.text = "No pace data is available"
+                emptyLabel.textAlignment = .center
+                self.splitsTableView.backgroundView = emptyLabel
+                self.splitsTableView.separatorStyle = .none
+
+                return 0
+            } else {
+                return getSplitsNumberOfRows()
+            }
         }
         
         return 0
@@ -110,7 +121,18 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
                 return cell
             }
         } else if tableView == splitsTableView {
-            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: paceCell) as? ActivityDonePaceTableViewCell {
+                if indexPath.row + 1 == getSplitsNumberOfRows() && !restDistPaceDic.isEmpty {
+                    let distance = Double(restDistPaceDic.first?.key ?? 0) / 1000
+                    let pace = restDistPaceDic.first?.value ?? 0
+
+                    cell.setCell(distance: distance, pace: pace)
+                } else {
+                    cell.setCell(distance: Double(indexPath.row + 1), pace: paceDic[indexPath.row + 1] ?? 0)
+                }
+
+                return cell
+            }
         }
         
         return UITableViewCell()
