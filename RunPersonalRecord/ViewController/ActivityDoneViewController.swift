@@ -18,6 +18,8 @@ class ActivityDoneViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var splitsTableView: UITableView!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var splitsTableViewHeight: NSLayoutConstraint!
     
     private var paceDic = [Int : Double]()
     private var restDistPaceDic = [Int : Double]()
@@ -48,6 +50,13 @@ class ActivityDoneViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        splitsTableView.rowHeight = 55
+        contentViewHeight.constant =
+            737 + splitsTableView.rowHeight * (CGFloat(getSplitsNumberOfRows()) == 0  ? 2 : CGFloat(getSplitsNumberOfRows())) + 10 // 737 is ContentHeight without tableView. 10 is some safe area. Otherwise scrollView stucks while scrolling if only 1 object in the tableView
+        splitsTableViewHeight.constant = splitsTableView.rowHeight * (CGFloat(getSplitsNumberOfRows()) == 0 ? 2 : CGFloat(getSplitsNumberOfRows())) // Multiply by 2 to show emplyLabel
     }
     
     private func setDoneLabel() {

@@ -308,6 +308,9 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25.5" id="I7R-WR-94P"/>
+                                                </constraints>
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yhd-fH-NG0">
                                                 <rect key="frame" x="0.0" y="787" width="414" height="296"/>
@@ -323,27 +326,32 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-Pf-7TF">
-                                                                    <rect key="frame" x="20" y="9" width="103.5" height="25.5"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12J-2W-mm6">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="25.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55:50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-EL-eiI">
-                                                                            <rect key="frame" x="49" y="0.0" width="54.5" height="25.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12J-2W-mm6">
+                                                                    <rect key="frame" x="20" y="9" width="46" height="26"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="26" id="r9C-Wx-e95"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55:50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-EL-eiI">
+                                                                    <rect key="frame" x="74" y="9" width="54.5" height="25.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="25.5" id="JY9-Ba-VUq"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Lrf-Pf-7TF" firstAttribute="centerY" secondItem="qB8-91-K66" secondAttribute="centerY" id="91I-Hc-wvW"/>
-                                                                <constraint firstItem="Lrf-Pf-7TF" firstAttribute="leading" secondItem="qB8-91-K66" secondAttribute="leading" constant="20" symbolic="YES" id="k7X-Up-cFa"/>
+                                                                <constraint firstItem="12J-2W-mm6" firstAttribute="leading" secondItem="qB8-91-K66" secondAttribute="leading" constant="20" symbolic="YES" id="I5j-2P-Kpv"/>
+                                                                <constraint firstItem="BwN-EL-eiI" firstAttribute="leading" secondItem="12J-2W-mm6" secondAttribute="trailing" constant="8" symbolic="YES" id="QZd-WC-83g"/>
+                                                                <constraint firstItem="12J-2W-mm6" firstAttribute="centerX" secondItem="qB8-91-K66" secondAttribute="centerX" constant="-164" id="VKk-Si-COy"/>
+                                                                <constraint firstItem="12J-2W-mm6" firstAttribute="centerX" secondItem="qB8-91-K66" secondAttribute="centerX" constant="-164" id="iYK-XX-9yS"/>
+                                                                <constraint firstItem="BwN-EL-eiI" firstAttribute="centerY" secondItem="qB8-91-K66" secondAttribute="centerY" id="yI2-Qq-8J3"/>
+                                                                <constraint firstItem="12J-2W-mm6" firstAttribute="centerY" secondItem="qB8-91-K66" secondAttribute="centerY" id="zak-B9-mBP"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
@@ -367,7 +375,7 @@
                                             <constraint firstItem="QjX-eV-Xjv" firstAttribute="leading" secondItem="hOx-pR-cHL" secondAttribute="leading" constant="8" id="cls-y6-7hh"/>
                                             <constraint firstItem="k6m-lE-i1a" firstAttribute="top" secondItem="8KE-3g-kkY" secondAttribute="bottom" constant="8" symbolic="YES" id="csq-5b-huK"/>
                                             <constraint firstItem="Iut-hG-a6G" firstAttribute="leading" secondItem="hOx-pR-cHL" secondAttribute="leading" id="emP-8V-gIV"/>
-                                            <constraint firstAttribute="height" constant="980" id="gwi-XV-nLs"/>
+                                            <constraint firstAttribute="height" constant="980" id="gwi-XV-nLs" userLabel="ContentViewHeight = 980"/>
                                             <constraint firstItem="8KE-3g-kkY" firstAttribute="top" secondItem="PWk-A8-2wC" secondAttribute="bottom" constant="8" id="heC-JG-r8b"/>
                                             <constraint firstAttribute="trailing" secondItem="QjX-eV-Xjv" secondAttribute="trailing" constant="8" id="jmc-pc-r9z"/>
                                             <constraint firstAttribute="trailing" secondItem="Yhd-fH-NG0" secondAttribute="trailing" id="mC6-IR-X1Z"/>
@@ -399,10 +407,12 @@
                     </view>
                     <size key="freeformSize" width="414" height="1300"/>
                     <connections>
+                        <outlet property="contentViewHeight" destination="gwi-XV-nLs" id="kqN-xc-yiQ"/>
                         <outlet property="doneLabel" destination="Iut-hG-a6G" id="8IH-QZ-aC0"/>
                         <outlet property="infoTableView" destination="PWk-A8-2wC" id="7Cg-TT-Dud"/>
                         <outlet property="mapView" destination="QjX-eV-Xjv" id="JXw-5I-kEf"/>
                         <outlet property="splitsTableView" destination="Yhd-fH-NG0" id="hy0-Wt-Rnl"/>
+                        <outlet property="splitsTableViewHeight" destination="b6i-On-lWm" id="VWk-KP-74N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwC-zU-Wue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
