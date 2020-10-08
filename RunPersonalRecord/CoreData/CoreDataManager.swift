@@ -10,13 +10,13 @@ struct CoreDataManager {
     
     private init(){}
     
-    func addEntity(activity: Activity, pace: Pace, date: Date, duration: Double, distanceToRun: Int, completedDistance: Int, completed: Bool) {
+    func addEntity(locations: Activity, pace: Pace, date: Date, duration: Double, distanceToRun: Int, completedDistance: Int, completed: Bool) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
 
             do {
                 let activityEntity = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! ActivityEntity
-                activityEntity.activityAttribute = activity
+                activityEntity.activityAttribute = locations
                 activityEntity.date = date
                 activityEntity.duration = duration
                 activityEntity.distanceToRun = Int32(distanceToRun)

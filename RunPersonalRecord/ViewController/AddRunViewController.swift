@@ -49,7 +49,7 @@ class AddRunViewController: UIViewController {
         }
         
         // No locations and pace information for this activity, distanceToRun == completedDistance
-        CoreDataManager.manager.addEntity(activity: Activity.init(locations: [[]]), pace: Pace.init(pace: [:], restDistancePace: [:]),
+        CoreDataManager.manager.addEntity(locations: Activity.init(locations: [[]]), pace: Pace.init(pace: [:], restDistancePace: [:]),
                                           date: date, duration: duration, distanceToRun: distance, completedDistance: distance, completed: true)
         
         dismiss(animated: true, completion: nil)

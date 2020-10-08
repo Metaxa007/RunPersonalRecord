@@ -12,6 +12,8 @@ import CoreLocation
 import CoreData
 import AVFoundation
 
+private let activityDoneSegue = "activityDoneSegue"
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -230,13 +232,20 @@ class ViewController: UIViewController {
                         locationsAll.append(locationsInSection)
                     }
                     
-                    let activity = Activity(locations: locationsAll)
+                    let locations = Activity(locations: locationsAll)
                     let pace = Pace(pace: paceDict, restDistancePace: restDistancePaceDict)
                                         
-                    CoreDataManager.manager.addEntity(activity: activity, pace: pace, date: startDate, duration: duration.duration, distanceToRun:
+                    CoreDataManager.manager.addEntity(locations: locations, pace: pace, date: startDate, duration: duration.duration, distanceToRun:
                                                         distanceToRun, completedDistance: completedDistance, completed: completed)
                 }
             }
+    
+            performSegue(withIdentifier: activityDoneSegue, sender: self)
+        } else {
+            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Completed distance is 0. Activity will not be saved.", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
         }
         
         stopWatch.stop()
