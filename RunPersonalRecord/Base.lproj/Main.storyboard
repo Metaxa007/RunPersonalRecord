@@ -409,8 +409,12 @@
                     <connections>
                         <outlet property="contentViewHeight" destination="gwi-XV-nLs" id="kqN-xc-yiQ"/>
                         <outlet property="doneLabel" destination="Iut-hG-a6G" id="8IH-QZ-aC0"/>
+                        <outlet property="doneLabelHeight" destination="c8U-En-ar6" id="UBC-KH-1nE"/>
                         <outlet property="infoTableView" destination="PWk-A8-2wC" id="7Cg-TT-Dud"/>
+                        <outlet property="infoTableViewHeight" destination="ceM-uM-hpu" id="JQZ-6u-Mqb"/>
                         <outlet property="mapView" destination="QjX-eV-Xjv" id="JXw-5I-kEf"/>
+                        <outlet property="mapViewHeight" destination="l9N-bX-JXR" id="qII-tf-Ktf"/>
+                        <outlet property="splitsLabelHeight" destination="TIb-Ip-FZw" id="Cz7-OC-ixw"/>
                         <outlet property="splitsTableView" destination="Yhd-fH-NG0" id="hy0-Wt-Rnl"/>
                         <outlet property="splitsTableViewHeight" destination="b6i-On-lWm" id="VWk-KP-74N"/>
                     </connections>

@@ -20,6 +20,10 @@ class ActivityDoneViewController: UIViewController {
     @IBOutlet weak var splitsTableView: UITableView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var splitsTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var doneLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var infoTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var splitsLabelHeight: NSLayoutConstraint!
     
     private var paceDic = [Int : Double]()
     private var restDistPaceDic = [Int : Double]()
@@ -53,10 +57,17 @@ class ActivityDoneViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // 80 is some additional space to make scroll possible
+        let contentViewHeightWithoutSplitsTable = doneLabelHeight.constant + mapViewHeight.constant + infoTableViewHeight.constant + splitsLabelHeight.constant + 80
         splitsTableView.rowHeight = 55
-        contentViewHeight.constant =
-            737 + splitsTableView.rowHeight * (CGFloat(getSplitsNumberOfRows()) == 0  ? 2 : CGFloat(getSplitsNumberOfRows())) + 10 // 737 is ContentHeight without tableView. 10 is some safe area. Otherwise scrollView stucks while scrolling if only 1 object in the tableView
-        splitsTableViewHeight.constant = splitsTableView.rowHeight * (CGFloat(getSplitsNumberOfRows()) == 0 ? 2 : CGFloat(getSplitsNumberOfRows())) // Multiply by 2 to show emplyLabel
+        infoTableView.rowHeight = 60
+        infoTableViewHeight.constant = infoTableView.rowHeight * 4
+        
+        //10 is some safe area. Otherwise scrollView stucks while scrolling if only 1 object in the tableView
+        contentViewHeight.constant = contentViewHeightWithoutSplitsTable + splitsTableView.rowHeight * (CGFloat(getSplitsNumberOfRows()) == 0  ? 2 : CGFloat(getSplitsNumberOfRows())) + 10
+        
+        // Multiply by 2 to show emplyLabel
+        splitsTableViewHeight.constant = splitsTableView.rowHeight * (CGFloat(getSplitsNumberOfRows()) == 0 ? 2 : CGFloat(getSplitsNumberOfRows()))
     }
     
     private func setDoneLabel() {
@@ -153,7 +164,7 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == infoTableView {
-            return 80
+            return 60
         } else if tableView == splitsTableView {
             return 55
         }
