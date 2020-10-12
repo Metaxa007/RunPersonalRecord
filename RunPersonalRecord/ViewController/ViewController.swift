@@ -162,38 +162,38 @@ class ViewController: UIViewController {
         isActivityStarted = false
     }
     
-    func hidePauseStopStack() {
+    private func hidePauseStopStack() {
         pauseStopStackHeight.constant = 0
         pauseStopStackBottom.constant = 0
         pauseStopStack.isHidden = true
     }
     
-    func hideStartButton() {
+    private func hideStartButton() {
         startButtonBottom.constant = 0
         startButtonHeight.constant = 0
         startButton.isHidden = true
     }
     
-    func showPauseStopStack() {
+    private func showPauseStopStack() {
         pauseStopStackBottom.constant = 38
         pauseStopStackHeight.constant = 85
         pauseStopStack.isHidden = false
     }
     
-    func showStartButton() {
+    private func showStartButton() {
         startButtonBottom.constant = 26
         startButtonHeight.constant = 53
         startButton.isHidden = false
     }
     
-    func setUpMapView() {
+    private func setUpMapView() {
         mapView.showsCompass = true
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.delegate = self
     }
     
-    func startLocating() {
+    private func startLocating() {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -211,7 +211,7 @@ class ViewController: UIViewController {
         checkWhenDistanceIsCompleted()
     }
     
-    func stopLocating(completed: Bool) {
+    private func stopLocating(completed: Bool) {
         // Save activity only if user did some progress in it
         if completedDistance != 0 {
             // Calculate and save pace of the restDistace and print average pace (otherwise average is already pace calculated in "completedDistance")
@@ -242,8 +242,8 @@ class ViewController: UIViewController {
     
             performSegue(withIdentifier: activityDoneSegue, sender: self)
         } else {
-            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Completed distance is 0. Activity will not be saved.", style: .default, handler: nil))
+            let alert = UIAlertController(title: "Completed distance is 0. Activity will not be saved.", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)
         }
@@ -272,7 +272,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func textToSpeech(utterance: String) {
+    private func textToSpeech(utterance: String) {
         do {
            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: AVAudioSession.CategoryOptions.duckOthers)
            try AVAudioSession.sharedInstance().setActive(true)
@@ -288,7 +288,7 @@ class ViewController: UIViewController {
         synthesizer.speak(utterance)
     }
  
-    func addToolBarToKeyBoard() {
+    private func addToolBarToKeyBoard() {
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonClicked))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonClicked))
@@ -324,7 +324,7 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func checkWhenDistanceIsCompleted() {
+    private func checkWhenDistanceIsCompleted() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
             guard let weakSelf = self else { return }
             guard weakSelf.locationsInSection.count > 0 else { return }
@@ -352,23 +352,32 @@ class ViewController: UIViewController {
         })
     }
     
-    func distanceTextFieldIsEmtpy () -> Bool {
+    private func distanceTextFieldIsEmtpy () -> Bool {
         guard let distance = distanceTextField.text else { return true }
         
         return distance.isEmpty
     }
     
-    func roundCornersStartButton() {
+    private func roundCornersStartButton() {
         startButton.layer.cornerRadius = 20
         startButton.clipsToBounds = true
     }
     
-    func addPolylineToMap(locations: [CLLocation]) {
+    private func addPolylineToMap() {
+        var locations:[CLLocation] = []
+        
+        // If locationsAll is not empty -> append to locations to render. And for each case add locationsInSection to locations
+        if !locationsAll.isEmpty {
+            for locationsInSection in locationsAll {
+                locations.append(contentsOf: locationsInSection)
+            }
+        }
+        
+        locations.append(contentsOf: locationsInSection)
+        
         let coordinates = locations.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-        let region = MKCoordinateRegion(center: coordinates[0], span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
-        mapView.setRegion(region, animated: true)
         mapView.addOverlay(polyline)
     }
     
@@ -403,7 +412,9 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
                 lastLocation?.coordinate.longitude != location.coordinate.longitude  {
                 lastLocation = location
 
-                self.locationsInSection.append(location)
+                locationsInSection.append(location)
+                
+                addPolylineToMap()
             }
         }
     }
@@ -411,7 +422,7 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
     // MARK: MKMapViewDelegate -
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.red
+        renderer.strokeColor = .green
         renderer.lineWidth = 3.0
         
         return renderer
@@ -419,10 +430,11 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let region = MKCoordinateRegion(center: userLocation.coordinate,
-                                        span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-        
+                                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
         mapView.setRegion(region, animated: true)
     }
+
     
     // MARK: StopWatchDelegate -
     func stopWatch(time: String) {
