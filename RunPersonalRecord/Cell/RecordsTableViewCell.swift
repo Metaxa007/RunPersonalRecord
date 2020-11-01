@@ -80,6 +80,9 @@ class RecordsTableViewCell: UITableViewCell {
         case 2:
             reward.image = UIImage(named: "BronzeMedal")
         default:
+            // Necessary to update every single element. While tableView scrolling reward image will stay and appear for wrong cells,
+            // so set no image for rest of the places.
+            reward.image = UIImage()
             break;
         }
         distanceLabel.text = String(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.completedDistance)))
