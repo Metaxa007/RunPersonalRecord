@@ -199,6 +199,7 @@ class ViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         
         distanceTextField.isEnabled = false
         distanceTextField.textColor = UIColor.gray
@@ -434,7 +435,6 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
 
         mapView.setRegion(region, animated: true)
     }
-
     
     // MARK: StopWatchDelegate -
     func stopWatch(time: String) {
