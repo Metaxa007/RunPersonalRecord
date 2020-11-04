@@ -13,6 +13,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var subHeaderLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     private var header = ""
     private var subHeader = ""
@@ -22,7 +23,11 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        headerLabel.text = header
+        subHeaderLabel.text = subHeader
+//        imageView.image = UIImage(named: imageFile)
+        pageControl.numberOfPages = 3
+        pageControl.currentPage = index
     }
 
     func setHeader(header: String) {

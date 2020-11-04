@@ -112,9 +112,7 @@ class MapViewDetailedInfoViewController: UIViewController {
         if let locationsAll = activity.activityAttribute?.getLocations() {
             for i in 0..<locationsAll.count {
                 if i == 0 {
-                    if let firstLocation = locationsAll[i].first {
-                        print("Tag1 firstLocation \(firstLocation)")
-                        
+                    if let firstLocation = locationsAll[i].first {                        
                         startCoordinate = firstLocation.coordinate
                     }
                 }
