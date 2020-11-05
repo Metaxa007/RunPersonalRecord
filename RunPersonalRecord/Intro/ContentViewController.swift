@@ -14,6 +14,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var subHeaderLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var nextButton: UIButton!
     
     private var header = ""
     private var subHeader = ""
@@ -28,6 +29,13 @@ class ContentViewController: UIViewController {
 //        imageView.image = UIImage(named: imageFile)
         pageControl.numberOfPages = 3
         pageControl.currentPage = index
+        
+        switch index {
+        case 0,1:
+            nextButton.setTitle("Next", for: .normal)
+        default:
+            nextButton.setTitle("Start", for: .normal)
+        }
     }
 
     func setHeader(header: String) {
@@ -48,6 +56,28 @@ class ContentViewController: UIViewController {
     
     func getIndex() -> Int {
         return index
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
+        switch index {
+        case 0,1:
+            let pageViewController = parent as! PageViewController
+            pageViewController.nextViewController(atIndex: index)
+        default:
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func skipButtonPressed(_ sender: UIButton) {
+        dismissViewController()
+    }
+    
+    private func dismissViewController() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(true, forKey: "wasIntroWatched")
+        userDefaults.synchronize()
+        
+        dismiss(animated: true, completion: nil)
     }
 
 }

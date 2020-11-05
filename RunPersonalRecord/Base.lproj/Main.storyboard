@@ -602,17 +602,38 @@
                                 <color key="pageIndicatorTintColor" systemColor="systemGray5Color"/>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
+                                <rect key="frame" x="20" y="830" width="48" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="ZsE-Rn-ceW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
+                                <rect key="frame" x="345" y="838" width="51" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="cIB-H8-nSs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NBj-Oi-8oh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZuV-sj-cTp" firstAttribute="centerX" secondItem="NBj-Oi-8oh" secondAttribute="centerX" id="6HC-z4-H9A"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="d2b-EU-8FL" secondAttribute="trailing" constant="18" id="9vE-Qa-H6C"/>
+                            <constraint firstItem="3wI-mB-bil" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="10" id="EuJ-Ho-zXf"/>
+                            <constraint firstItem="d2b-EU-8FL" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="18" id="L44-32-qhA"/>
+                            <constraint firstItem="3wI-mB-bil" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="YJk-Rh-Y91"/>
                             <constraint firstItem="ZuV-sj-cTp" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="11" id="hx2-ex-KC0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="headerLabel" destination="ySn-xm-xah" id="t1C-yK-x8c"/>
                         <outlet property="imageView" destination="1SK-yQ-xVD" id="iM1-6y-Dte"/>
+                        <outlet property="nextButton" destination="d2b-EU-8FL" id="xPe-xI-u7r"/>
                         <outlet property="pageControl" destination="ZuV-sj-cTp" id="3S9-Vk-kqk"/>
                         <outlet property="subHeaderLabel" destination="Gn4-kh-129" id="a8X-tZ-xBO"/>
                     </connections>

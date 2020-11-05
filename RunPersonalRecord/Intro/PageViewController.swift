@@ -30,14 +30,20 @@ class PageViewController: UIPageViewController {
     private func displayViewController(atIndex index: Int) -> ContentViewController? {
         guard index >= 0 else { return nil }
         guard index < headersArray.count else { return nil }
-        guard let contentVC = storyboard?.instantiateViewController(identifier:contentViewController ) as? ContentViewController else { return nil }
+        guard let contentViewController = storyboard?.instantiateViewController(identifier:contentViewController ) as? ContentViewController else { return nil }
         
-        contentVC.setHeader(header: headersArray[index])
-        contentVC.setSubHeader(subHeader: subHeadersArray[index])
-        contentVC.setImageFile(imageFile: imagesArray[index])
-        contentVC.setIndex(index: index)
+        contentViewController.setHeader(header: headersArray[index])
+        contentViewController.setSubHeader(subHeader: subHeadersArray[index])
+        contentViewController.setImageFile(imageFile: imagesArray[index])
+        contentViewController.setIndex(index: index)
         
-        return contentVC
+        return contentViewController
+    }
+    
+    func nextViewController(atIndex index: Int) {
+        if let contentViewController = displayViewController(atIndex: index + 1) {
+            setViewControllers([contentViewController], direction: .forward, animated: true, completion: nil)
+        }
     }
 }
 
