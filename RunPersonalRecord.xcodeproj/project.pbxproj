@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0BE4932551F8E400DEC0E0 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0BE4922551F8E300DEC0E0 /* ContentViewController.swift */; };
+		AC0BE4962551F90800DEC0E0 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0BE4952551F90800DEC0E0 /* PageViewController.swift */; };
 		AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD14724713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld */; };
 		AC0FD14F2471436D00A4D87C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD14E2471436D00A4D87C /* Location.swift */; };
 		AC0FD15324714E8700A4D87C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0FD15124714E3200A4D87C /* Activity.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC0BE4922551F8E300DEC0E0 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		AC0BE4952551F90800DEC0E0 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		AC0FD14824713FBB00A4D87C /* RunPersonalRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunPersonalRecord.xcdatamodel; sourceTree = "<group>"; };
 		AC0FD14E2471436D00A4D87C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AC0FD15124714E3200A4D87C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC0BE4982551F90D00DEC0E0 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				AC0BE4922551F8E300DEC0E0 /* ContentViewController.swift */,
+				AC0BE4952551F90800DEC0E0 /* PageViewController.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
 		AC2E339024B23A2B00E81DDE /* Transformer */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +129,7 @@
 				ACF40583249F6EB3005BC266 /* Cell */,
 				ACF40582249F6EA5005BC266 /* ViewController */,
 				ACF40581249F6E81005BC266 /* CoreData */,
+				AC0BE4982551F90D00DEC0E0 /* Intro */,
 				AC56B2A12452402F00F10921 /* AppDelegate.swift */,
 				ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */,
 				ACC57D4A249C162F00DD0B1F /* StopWatch.swift */,
@@ -262,7 +276,9 @@
 				AC2E339424B23A2B00E81DDE /* PaceTransformer.swift in Sources */,
 				ACBB3404250E4F37001D287E /* ActivityEntity+CoreDataClass.swift in Sources */,
 				AC0FD15324714E8700A4D87C /* Activity.swift in Sources */,
+				AC0BE4932551F8E400DEC0E0 /* ContentViewController.swift in Sources */,
 				ACC57D4B249C162F00DD0B1F /* StopWatch.swift in Sources */,
+				AC0BE4962551F90800DEC0E0 /* PageViewController.swift in Sources */,
 				AC543F3B2454C51200D2202B /* CoreDataManager.swift in Sources */,
 				AC0FD14924713FBB00A4D87C /* RunPersonalRecord.xcdatamodeld in Sources */,
 				AC8E68C024B915DF0080F175 /* RecordsCollectionViewController.swift in Sources */,

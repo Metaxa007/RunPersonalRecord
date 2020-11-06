@@ -13,6 +13,7 @@ import CoreData
 import AVFoundation
 
 private let activityDoneSegue = "activityDoneSegue"
+private let pageViewController = "pageViewController"
 
 class ViewController: UIViewController {
     
@@ -128,6 +129,21 @@ class ViewController: UIViewController {
         
         distanceTextField.delegate = self
         stopWatch.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.standard
+
+        userDefaults.setValue(false, forKey: "wasIntroWatched")
+
+        let wasIntroWatched = userDefaults.bool(forKey: "wasIntroWatched")
+        
+        guard !wasIntroWatched else { return }
+
+        if let pageVC = storyboard?.instantiateViewController(withIdentifier: pageViewController) as? PageViewController {
+            present(pageVC, animated: true, completion: nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
