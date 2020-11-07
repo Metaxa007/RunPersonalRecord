@@ -15,7 +15,7 @@ class PageViewController: UIPageViewController {
     var subHeadersArray = ["Enter a distance or choose one you desire to set a record",
                            "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance",
                            "Find and investigate your best results in the records table"]
-    var imagesArray = ["img1", "img2", "img3"]
+    var imagesArray = ["Intro_2", "Intro_2", "Intro_2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

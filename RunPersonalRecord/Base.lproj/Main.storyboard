@@ -579,55 +579,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="header" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySn-xm-xah">
-                                <rect key="frame" x="20" y="56" width="374" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="header" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySn-xm-xah">
+                                <rect key="frame" x="20" y="108" width="374" height="43.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1SK-yQ-xVD">
-                                <rect key="frame" x="20" y="256" width="374" height="304"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1SK-yQ-xVD">
+                                <rect key="frame" x="20" y="189" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1SK-yQ-xVD" secondAttribute="height" multiplier="1:1" id="tBX-fm-bp4"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subheader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-kh-129">
-                                <rect key="frame" x="20" y="663" width="374" height="199"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subheader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-kh-129">
+                                <rect key="frame" x="20" y="603" width="374" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="167" id="fL3-AO-bZ4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZuV-sj-cTp">
-                                <rect key="frame" x="145.5" y="845" width="123" height="28"/>
-                                <color key="pageIndicatorTintColor" systemColor="systemGray5Color"/>
-                                <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
-                                <rect key="frame" x="20" y="830" width="48" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Skip"/>
-                                <connections>
-                                    <action selector="skipButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="ZsE-Rn-ceW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
-                                <rect key="frame" x="345" y="838" width="51" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="cIB-H8-nSs"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="76" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-wd-YNH">
+                                <rect key="frame" x="20" y="805" width="373.5" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="ZsE-Rn-ceW"/>
+                                        </connections>
+                                    </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZuV-sj-cTp">
+                                        <rect key="frame" x="124" y="0.0" width="122.5" height="42"/>
+                                        <color key="pageIndicatorTintColor" systemColor="systemGray5Color"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
+                                        <rect key="frame" x="322.5" y="0.0" width="51" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="cIB-H8-nSs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NBj-Oi-8oh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZuV-sj-cTp" firstAttribute="centerX" secondItem="NBj-Oi-8oh" secondAttribute="centerX" id="6HC-z4-H9A"/>
-                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="d2b-EU-8FL" secondAttribute="trailing" constant="18" id="9vE-Qa-H6C"/>
-                            <constraint firstItem="3wI-mB-bil" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="10" id="EuJ-Ho-zXf"/>
-                            <constraint firstItem="d2b-EU-8FL" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="18" id="L44-32-qhA"/>
-                            <constraint firstItem="3wI-mB-bil" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="YJk-Rh-Y91"/>
-                            <constraint firstItem="ZuV-sj-cTp" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="11" id="hx2-ex-KC0"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="ySn-xm-xah" secondAttribute="trailing" constant="20" id="5al-Xs-nQU"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="bottom" secondItem="Sv8-wd-YNH" secondAttribute="bottom" constant="15" id="HEe-uZ-s9K"/>
+                            <constraint firstItem="1SK-yQ-xVD" firstAttribute="top" secondItem="ySn-xm-xah" secondAttribute="bottom" constant="37.5" id="PaY-7g-UjL"/>
+                            <constraint firstItem="ySn-xm-xah" firstAttribute="top" secondItem="NBj-Oi-8oh" secondAttribute="top" constant="64" id="RsO-Fe-kMS"/>
+                            <constraint firstItem="Gn4-kh-129" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="SHv-S1-l8u"/>
+                            <constraint firstItem="1SK-yQ-xVD" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="k9z-s5-MB8"/>
+                            <constraint firstItem="ySn-xm-xah" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="lZN-n0-5u6"/>
+                            <constraint firstItem="Sv8-wd-YNH" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="o1c-Dn-ISb"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="Sv8-wd-YNH" secondAttribute="trailing" constant="20.5" id="qdY-MZ-GGZ"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="Gn4-kh-129" secondAttribute="trailing" constant="20" id="s7E-2D-CXY"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="1SK-yQ-xVD" secondAttribute="trailing" constant="20" id="sir-ZE-zaT"/>
+                            <constraint firstItem="Gn4-kh-129" firstAttribute="top" secondItem="1SK-yQ-xVD" secondAttribute="bottom" constant="40" id="ybz-xx-810"/>
                         </constraints>
                     </view>
                     <connections>

@@ -26,7 +26,7 @@ class ContentViewController: UIViewController {
 
         headerLabel.text = header
         subHeaderLabel.text = subHeader
-//        imageView.image = UIImage(named: imageFile)
+        imageView.image = UIImage(named: imageFile)
         pageControl.numberOfPages = 3
         pageControl.currentPage = index
         
