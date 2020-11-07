@@ -15,6 +15,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var subHeaderLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     private var header = ""
     private var subHeader = ""
@@ -35,6 +36,23 @@ class ContentViewController: UIViewController {
             nextButton.setTitle("Next", for: .normal)
         default:
             nextButton.setTitle("Start", for: .normal)
+        }
+        
+        setFontSizes()
+    }
+    
+    private func setFontSizes() {
+        let height = self.view.frame.height
+        //Designed for iPhone 11 Max Pro. 896 is height of it in points
+        if height != 896 {
+            let scale = height / 896
+
+            headerLabel.font = UIFont(name: headerLabel.font.fontName, size: headerLabel.font.pointSize * scale)
+            subHeaderLabel.font = UIFont(name: subHeaderLabel.font.fontName, size: subHeaderLabel.font.pointSize * scale)
+            skipButton.titleLabel?.font = UIFont(name: skipButton.titleLabel?.font.fontName ?? "AppleSDGothicNeo-Regular",
+                                                 size: (skipButton.titleLabel?.font.pointSize ?? 26) * scale)
+            nextButton.titleLabel?.font = UIFont(name: nextButton.titleLabel?.font.fontName ?? "AppleSDGothicNeo-Regular",
+                                                 size: (nextButton.titleLabel?.font.pointSize ?? 26) * scale)
         }
     }
 
