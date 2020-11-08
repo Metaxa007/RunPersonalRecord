@@ -579,62 +579,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="header" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySn-xm-xah">
-                                <rect key="frame" x="20" y="56" width="374" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1SK-yQ-xVD">
-                                <rect key="frame" x="20" y="256" width="374" height="304"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subheader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-kh-129">
-                                <rect key="frame" x="20" y="663" width="374" height="199"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZuV-sj-cTp">
-                                <rect key="frame" x="145.5" y="845" width="123" height="28"/>
-                                <color key="pageIndicatorTintColor" systemColor="systemGray5Color"/>
-                                <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
-                                <rect key="frame" x="20" y="830" width="48" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Skip"/>
-                                <connections>
-                                    <action selector="skipButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="ZsE-Rn-ceW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
-                                <rect key="frame" x="345" y="838" width="51" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="cIB-H8-nSs"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-wd-YNH">
+                                <rect key="frame" x="15" y="808" width="373.5" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
+                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="44"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="ZsE-Rn-ceW"/>
+                                        </connections>
+                                    </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZuV-sj-cTp">
+                                        <rect key="frame" x="110.5" y="0.0" width="134.5" height="44"/>
+                                        <color key="pageIndicatorTintColor" systemColor="systemGray5Color"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
+                                        <rect key="frame" x="305" y="0.0" width="68.5" height="44"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonPressed:" destination="ORv-dt-mxv" eventType="touchUpInside" id="cIB-H8-nSs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-70" translatesAutoresizingMaskIntoConstraints="NO" id="YZy-zI-DYh">
+                                <rect key="frame" x="20" y="63" width="374" height="678"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1SK-yQ-xVD">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="1SK-yQ-xVD" secondAttribute="height" multiplier="1:1" id="V8Z-B0-oyS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-100" translatesAutoresizingMaskIntoConstraints="NO" id="NCN-0B-roY">
+                                        <rect key="frame" x="120" y="304" width="134.5" height="374"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="header" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySn-xm-xah">
+                                                <rect key="frame" x="0.0" y="0.0" width="134.5" height="237"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="36"/>
+                                                <nil key="textColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subheader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-kh-129">
+                                                <rect key="frame" x="0.0" y="137" width="134.5" height="237"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="30"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NBj-Oi-8oh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZuV-sj-cTp" firstAttribute="centerX" secondItem="NBj-Oi-8oh" secondAttribute="centerX" id="6HC-z4-H9A"/>
-                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="d2b-EU-8FL" secondAttribute="trailing" constant="18" id="9vE-Qa-H6C"/>
-                            <constraint firstItem="3wI-mB-bil" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="10" id="EuJ-Ho-zXf"/>
-                            <constraint firstItem="d2b-EU-8FL" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="18" id="L44-32-qhA"/>
-                            <constraint firstItem="3wI-mB-bil" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="YJk-Rh-Y91"/>
-                            <constraint firstItem="ZuV-sj-cTp" firstAttribute="bottom" secondItem="NBj-Oi-8oh" secondAttribute="bottom" constant="11" id="hx2-ex-KC0"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="YZy-zI-DYh" secondAttribute="trailing" constant="20" id="DVK-pV-8lL"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="bottom" secondItem="Sv8-wd-YNH" secondAttribute="bottom" constant="10" id="JHm-QW-9RZ"/>
+                            <constraint firstItem="NBj-Oi-8oh" firstAttribute="trailing" secondItem="Sv8-wd-YNH" secondAttribute="trailing" constant="25.5" id="PQh-WN-K9o"/>
+                            <constraint firstItem="YZy-zI-DYh" firstAttribute="top" secondItem="NBj-Oi-8oh" secondAttribute="top" constant="19" id="gQL-M2-EZ8"/>
+                            <constraint firstItem="YZy-zI-DYh" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="20" id="gsn-H4-lvS"/>
+                            <constraint firstItem="Sv8-wd-YNH" firstAttribute="leading" secondItem="NBj-Oi-8oh" secondAttribute="leading" constant="15" id="mym-Wv-XjJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="headerLabel" destination="ySn-xm-xah" id="t1C-yK-x8c"/>
                         <outlet property="imageView" destination="1SK-yQ-xVD" id="iM1-6y-Dte"/>
-                        <outlet property="nextButton" destination="d2b-EU-8FL" id="xPe-xI-u7r"/>
+                        <outlet property="nextButton" destination="d2b-EU-8FL" id="uLA-iS-eW2"/>
                         <outlet property="pageControl" destination="ZuV-sj-cTp" id="3S9-Vk-kqk"/>
+                        <outlet property="skipButton" destination="3wI-mB-bil" id="Rvd-AG-rTQ"/>
                         <outlet property="subHeaderLabel" destination="Gn4-kh-129" id="a8X-tZ-xBO"/>
                     </connections>
                 </viewController>
