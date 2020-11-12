@@ -14,6 +14,7 @@ import AVFoundation
 
 private let activityDoneSegue = "activityDoneSegue"
 private let pageViewController = "pageViewController"
+private let showDistanceListSegue = "showDistanceListSegue"
 
 class ViewController: UIViewController {
     
@@ -176,6 +177,14 @@ class ViewController: UIViewController {
     
     @IBAction func stopActivity(_ sender: UIButton) {
         isActivityStarted = false
+    }
+    
+    @IBAction func showDistanceList(_ sender: UIButton) {
+        performSegue(withIdentifier: showDistanceListSegue, sender: self)
+    }
+    
+    @IBAction func unwindSegueToMain(sender: UIStoryboardSegue) {
+        print("undwinding")
     }
     
     private func hidePauseStopStack() {

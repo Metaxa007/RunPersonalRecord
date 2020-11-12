@@ -155,6 +155,14 @@
                                     <action selector="startStopLocating:" destination="8eo-45-wiJ" eventType="touchUpInside" id="ogw-3m-paa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kw6-tK-ebt">
+                                <rect key="frame" x="350" y="89" width="21" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="gearshape" catalog="system"/>
+                                <connections>
+                                    <action selector="showDistanceList:" destination="8eo-45-wiJ" eventType="touchUpInside" id="fsR-nd-FfJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQ5-Wa-PsU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -189,11 +197,64 @@
                         <outlet property="startButtonHeight" destination="Bt0-ub-NmI" id="pcu-nU-Pm2"/>
                         <outlet property="stopButton" destination="3Dq-et-Cz8" id="fyM-Bl-RKB"/>
                         <segue destination="nhh-m3-Nfl" kind="presentation" identifier="activityDoneSegue" id="Tiz-t4-XQ1"/>
+                        <segue destination="yNk-mZ-Fzc" kind="presentation" identifier="showDistanceListSegue" id="KbZ-N4-2i4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMp-uf-dTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1779.7101449275365" y="32.8125"/>
+        </scene>
+        <!--Distance List View Controller-->
+        <scene sceneID="Wby-mz-a0f">
+            <objects>
+                <viewController id="yNk-mZ-Fzc" customClass="DistanceListViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4cS-T5-jwf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iy7-PK-JDk">
+                                <rect key="frame" x="0.0" y="100" width="414" height="742"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="distanceCell" id="05t-2g-4IO" customClass="DistanceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="05t-2g-4IO" id="87S-94-T1N">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KUP-FH-QE9" kind="unwind" trigger="accessoryAction" unwindAction="unwindSegueToMainWithSender:" id="WcR-nn-wW2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7h-1V-ytI">
+                                <rect key="frame" x="184" y="44" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="KUP-FH-QE9" kind="unwind" unwindAction="unwindSegueToMainWithSender:" id="ccU-bu-xoR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HKE-F9-bSg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Iy7-PK-JDk" secondAttribute="bottom" id="Kf0-8S-KzR"/>
+                            <constraint firstItem="Iy7-PK-JDk" firstAttribute="top" secondItem="HKE-F9-bSg" secondAttribute="top" constant="100" id="M1b-Ym-2yp"/>
+                            <constraint firstItem="Iy7-PK-JDk" firstAttribute="leading" secondItem="HKE-F9-bSg" secondAttribute="leading" id="jRO-zO-1Wr"/>
+                            <constraint firstItem="Iy7-PK-JDk" firstAttribute="trailing" secondItem="HKE-F9-bSg" secondAttribute="trailing" id="uMV-ls-grA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Iy7-PK-JDk" id="uL1-H8-nOD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sXt-I6-xBj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="KUP-FH-QE9" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2598.5507246376815" y="-773.4375"/>
         </scene>
         <!--Activity Done View Controller-->
         <scene sceneID="tRQ-iG-XSy">
@@ -1036,7 +1097,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xID-mx-G6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6308.6956521739139" y="1217.4107142857142"/>
+            <point key="canvasLocation" x="6212" y="1217"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y5p-1U-tO6">
@@ -1061,6 +1122,7 @@
         <image name="Pause" width="258" height="257.5"/>
         <image name="Stop" width="258" height="258"/>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="hare.fill" catalog="system" width="128" height="91"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
