@@ -142,7 +142,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-vI-HHE">
                                 <rect key="frame" x="82" y="734" width="250" height="53"/>
-                                <color key="backgroundColor" red="0.48123693470000001" green="0.71851330999999996" blue="0.2351528406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.55506837369999995" green="0.77594912049999998" blue="0.80000716449999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="Bt0-ub-NmI"/>
                                     <constraint firstAttribute="width" constant="250" id="Nhm-g2-qka"/>
@@ -197,14 +197,14 @@
                         <outlet property="startButtonHeight" destination="Bt0-ub-NmI" id="pcu-nU-Pm2"/>
                         <outlet property="stopButton" destination="3Dq-et-Cz8" id="fyM-Bl-RKB"/>
                         <segue destination="nhh-m3-Nfl" kind="presentation" identifier="activityDoneSegue" id="Tiz-t4-XQ1"/>
-                        <segue destination="yNk-mZ-Fzc" kind="presentation" identifier="showDistanceListSegue" id="KbZ-N4-2i4"/>
+                        <segue destination="g26-YF-ZuF" kind="presentation" identifier="showDistanceListSegue" id="KbZ-N4-2i4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMp-uf-dTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1779.7101449275365" y="32.8125"/>
         </scene>
-        <!--Distance List View Controller-->
+        <!--Choose a distance-->
         <scene sceneID="Wby-mz-a0f">
             <objects>
                 <viewController id="yNk-mZ-Fzc" customClass="DistanceListViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
@@ -213,7 +213,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iy7-PK-JDk">
-                                <rect key="frame" x="0.0" y="100" width="414" height="742"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="distanceCell" id="05t-2g-4IO" customClass="DistanceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
@@ -224,29 +224,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="KUP-FH-QE9" kind="unwind" trigger="accessoryAction" unwindAction="unwindSegueToMainWithSender:" id="WcR-nn-wW2"/>
+                                            <segue destination="KUP-FH-QE9" kind="unwind" identifier="unwindToMainSegue" unwindAction="unwindSegueToMainWithSender:" id="aBV-FM-nGR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7h-1V-ytI">
-                                <rect key="frame" x="184" y="44" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="KUP-FH-QE9" kind="unwind" unwindAction="unwindSegueToMainWithSender:" id="ccU-bu-xoR"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HKE-F9-bSg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Iy7-PK-JDk" secondAttribute="bottom" id="Kf0-8S-KzR"/>
-                            <constraint firstItem="Iy7-PK-JDk" firstAttribute="top" secondItem="HKE-F9-bSg" secondAttribute="top" constant="100" id="M1b-Ym-2yp"/>
+                            <constraint firstItem="Iy7-PK-JDk" firstAttribute="top" secondItem="HKE-F9-bSg" secondAttribute="top" id="M1b-Ym-2yp"/>
                             <constraint firstItem="Iy7-PK-JDk" firstAttribute="leading" secondItem="HKE-F9-bSg" secondAttribute="leading" id="jRO-zO-1Wr"/>
                             <constraint firstItem="Iy7-PK-JDk" firstAttribute="trailing" secondItem="HKE-F9-bSg" secondAttribute="trailing" id="uMV-ls-grA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Choose a distance" largeTitleDisplayMode="always" id="ByD-tK-v4e"/>
                     <connections>
                         <outlet property="tableView" destination="Iy7-PK-JDk" id="uL1-H8-nOD"/>
                     </connections>
@@ -254,7 +247,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXt-I6-xBj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="KUP-FH-QE9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2598.5507246376815" y="-773.4375"/>
+            <point key="canvasLocation" x="3508.6956521739135" y="-773.4375"/>
         </scene>
         <!--Activity Done View Controller-->
         <scene sceneID="tRQ-iG-XSy">
@@ -1116,6 +1109,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48C-f8-Nmf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5398.5507246376819" y="1217.4107142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YUW-KB-GQ5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g26-YF-ZuF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KcB-Fg-lwh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yNk-mZ-Fzc" kind="relationship" relationship="rootViewController" id="iTb-Fi-XzZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTj-gD-s8T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2598.5507246376815" y="-773.4375"/>
         </scene>
     </scenes>
     <resources>
