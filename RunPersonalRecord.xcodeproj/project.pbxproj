@@ -35,6 +35,7 @@
 		ACBB3404250E4F37001D287E /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB3402250E4F37001D287E /* ActivityEntity+CoreDataClass.swift */; };
 		ACBB3405250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB3403250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift */; };
 		ACC57D4B249C162F00DD0B1F /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC57D4A249C162F00DD0B1F /* StopWatch.swift */; };
+		ACCFEA702560726A006D28C8 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCFEA6F2560726A006D28C8 /* Distance.swift */; };
 		ACE0B7AE245A1DE100BB3F97 /* LocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */; };
 		ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0B7AF245A218200BB3F97 /* Utilities.swift */; };
 		ACF4057C249EB007005BC266 /* Pace.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4057B249EB007005BC266 /* Pace.swift */; };
@@ -75,6 +76,7 @@
 		ACBB3402250E4F37001D287E /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACBB3403250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACC57D4A249C162F00DD0B1F /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		ACCFEA6F2560726A006D28C8 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsArray.swift; sourceTree = "<group>"; };
 		ACE0B7AF245A218200BB3F97 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		ACF4057B249EB007005BC266 /* Pace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pace.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		AC56B2A02452402F00F10921 /* RunPersonalRecord */ = {
 			isa = PBXGroup;
 			children = (
+				ACCFEA6E25607252006D28C8 /* Model */,
 				ACF40583249F6EB3005BC266 /* Cell */,
 				ACF40582249F6EA5005BC266 /* ViewController */,
 				ACF40581249F6E81005BC266 /* CoreData */,
@@ -146,6 +149,14 @@
 				AC56B2A72452402F00F10921 /* Main.storyboard */,
 			);
 			path = RunPersonalRecord;
+			sourceTree = "<group>";
+		};
+		ACCFEA6E25607252006D28C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACCFEA6F2560726A006D28C8 /* Distance.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		ACF40581249F6E81005BC266 /* CoreData */ = {
@@ -282,6 +293,7 @@
 				AC62568F255DD55F009F8001 /* DistanceTableViewCell.swift in Sources */,
 				AC56B2A42452402F00F10921 /* SceneDelegate.swift in Sources */,
 				AC2E339424B23A2B00E81DDE /* PaceTransformer.swift in Sources */,
+				ACCFEA702560726A006D28C8 /* Distance.swift in Sources */,
 				ACBB3404250E4F37001D287E /* ActivityEntity+CoreDataClass.swift in Sources */,
 				AC0FD15324714E8700A4D87C /* Activity.swift in Sources */,
 				AC0BE4932551F8E400DEC0E0 /* ContentViewController.swift in Sources */,

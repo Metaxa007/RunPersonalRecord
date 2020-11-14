@@ -30,7 +30,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ffh-Qb-Veo">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="56.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFt-ZR-N6Z">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFt-ZR-N6Z">
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="85" id="aWI-xz-Rss"/>
@@ -39,7 +39,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg. Pace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7S-5K-fE0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Avg. Pace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7S-5K-fE0">
                                                         <rect key="frame" x="0.0" y="36" width="85" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -529,7 +529,7 @@
                                         <constraint firstItem="CA2-Sp-JFZ" firstAttribute="centerX" secondItem="k0R-Ge-gnU" secondAttribute="centerX" id="kji-Jf-y9m"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <color key="backgroundColor" red="0.44688302279999997" green="0.75969988109999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.55506837369999995" green="0.77594912049999998" blue="0.80000716449999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <size key="customSize" width="150" height="150"/>
                                 <connections>
                                     <outlet property="distanceTextView" destination="CA2-Sp-JFZ" id="yfK-dm-0dw"/>
@@ -543,6 +543,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Records" id="FWn-Gw-3LO">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="TQu-YB-aA1">
+                            <color key="tintColor" red="0.55506837369999995" green="0.77594912049999998" blue="0.80000716449999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="nextScreen:" destination="yIM-3F-mLi" id="t6h-6o-tdD"/>
                                 <segue destination="IER-Sy-Vaf" kind="presentation" identifier="showAddRunVCsegue" id="G8Y-k1-31Q"/>
@@ -581,7 +582,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-2j-u8Q">
                                 <rect key="frame" x="20" y="750" width="374" height="51"/>
-                                <color key="backgroundColor" red="0.48123693470000001" green="0.71851330999999996" blue="0.2351528406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.55506837369999995" green="0.77594912049999998" blue="0.80000716449999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Iyg-pH-evn"/>
                                 </constraints>
