@@ -14,6 +14,7 @@ import AVFoundation
 
 private let activityDoneSegue = "activityDoneSegue"
 private let pageViewController = "pageViewController"
+private let showDistanceListSegue = "showDistanceListSegue"
 
 class ViewController: UIViewController {
     
@@ -31,19 +32,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseStopStack: UIStackView!
     
-    var pauseImage: UIImage {
+    private var pauseImage: UIImage {
         get {
             return UIImage(named: "Pause")! //Crash if image does not exist
         }
     }
-    var resumeImage: UIImage {
+    private var resumeImage: UIImage {
         get {
             return UIImage(named: "Resume")! //Crash if image does not exist
         }
     }
-    var timer: Timer?
-    var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
-    var passedKilometers = 0 { // Used as the key for dictonary "pace"
+    private var timer: Timer?
+    private var paceDict: Dictionary<Int, Double> = [Int : Double]() // Key is 1st, 2nd ... kilometer. Value is pace for this kilometer.
+    private var passedKilometers = 0 { // Used as the key for dictonary "pace"
         willSet {
             // Do not add 0km. It happens when passedKilometers is set to 0 in stopLocating.
             if newValue > 0 {
@@ -57,20 +58,20 @@ class ViewController: UIViewController {
             }
         }
     }
-    var restDistance = 0  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
+    private var restDistance = 0  // If user runs 1500m, than restDistance is 500m or 0.5km. For this distance is used other way to calculate pace.
                           // We need 2 different dictionaries, because collision may occur, if user wants to run for example 10010m.
                           // Pace 10km is 10 key in dictionary and 10m is 10 key as well.
-    var restDistancePaceDict: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
-    var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
+    private var restDistancePaceDict: Dictionary<Int, Double> = [Int : Double]() //Distance in meters, so int. Duration can be used as TimeInterval(typedef Double), so double.
+    private var durationWhenLastPaceCounted = 0.0 // Total duration when the last pace was saved. Needs to count pace,
                                           // i.e. duration - durationWhenLastPaceCounted = pace for the last kilometer
-    var distanceToRun = 0 {
+    private var distanceToRun = 0 {
         willSet {
             distanceTextField.text = String(Int(newValue))
             // divide by 10 for tests.
             restDistance = newValue % 1000
         }
     }
-    var completedDistance = 0 {
+    private var completedDistance = 0 {
         willSet {
             completedDistanceTextView.text = String(newValue)
 
@@ -82,16 +83,16 @@ class ViewController: UIViewController {
             }
         }
     }
-    var duration: NSDateInterval?
-    var startDate: Date?
-    var stopDate: Date?
-    var lastLocation: CLLocation?
-    var locationsAll: [[CLLocation]] = [] //Array contains arrays of Locations. Every array of Locations are locations between start and pause. In this case the last position
+    private var duration: NSDateInterval?
+    private var startDate: Date?
+    private var stopDate: Date?
+    private var lastLocation: CLLocation?
+    private var locationsAll: [[CLLocation]] = [] //Array contains arrays of Locations. Every array of Locations are locations between start and pause. In this case the last position
                                           //before pause and the first position after continue won't be connected. Otherwise the distance between these 2 points will be added
                                           //to the total distance.
-    var locationsInSection: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
-    var stopWatch = StopWatch()
-    var isActivityStarted = false {
+    private var locationsInSection: [CLLocation] = [] //Array of locations that is added to locationsAll after user clicks pause. Than should be erased.
+    private var stopWatch = StopWatch()
+    private var isActivityStarted = false {
         willSet {
             if newValue {
                 startLocating()
@@ -104,7 +105,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    var isPaused = false {
+    private var isPaused = false {
         willSet {
             if newValue {
                 pauseResumeButton.setImage(resumeImage, for: .normal)
@@ -114,7 +115,7 @@ class ViewController: UIViewController {
         }
     }
     
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +130,10 @@ class ViewController: UIViewController {
         
         distanceTextField.delegate = self
         stopWatch.delegate = self
+    }
+    
+    func setDistanceToRun(distance: Int) {
+        distanceToRun = distance
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -176,6 +181,14 @@ class ViewController: UIViewController {
     
     @IBAction func stopActivity(_ sender: UIButton) {
         isActivityStarted = false
+    }
+    
+    @IBAction func showDistanceList(_ sender: UIButton) {
+        performSegue(withIdentifier: showDistanceListSegue, sender: self)
+    }
+    
+    @IBAction func unwindSegueToMain(sender: UIStoryboardSegue) {
+        print("undwinding")
     }
     
     private func hidePauseStopStack() {
