@@ -23,20 +23,20 @@ class ActivityDoneInfoTableViewCell: UITableViewCell {
         switch index {
         case 0:
             iconImageView.image = UIImage(named: "Resume")
-            infoLabel.text = "Completed Distance"
+            infoLabel.text = NSLocalizedString("distance_completed", comment: "")
             infoDetailsLabel.text = Utilities.manager.getDistanceInKmAsString(distance: Int((activity.completedDistance)))
         case 1:
             iconImageView.image = UIImage(named: "Pause")
-            infoLabel.text = "Duration"
+            infoLabel.text = NSLocalizedString("duration", comment: "")
             infoDetailsLabel.text = Utilities.manager.getTimeInRegularFormat(duration: activity.duration)
         case 2:
             iconImageView.image = UIImage(named: "Stop")
-            infoLabel.text = "Avg. Pace"
+            infoLabel.text = NSLocalizedString("avg_pace", comment: "")
             infoDetailsLabel.text = Utilities.manager.getTimeInPaceFormat(duration: activity.duration / (Double(activity.completedDistance) / 1000))
         case 3:
             iconImageView.image = UIImage(named: "Stop")
-            infoLabel.text = "Avg. Speed"
-            infoDetailsLabel.text = "\(String(format: "%.1f", Double(activity.completedDistance) / activity.duration * 3.6)) km/h"
+            infoLabel.text = NSLocalizedString("avg_speed", comment: "")
+            infoDetailsLabel.text = "\(String(format: "%.1f", Double(activity.completedDistance) / activity.duration * 3.6)) \(NSLocalizedString("km_h", comment: ""))"
         default:
             return
         }

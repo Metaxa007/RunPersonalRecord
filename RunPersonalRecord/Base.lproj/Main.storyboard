@@ -184,8 +184,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" image="bolt.fill" catalog="system" id="Rz1-It-ypt"/>
                     <connections>
+                        <outlet property="averagePaceLabel" destination="J7S-5K-fE0" id="Kds-AS-S3i"/>
                         <outlet property="completedDistanceTextView" destination="GSw-5n-Fau" id="up1-sd-2o3"/>
+                        <outlet property="distanceLabel" destination="70P-cC-0R2" id="BTv-fm-xK7"/>
                         <outlet property="distanceTextField" destination="FFb-SR-EwO" id="sLo-h9-frQ"/>
+                        <outlet property="durationLabel" destination="TyO-Ug-9K0" id="8z0-9n-yfj"/>
                         <outlet property="durationTextView" destination="bR7-z4-OWx" id="IP9-cO-V27"/>
                         <outlet property="mapView" destination="L2x-5p-nTJ" id="LgJ-qs-4JC"/>
                         <outlet property="paceTextView" destination="PFt-ZR-N6Z" id="NNd-yj-CxA"/>

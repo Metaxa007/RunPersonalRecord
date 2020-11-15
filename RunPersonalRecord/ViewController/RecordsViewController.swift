@@ -25,7 +25,7 @@ class RecordsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Records \(Utilities.manager.getDistanceInKmAsString(distance: distance))"
+        title = "\(NSLocalizedString("records", comment: "")) \(Utilities.manager.getDistanceInKmAsString(distance: distance))"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

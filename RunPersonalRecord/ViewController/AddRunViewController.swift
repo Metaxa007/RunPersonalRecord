@@ -27,6 +27,8 @@ class AddRunViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        saveButton.setTitle(NSLocalizedString("save", comment: ""), for: .normal) 
+        
         roundCornersSaveButton()
         
         tableView.delegate = self
@@ -41,8 +43,8 @@ class AddRunViewController: UIViewController {
     
     @IBAction func saveButton(_ sender: UIButton) {
         if duration == 0 {
-            let alert = UIAlertController(title: nil, message: "Please enter a duration for your activity", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            let alert = UIAlertController(title: nil, message: NSLocalizedString("enter_duration", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return
@@ -68,7 +70,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             cell.setupCell(indexPath: indexPath.row)
             
             if indexPath.row == 0 {
-                cell.leftLabel.text = "Distance"
+                cell.leftLabel.text = NSLocalizedString("distance", comment: "")
                 cell.updateDistanceLabel()
                 
                 if traitCollection.userInterfaceStyle == .light {
@@ -77,7 +79,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.icon.image = UIImage(named: "Distance_dark")!
                 }
             } else if indexPath.row == 1 {
-                cell.leftLabel.text = "Duration"
+                cell.leftLabel.text = NSLocalizedString("duration", comment: "")
                 cell.updateTimeLabel()
                 
                 if traitCollection.userInterfaceStyle == .light {
@@ -86,7 +88,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.icon.image = UIImage(named: "Duration_dark")!
                 }
             } else if indexPath.row == 2 {
-                cell.leftLabel.text = "Date"
+                cell.leftLabel.text = NSLocalizedString("date", comment: "")
                 cell.updateDateLabel()
                 
                 if traitCollection.userInterfaceStyle == .light {

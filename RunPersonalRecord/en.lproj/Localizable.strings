@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  RunPersonalRecord
+
+  Created by Artsem Lemiasheuski on 15.11.20.
+  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
+*/
+
+"start" = "Start";
+"save" = "Save";
+"duration" = "duration";
+"avg_pace" = "Avg. Pace";
+"avg_speed" = "Avg. Speed";
+"marathon" = "Marathon";
+"halfmarathon" = "Halfmarathon";
+"mile" = "Mile";
+"distance_completed" = "Distance completed";
+"distance_not_completed" = "Distance not completed";
+"no_pace_data" = "No pace data is available";
+"enter_duration" = "Please enter a duration for your activity";
+"ok" = "OK";
+"distance" = "Distance";
+"date" = "Date";
+"km" = "km";
+"meter" = "m";
+"place" = "place";
+"km_h" = "km/h";
+"delete" = "Delete";
+"records" = "Records";
+"activity_not_saved" = "Completed distance is 0. Activity will not be saved.";
+"eliud_kipchoge" = "Eliud Kipchog";
+"moses_mosop" = "Moses Mosop";
+"geoffrey_kamworor" = "Geoffrey Kamworor";
+"haile_gebrselassie" = "Haile Gebrselassie";
+"joshua_cheptegei" = "Joshua Cheptegei";
+"daniel_komen" = "Daniel Komen";
+"hicham_el_guerrouj" = "Hicham El Guerrouj";
+"noah_ngenye" = "Noah Ngeny";
+"david_rudisha" = "David Rudisha";
+"wayde_van_niekerk" = "Wayde van Niekerk";
+"usain_bolt" = "Usain Bolt";

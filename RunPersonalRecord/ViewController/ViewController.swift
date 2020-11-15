@@ -31,6 +31,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var pauseResumeButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseStopStack: UIStackView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var averagePaceLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     private var pauseImage: UIImage {
         get {
@@ -127,6 +130,11 @@ class ViewController: UIViewController {
         addToolBarToKeyBoard()
         
         hidePauseStopStack()
+
+        startButton.setTitle(NSLocalizedString("start", comment: ""), for: .normal)
+        averagePaceLabel.text = NSLocalizedString("avg_pace", comment: "")
+        durationLabel.text = NSLocalizedString("duration", comment: "")
+        distanceLabel.text = NSLocalizedString("distance", comment: "") + "(" + NSLocalizedString("meter", comment: "") + ")"
         
         distanceTextField.delegate = self
         stopWatch.delegate = self
@@ -188,7 +196,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func unwindSegueToMain(sender: UIStoryboardSegue) {
-        print("undwinding")
     }
     
     private func hidePauseStopStack() {
@@ -272,7 +279,7 @@ class ViewController: UIViewController {
     
             performSegue(withIdentifier: activityDoneSegue, sender: self)
         } else {
-            let alert = UIAlertController(title: "Completed distance is 0. Activity will not be saved.", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("activity_not_saved", comment: ""), message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)

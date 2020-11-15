@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  RunPersonalRecord
+
+  Created by Artsem Lemiasheuski on 15.11.20.
+  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
+*/
+
+"start" = "Старт";
+"save" = "Сохранить";
+"duration" = "Время";
+"avg_pace" = "Сред. Пэйс";
+"avg_speed" = "Сред. Скорость";
+"marathon" = "Марафон";
+"halfmarathon" = "Полумарафон";
+"mile" = "Миля";
+"distance_completed" = "Дистанция закончена";
+"distance_not_completed" = "Дистанция не закончена";
+"no_pace_data" = "Нет пейс данных";
+"enter_duration" = "Пожалуйста, введите продолжительность активности";
+"ok" = "ОК";
+"distance" = "Дистанция";
+"date" = "Дата";
+"kilometer" = "км";
+"meter" = "м";
+"place" = "место";
+"km_h" = "км/ч";
+"delete" = "Удалить";
+"records" = "Рекорды";
+"activity_not_saved" = "Завершенная дистанция 0. Активность не будет сохранена.";
+"eliud_kipchoge" = "Элиуд Кипчоге";
+"moses_mosop" = "Moses Mosop";
+"geoffrey_kamworor" = "Geoffrey Kamworor";
+"haile_gebrselassie" = "Haile Gebrselassie";
+"joshua_cheptegei" = "Joshua Cheptegei";
+"daniel_komen" = "Daniel Komen";
+"hicham_el_guerrouj" = "Hicham El Guerrouj";
+"noah_ngenye" = "Noah Ngeny";
+"david_rudisha" = "David Rudisha";
+"wayde_van_niekerk" = "Wayde van Niekerk";
+"usain_bolt" = "Усейн Болт";

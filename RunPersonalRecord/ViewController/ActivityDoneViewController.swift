@@ -72,10 +72,10 @@ class ActivityDoneViewController: UIViewController {
     
     private func setDoneLabel() {
         if activity.completed {
-            doneLabel.text = "Distance completed"
+            doneLabel.text = NSLocalizedString("distance_completed", comment: "")
             doneLabel.textColor = UIColor.green
         } else {
-            doneLabel.text = "Distance not completed"
+            doneLabel.text = NSLocalizedString("distance_not_completed", comment: "")
             doneLabel.textColor = UIColor.red
         }
     }
@@ -119,7 +119,7 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
         } else if tableView == splitsTableView {
             if getSplitsNumberOfRows() == 0 {
                 let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-                emptyLabel.text = "No pace data is available"
+                emptyLabel.text = NSLocalizedString("no_pace_data", comment: "")
                 emptyLabel.textAlignment = .center
                 self.splitsTableView.backgroundView = emptyLabel
                 self.splitsTableView.separatorStyle = .none
