@@ -21,6 +21,8 @@ class RecordsCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reloadCollectionView()
+        
+        navigationItem.title = NSLocalizedString("records", comment: "")
     }
     
     private func getDistances() {

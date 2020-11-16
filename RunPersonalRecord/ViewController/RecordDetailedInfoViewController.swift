@@ -26,6 +26,12 @@ class RecordDetailedInfoViewController: UIViewController {
     @IBOutlet weak var avgSpeedLabel: UILabel!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var durationTextLabel: UILabel!
+    @IBOutlet weak var avgPaceTextLabel: UILabel!
+    @IBOutlet weak var avgSpeedTextLabel: UILabel!
+    @IBOutlet weak var splitsLabel: UILabel!
+    @IBOutlet weak var kilometersLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     
     private var activity: ActivityEntity!
     private var place: Int!
@@ -34,6 +40,14 @@ class RecordDetailedInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = NSLocalizedString("your_activity", comment: "")
+        durationTextLabel.text = NSLocalizedString("duration", comment: "")
+        avgPaceTextLabel.text = NSLocalizedString("avg_pace", comment: "")
+        avgSpeedTextLabel.text = NSLocalizedString("avg_speed", comment: "")
+        splitsLabel.text = NSLocalizedString("splits", comment: "")
+        kilometersLabel.text = NSLocalizedString("kilometer", comment: "")
+        paceLabel.text = NSLocalizedString("duration", comment: "")
         
         mapView.delegate = self
         tableView.delegate = self

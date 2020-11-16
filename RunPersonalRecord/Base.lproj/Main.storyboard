@@ -1051,13 +1051,19 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="avgPaceLabel" destination="MKe-85-NU8" id="mJb-lL-7rT"/>
+                        <outlet property="avgPaceTextLabel" destination="8za-jR-HfS" id="uSZ-CI-GUE"/>
                         <outlet property="avgSpeedLabel" destination="2tu-w8-rmd" id="sKA-Ca-PdU"/>
+                        <outlet property="avgSpeedTextLabel" destination="K8e-dK-6iv" id="p9b-ra-oan"/>
                         <outlet property="contentViewHeight" destination="jeK-nm-mgA" id="VoN-N5-kIh"/>
                         <outlet property="dateDistanceLabel" destination="rVY-Pe-djJ" id="8RC-Yz-I4J"/>
                         <outlet property="durationLabel" destination="GnF-kL-Dcx" id="JYU-w3-xdz"/>
+                        <outlet property="durationTextLabel" destination="8OG-bN-zQe" id="rUr-li-NGX"/>
+                        <outlet property="kilometersLabel" destination="lqp-fk-xWh" id="E2f-bz-YMj"/>
                         <outlet property="mapView" destination="ysm-AB-jSn" id="KHz-OD-0tb"/>
+                        <outlet property="paceLabel" destination="GOv-g0-Mbu" id="Evi-RH-Cew"/>
                         <outlet property="placeImageView" destination="Mg7-Fr-EJl" id="beP-5q-sTT"/>
                         <outlet property="placeLabel" destination="CL5-l5-ejz" id="ewe-vi-nf7"/>
+                        <outlet property="splitsLabel" destination="rhu-es-0gx" id="Tjw-om-sWd"/>
                         <outlet property="tableView" destination="3n5-56-1fT" id="O5m-Rj-WfO"/>
                         <outlet property="tableViewHeight" destination="p8X-n2-xsm" id="X5H-ic-XIL"/>
                         <segue destination="VFu-8L-KQf" kind="presentation" identifier="detailedMapInfoSegue" id="FN3-tK-ZMc"/>

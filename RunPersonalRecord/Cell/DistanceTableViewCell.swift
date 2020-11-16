@@ -54,11 +54,11 @@ class DistanceTableViewCell: UITableViewCell {
     func setupCell(distance: Distance, name: String, duration: String) {
         switch distance{
         case .Marathon:
-            distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue) + NSLocalizedString("marathon", comment: "")
+            distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue) + "-" + NSLocalizedString("marathon", comment: "")
         case .Halfmarathon:
-            distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue) + NSLocalizedString("halfmarathon", comment: "")
+            distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue) + "-" + NSLocalizedString("halfmarathon", comment: "")
         case .Mile:
-            distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue) + NSLocalizedString("mile", comment: "")
+            distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue) + "-" + NSLocalizedString("mile", comment: "")
         default:
             distanceLabel.text = Utilities.manager.getDistanceInKmAsString(distance: distance.rawValue)
         }
