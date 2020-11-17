@@ -54,7 +54,7 @@ class RecordDetailedInfoViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distanceToRun))) on \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
+        dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distanceToRun))) \(NSLocalizedString("on", comment: "")) \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
         placeLabel.text = "\(place ?? 0) \(NSLocalizedString("place", comment: ""))"
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
         avgSpeedLabel.text = getSpeedAsString()

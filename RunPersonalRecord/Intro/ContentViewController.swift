@@ -30,12 +30,13 @@ class ContentViewController: UIViewController {
         imageView.image = UIImage(named: imageFile)
         pageControl.numberOfPages = 3
         pageControl.currentPage = index
+        skipButton.setTitle(NSLocalizedString("skip", comment: ""), for: .normal)
         
         switch index {
         case 0,1:
-            nextButton.setTitle("Next", for: .normal)
+            nextButton.setTitle(NSLocalizedString("next", comment: ""), for: .normal)
         default:
-            nextButton.setTitle("Start", for: .normal)
+            nextButton.setTitle(NSLocalizedString("start", comment: ""), for: .normal)
         }
         
         setFontSizes()

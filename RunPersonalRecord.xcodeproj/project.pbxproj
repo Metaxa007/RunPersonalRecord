@@ -72,6 +72,11 @@
 		AC62568E255DD55F009F8001 /* DistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTableViewCell.swift; sourceTree = "<group>"; };
 		AC68C26E252BB96F001E460E /* ActivityDonePaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDonePaceTableViewCell.swift; sourceTree = "<group>"; };
 		AC77A798251FCDB00056A1C2 /* ActivityDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDoneViewController.swift; sourceTree = "<group>"; };
+		AC8DB9BF25645BFC00AB1230 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		AC8DB9C025645C0C00AB1230 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AC8DB9C125645D0B00AB1230 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		AC8DB9C225645D1300AB1230 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AC8DB9C525645DF300AB1230 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCollectionViewController.swift; sourceTree = "<group>"; };
 		AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACBB3402250E4F37001D287E /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -79,8 +84,6 @@
 		ACC57D4A249C162F00DD0B1F /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		ACCFEA6F2560726A006D28C8 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		ACCFEA8725615A14006D28C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ACCFEA8A25615A19006D28C8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ACCFEA8B25615A1B006D28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsArray.swift; sourceTree = "<group>"; };
 		ACE0B7AF245A218200BB3F97 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		ACF4057B249EB007005BC266 /* Pace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pace.swift; sourceTree = "<group>"; };
@@ -323,6 +326,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				AC56B2A82452402F00F10921 /* Base */,
+				AC8DB9BF25645BFC00AB1230 /* ru */,
+				AC8DB9C125645D0B00AB1230 /* de */,
+				AC8DB9C525645DF300AB1230 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -339,8 +345,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				ACCFEA8725615A14006D28C8 /* en */,
-				ACCFEA8A25615A19006D28C8 /* de */,
-				ACCFEA8B25615A1B006D28C8 /* ru */,
+				AC8DB9C025645C0C00AB1230 /* ru */,
+				AC8DB9C225645D1300AB1230 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
