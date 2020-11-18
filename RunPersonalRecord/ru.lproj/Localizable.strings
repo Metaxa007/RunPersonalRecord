@@ -41,6 +41,9 @@
 "details" = "Подробней";
 "splits" = "Сплит";
 "on" = "";
+"hour" = "ч";
+"minute" = "м";
+"second" = "с";
 "eliud_kipchoge" = "Элиуд Кипчоге";
 "moses_mosop" = "Мозес Мосоп";
 "geoffrey_kamworor" = "Джеффри Камворор";

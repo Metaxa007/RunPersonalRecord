@@ -8,7 +8,7 @@
 
 "intro_header_1" = "Choose a distance";
 "intro_header_2" = "Run as fast as you can!";
-"intro_header_3" = "Records Tabel";
+"intro_header_3" = "Records Table";
 "intro_description_1" = "Enter a distance you desire to set a record for or choose one from the list of the best results human ever run";
 "intro_description_2" = "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance";
 "intro_description_3" = "Find, share and investigate your best running results in the records table";
@@ -29,7 +29,7 @@
 "ok" = "OK";
 "distance" = "Distance";
 "date" = "Date";
-"km" = "KM";
+"kilometer" = "KM";
 "meter" = "m";
 "place" = "place";
 "km_h" = "km/h";
@@ -41,6 +41,9 @@
 "splits" = "Splits";
 "choose_distance" = "Choose a distance";
 "on" = "on";
+"hour" = "h";
+"minute" = "m";
+"second" = "s";
 "eliud_kipchoge" = "Eliud Kipchog";
 "moses_mosop" = "Moses Mosop";
 "geoffrey_kamworor" = "Geoffrey Kamworor";
