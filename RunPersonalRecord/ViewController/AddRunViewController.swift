@@ -27,6 +27,7 @@ class AddRunViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = NSLocalizedString("add_run", comment: "")
         saveButton.setTitle(NSLocalizedString("save", comment: ""), for: .normal) 
         
         roundCornersSaveButton()

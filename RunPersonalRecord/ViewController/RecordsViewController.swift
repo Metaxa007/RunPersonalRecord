@@ -96,7 +96,7 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, view, completion) in
+        let deleteAction = UIContextualAction(style: .normal, title: NSLocalizedString("delete", comment: "")) { [weak self] (action, view, completion) in
             guard let weakSelf = self else { return }
             
             CoreDataManager.manager.deleteActivity(activity: weakSelf.sortedActivites[indexPath.row])

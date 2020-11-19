@@ -9,9 +9,9 @@
 "intro_header_1" = "Choose a distance";
 "intro_header_2" = "Run as fast as you can!";
 "intro_header_3" = "Records Table";
-"intro_description_1" = "Enter a distance you desire to set a record for or choose one from the list of the best results human ever run";
-"intro_description_2" = "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance";
-"intro_description_3" = "Find, share and investigate your best running results in the records table";
+"intro_description_1" = "Enter a distance you desire to set a record for or choose one from the list of the best results human ever run.";
+"intro_description_2" = "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance.";
+"intro_description_3" = "Find, share and investigate your best running results in the records table.";
 "skip" = "skip";
 "next" = "next";
 "start" = "Start";
@@ -44,6 +44,7 @@
 "hour" = "h";
 "minute" = "m";
 "second" = "s";
+"add_run" = "Add your run";
 "eliud_kipchoge" = "Eliud Kipchog";
 "moses_mosop" = "Moses Mosop";
 "geoffrey_kamworor" = "Geoffrey Kamworor";
@@ -57,7 +58,7 @@
 "usain_bolt" = "Usain Bolt";
 "marathon_time" = "2h:01m:39s";
 "30km_time" = "1h:26m:47s";
-"25km_time" = "1h:12n:25s";
+"25km_time" = "1h:12m:25s";
 "halfmarathon_time" = "58m:01s";
 "20km_time" = "56m:25s";
 "15km_time" = "41m:05s";
