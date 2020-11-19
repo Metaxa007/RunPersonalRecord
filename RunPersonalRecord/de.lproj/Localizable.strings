@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  RunPersonalRecord
+
+  Created by Artsem Lemiasheuski on 15.11.20.
+  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
+*/
+
+"intro_header_1" = "Distanz wählen";
+"intro_header_2" = "Renn so schnell du kannst!";
+"intro_header_3" = "Rekords-Tabelle";
+"intro_description_1" = "Geben Sie eine Distanz ein, für die Sie einen Rekord aufstellen möchten oder wählen Sie eine aus der Liste der besten Ergebnisse aus.";
+"intro_description_2" = "Während des Laufens werden Sie von einem Sprachassistenten begleitet, der Sie nach Beendigung der Strecke auch informiert.";
+"intro_description_3" = "Finden, teilen und untersuchen Sie Ihre besten Laufergebnisse in der Rekords-Tabelle.";
+"skip" = "Überspringen";
+"next" = "Weiter";
+"start" = "Starten";
+"save" = "Speichern";
+"duration" = "Dauer";
+"avg_pace" = "Durchschn. Tempo";
+"avg_speed" = "Durschn. Geschw.";
+"marathon" = "Marathon";
+"halfmarathon" = "Halbmarathon";
+"mile" = "Meile";
+"distance_completed" = "Distanz beendet";
+"distance_not_completed" = "Distance nicht beendet";
+"no_pace_data" = "Keine Tempodaten verfügbar";
+"enter_duration" = "Bitte geben Sie eine Dauer für Ihre Aktivität ein";
+"ok" = "OK";
+"distance" = "Distanz";
+"date" = "Datum";
+"kilometer" = "KM";
+"meter" = "m";
+"place" = "Platz";
+"km_h" = "km/Std.";
+"delete" = "Löschen";
+"records" = "Rekorde";
+"activity_not_saved" = "Die abgeschlossene Distanz ist 0. Die Aktivität wird nicht gespeichert.";
+"your_activity" = "Deine Aktivität";
+"details" = "Details";
+"splits" = "Splits";
+"choose_distance" = "Wählen Sie Distanz ";
+"on" = "am";
+"hour" = "Std.";
+"minute" = "M";
+"second" = "S";
+"add_run" = "Ergebnis hinzufügen";
+"eliud_kipchoge" = "Eliud Kipchoge";
+"moses_mosop" = "Moses Mosop";
+"geoffrey_kamworor" = "Geoffrey Kamworor";
+"haile_gebrselassie" = "Haile Gebrselassie";
+"joshua_cheptegei" = "Joshua Cheptegei";
+"daniel_komen" = "Daniel Komen";
+"hicham_el_guerrouj" = "Hicham El Guerrouj";
+"noah_ngenye" = "Noah Ngeny";
+"david_rudisha" = "David Rudisha";
+"wayde_van_niekerk" = "Wayde van Niekerk";
+"usain_bolt" = "Usain Bolt";
+"marathon_time" = "2s:01m:39s";
+"30km_time" = "1s:26m:47s";
+"25km_time" = "1s:12m:25s";
+"halfmarathon_time" = "58m:01s";
+"20km_time" = "56m:25s";
+"15km_time" = "41m:05s";
+"10km_time" = "26m:11s";
+"5km_time" = "12m:35s";
+"3km_time" = "7m:2s";
+"2km_time" = "4m:44s";
+"mile_time" = "3m:43s";
+"1.5km_time" = "3m:26s";
+"1km_time" = "2m:11s";
+"800m_time" = "1m:40s";
+"400m_time" = "43.03s";
+"200m_time" = "19.19s";
+"100m_time" = "9.58s";

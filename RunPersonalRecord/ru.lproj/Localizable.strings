@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  RunPersonalRecord
+
+  Created by Artsem Lemiasheuski on 15.11.20.
+  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
+*/
+
+"intro_header_1" = "Выберите дистанцию";
+"intro_header_2" = "Бегите как можно быстрее!";
+"intro_header_3" = "Таблица рекордов";
+"intro_description_1" = "Введите дистанцию, на который в хотели бы поставить рекород или выберите желаемую из списка с лучшими результатами человечества.";
+"intro_description_2" = "Во время бега Вас будет сопровождать голосовой ассистент, который так же сообщит, как только вы закончите дистанцию.";
+"intro_description_3" = "Найдите, поделитесь и исследуйте ваш лучший результат в беге в таблице рекордов.";
+"skip" = "Пропустить";
+"next" = "Дальше";
+"start" = "Старт";
+"save" = "Сохранить";
+"duration" = "Время";
+"avg_pace" = "Сред. Темп";
+"avg_speed" = "Сред. Скорость";
+"marathon" = "Марафон";
+"halfmarathon" = "Полумарафон";
+"mile" = "Миля";
+"distance_completed" = "Дистанция закончена";
+"distance_not_completed" = "Дистанция не закончена";
+"no_pace_data" = "Нет данных о темпе";
+"enter_duration" = "Пожалуйста, введите продолжительность активности";
+"ok" = "ОК";
+"distance" = "Дистанция";
+"date" = "Дата";
+"kilometer" = "КМ";
+"meter" = "м";
+"place" = "место";
+"km_h" = "км/ч";
+"delete" = "Удалить";
+"records" = "Рекорды";
+"activity_not_saved" = "Завершенная дистанция 0. Активность не будет сохранена.";
+"your_activity" = "Ваша активность";
+"choose_distance" = "Выберите дистанцию";
+"details" = "Подробней";
+"splits" = "Сплит";
+"on" = "";
+"hour" = "ч";
+"minute" = "м";
+"second" = "с";
+"add_run" = "Добавьте свой результат";
+"eliud_kipchoge" = "Элиуд Кипчоге";
+"moses_mosop" = "Мозес Мосоп";
+"geoffrey_kamworor" = "Джеффри Камворор";
+"haile_gebrselassie" = "Хайле Гебреселассие";
+"joshua_cheptegei" = "Джошуа Чептегеи";
+"daniel_komen" = "Даниэль Комен";
+"hicham_el_guerrouj" = "Хишам Эль-Герруж";
+"noah_ngenye" = "Ной Нгени";
+"david_rudisha" = "Дэвид Рудиша";
+"wayde_van_niekerk" = "Уэйд Ван Никерк";
+"usain_bolt" = "Усейн Болт";
+"marathon_time" = "2ч:01м:39с";
+"30km_time" = "1ч:26м:47м";
+"25km_time" = "1ч:12м:25с";
+"halfmarathon_time" = "58м:01с";
+"20km_time" = "56м:25с";
+"15km_time" = "41м:05с";
+"10km_time" = "26м:11с";
+"5km_time" = "12м:35с";
+"3km_time" = "7м:2с";
+"2km_time" = "4м:44с";
+"mile_time" = "3м:43с";
+"1.5km_time" = "3м:26с";
+"1km_time" = "2м:11с";
+"800m_time" = "1м:40с";
+"400m_time" = "43.03с";
+"200m_time" = "19.19с";
+"100m_time" = "9.58с";

@@ -26,6 +26,12 @@ class RecordDetailedInfoViewController: UIViewController {
     @IBOutlet weak var avgSpeedLabel: UILabel!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var durationTextLabel: UILabel!
+    @IBOutlet weak var avgPaceTextLabel: UILabel!
+    @IBOutlet weak var avgSpeedTextLabel: UILabel!
+    @IBOutlet weak var splitsLabel: UILabel!
+    @IBOutlet weak var kilometersLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     
     private var activity: ActivityEntity!
     private var place: Int!
@@ -35,13 +41,21 @@ class RecordDetailedInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = NSLocalizedString("your_activity", comment: "")
+        durationTextLabel.text = NSLocalizedString("duration", comment: "")
+        avgPaceTextLabel.text = NSLocalizedString("avg_pace", comment: "")
+        avgSpeedTextLabel.text = NSLocalizedString("avg_speed", comment: "")
+        splitsLabel.text = NSLocalizedString("splits", comment: "")
+        kilometersLabel.text = NSLocalizedString("kilometer", comment: "")
+        paceLabel.text = NSLocalizedString("duration", comment: "")
+        
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distanceToRun))) on \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
-        placeLabel.text = "\(place ?? 0) place"
+        dateDistanceLabel.text = "\(Utilities.manager.getDistanceInKmAsString(distance: Int(activity.distanceToRun))) \(NSLocalizedString("on", comment: "")) \(Utilities.manager.getDateAsddMMMyyyy(date: activity.date ?? Date()))"
+        placeLabel.text = "\(place ?? 0) \(NSLocalizedString("place", comment: ""))"
         durationLabel.text = "\(Utilities.manager.getTimeInRegularFormat(duration: activity.duration))"
         avgSpeedLabel.text = getSpeedAsString()
         avgPaceLabel.text = getPaceAsString()
@@ -90,7 +104,7 @@ class RecordDetailedInfoViewController: UIViewController {
     }
     
     private func getSpeedAsString() -> String {
-        return "\(String(format: "%.1f", Double(activity.completedDistance) / activity.duration * 3.6)) km/h"
+        return "\(String(format: "%.1f", Double(activity.completedDistance) / activity.duration * 3.6)) \(NSLocalizedString("km_h", comment: ""))"
     }
     
     private func getPaceAsString() -> String {
@@ -135,7 +149,7 @@ extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if getNumberOfRows() == 0 {
             let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-            emptyLabel.text = "No pace data is available"
+            emptyLabel.text = NSLocalizedString("no_pace_data", comment: "")
             emptyLabel.textAlignment = .center
             self.tableView.backgroundView = emptyLabel
             self.tableView.separatorStyle = .none

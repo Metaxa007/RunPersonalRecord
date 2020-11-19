@@ -11,10 +11,10 @@ import UIKit
 class PageViewController: UIPageViewController {
     let contentViewController = "contentViewController"
     
-    var headersArray = ["Choose a distance", "Run as fast as you can!", "Records Tabel"]
-    var subHeadersArray = ["Enter a distance you desire to set a record for or choose one from the list of the best results human ever run",
-                           "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance",
-                           "Find, share and investigate your best running results in the records table"]
+    var headersArray = [NSLocalizedString("intro_header_1", comment: ""), NSLocalizedString("intro_header_2", comment: ""), NSLocalizedString("intro_header_3", comment: "")]
+    var subHeadersArray = [NSLocalizedString("intro_description_1", comment: ""),
+                           NSLocalizedString("intro_description_2", comment: ""),
+                           NSLocalizedString("intro_description_3", comment: "")]
     var imagesArray = ["Intro_1", "Intro_2", "Intro_3"]
     
     override func viewDidLoad() {

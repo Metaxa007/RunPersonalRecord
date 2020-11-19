@@ -79,9 +79,9 @@ struct Utilities {
         formatter.maximumFractionDigits = 2
         
         if distance >= 1000 {
-            return "\(formatter.string(from: NSNumber(value: Double(distance) / 1000)) ?? "") km"
+            return "\(formatter.string(from: NSNumber(value: Double(distance) / 1000)) ?? "") \(NSLocalizedString("kilometer", comment: ""))"
         } else {
-            return "\(distance) m"
+            return "\(distance) \(NSLocalizedString("meter", comment: ""))"
         }
     }
 }

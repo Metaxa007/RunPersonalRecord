@@ -191,11 +191,11 @@ extension AddRunTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
             }
         case 1:
             if component == 0 {
-                return "\(row)h"
+                return "\(row)\(NSLocalizedString("hour", comment: ""))"
             } else if component == 1 {
-                return "\(row)m"
+                return "\(row)\(NSLocalizedString("minute", comment: ""))"
             } else {
-                return "\(row)s"
+                return "\(row)\(NSLocalizedString("second", comment: ""))"
             }
         default:
             return ""

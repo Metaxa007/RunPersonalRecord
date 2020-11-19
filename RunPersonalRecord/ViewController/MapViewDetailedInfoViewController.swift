@@ -21,6 +21,8 @@ class MapViewDetailedInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = NSLocalizedString("details", comment: "")
+        
         mapView.delegate = self
 
         if let locationsAll = activity.activityAttribute?.getLocations() {

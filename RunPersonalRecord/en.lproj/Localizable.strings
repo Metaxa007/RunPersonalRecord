@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  RunPersonalRecord
+
+  Created by Artsem Lemiasheuski on 15.11.20.
+  Copyright © 2020 metaxa.RunPersonalRecord. All rights reserved.
+*/
+
+"intro_header_1" = "Choose a distance";
+"intro_header_2" = "Run as fast as you can!";
+"intro_header_3" = "Records Table";
+"intro_description_1" = "Enter a distance you desire to set a record for or choose one from the list of the best results human ever run.";
+"intro_description_2" = "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance.";
+"intro_description_3" = "Find, share and investigate your best running results in the records table.";
+"skip" = "skip";
+"next" = "next";
+"start" = "Start";
+"save" = "Save";
+"duration" = "duration";
+"avg_pace" = "Avg. Pace";
+"avg_speed" = "Avg. Speed";
+"marathon" = "Marathon";
+"halfmarathon" = "Halfmarathon";
+"mile" = "Mile";
+"distance_completed" = "Distance completed";
+"distance_not_completed" = "Distance not completed";
+"no_pace_data" = "No pace data is available";
+"enter_duration" = "Please enter a duration for your activity";
+"ok" = "OK";
+"distance" = "Distance";
+"date" = "Date";
+"kilometer" = "KM";
+"meter" = "m";
+"place" = "place";
+"km_h" = "km/h";
+"delete" = "Delete";
+"records" = "Records";
+"activity_not_saved" = "Completed distance is 0. Activity will not be saved.";
+"your_activity" = "Your activity";
+"details" = "Details";
+"splits" = "Splits";
+"choose_distance" = "Choose a distance";
+"on" = "on";
+"hour" = "h";
+"minute" = "m";
+"second" = "s";
+"add_run" = "Add your run";
+"eliud_kipchoge" = "Eliud Kipchog";
+"moses_mosop" = "Moses Mosop";
+"geoffrey_kamworor" = "Geoffrey Kamworor";
+"haile_gebrselassie" = "Haile Gebrselassie";
+"joshua_cheptegei" = "Joshua Cheptegei";
+"daniel_komen" = "Daniel Komen";
+"hicham_el_guerrouj" = "Hicham El Guerrouj";
+"noah_ngenye" = "Noah Ngeny";
+"david_rudisha" = "David Rudisha";
+"wayde_van_niekerk" = "Wayde van Niekerk";
+"usain_bolt" = "Usain Bolt";
+"marathon_time" = "2h:01m:39s";
+"30km_time" = "1h:26m:47s";
+"25km_time" = "1h:12m:25s";
+"halfmarathon_time" = "58m:01s";
+"20km_time" = "56m:25s";
+"15km_time" = "41m:05s";
+"10km_time" = "26m:11s";
+"5km_time" = "12m:35s";
+"3km_time" = "7m:2s";
+"2km_time" = "4m:44s";
+"mile_time" = "3m:43s";
+"1.5km_time" = "3m:26s";
+"1km_time" = "2m:11s";
+"800m_time" = "1m:40s";
+"400m_time" = "43.03s";
+"200m_time" = "19.19s";
+"100m_time" = "9.58s";
