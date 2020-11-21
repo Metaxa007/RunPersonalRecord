@@ -32,7 +32,8 @@
 		AC77A799251FCDB00056A1C2 /* ActivityDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77A798251FCDB00056A1C2 /* ActivityDoneViewController.swift */; };
 		AC8E68C024B915DF0080F175 /* RecordsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */; };
 		AC8E68C224BA26C40080F175 /* RecordsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */; };
-		ACB7935525687394003123E3 /* AppTyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7935425687394003123E3 /* AppTyp.swift */; };
+		ACB7935525687394003123E3 /* AppType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7935425687394003123E3 /* AppType.swift */; };
+		ACB7936C25699DEC003123E3 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7936B25699DEC003123E3 /* ConfigurationManager.swift */; };
 		ACBB3404250E4F37001D287E /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB3402250E4F37001D287E /* ActivityEntity+CoreDataClass.swift */; };
 		ACBB3405250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB3403250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift */; };
 		ACC57D4B249C162F00DD0B1F /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC57D4A249C162F00DD0B1F /* StopWatch.swift */; };
@@ -80,7 +81,8 @@
 		AC8DB9C525645DF300AB1230 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		AC8E68BF24B915DF0080F175 /* RecordsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCollectionViewController.swift; sourceTree = "<group>"; };
 		AC8E68C124BA26C40080F175 /* RecordsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCollectionViewCell.swift; sourceTree = "<group>"; };
-		ACB7935425687394003123E3 /* AppTyp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTyp.swift; sourceTree = "<group>"; };
+		ACB7935425687394003123E3 /* AppType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppType.swift; sourceTree = "<group>"; };
+		ACB7936B25699DEC003123E3 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		ACBB3402250E4F37001D287E /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ACBB3403250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACC57D4A249C162F00DD0B1F /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
@@ -147,7 +149,8 @@
 				ACF40581249F6E81005BC266 /* CoreData */,
 				AC0BE4982551F90D00DEC0E0 /* Intro */,
 				AC56B2A12452402F00F10921 /* AppDelegate.swift */,
-				ACB7935425687394003123E3 /* AppTyp.swift */,
+				ACB7935425687394003123E3 /* AppType.swift */,
+				ACB7936B25699DEC003123E3 /* ConfigurationManager.swift */,
 				ACE0B7AD245A1DE100BB3F97 /* LocationsArray.swift */,
 				ACC57D4A249C162F00DD0B1F /* StopWatch.swift */,
 				ACE0B7AF245A218200BB3F97 /* Utilities.swift */,
@@ -295,8 +298,9 @@
 				AC56B2A22452402F00F10921 /* AppDelegate.swift in Sources */,
 				AC68C26F252BB96F001E460E /* ActivityDonePaceTableViewCell.swift in Sources */,
 				AC48415324F459A5007B98E1 /* RecordsTableViewCell.swift in Sources */,
-				ACB7935525687394003123E3 /* AppTyp.swift in Sources */,
+				ACB7935525687394003123E3 /* AppType.swift in Sources */,
 				AC57348325058414001F19DC /* PaceTableViewCell.swift in Sources */,
+				ACB7936C25699DEC003123E3 /* ConfigurationManager.swift in Sources */,
 				ACBB3405250E4F37001D287E /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				AC528C07252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift in Sources */,
 				ACE0B7B0245A218200BB3F97 /* Utilities.swift in Sources */,
@@ -495,7 +499,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = metaxa.RunPersonalRecord;
 				PRODUCT_NAME = RunPersonalRecord;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -513,7 +516,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = metaxa.RunPersonalRecord;
 				PRODUCT_NAME = RunPersonalRecord;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -597,7 +599,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = metaxa.RunPersonalRecord;
 				PRODUCT_NAME = RunPersonalRecord;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -675,7 +676,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = metaxa.RunPersonalRecord;
 				PRODUCT_NAME = RunPersonalRecord;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
