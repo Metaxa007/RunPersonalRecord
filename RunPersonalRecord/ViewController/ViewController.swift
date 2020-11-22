@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 import AVFoundation
+import GoogleMobileAds
 
 private let activityDoneSegue = "activityDoneSegue"
 private let pageViewController = "pageViewController"
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var averagePaceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     private var pauseImage: UIImage {
         get {
@@ -126,9 +128,10 @@ class ViewController: UIViewController {
         // ActivityTransformer.register()
         // PaceTransformer.register()
         setUpMapView()
+        setUpBannerView()
+        loadBannerAd()
         roundCornersStartButton()
         addToolBarToKeyBoard()
-        
         hidePauseStopStack()
 
         startButton.setTitle(NSLocalizedString("start", comment: ""), for: .normal)
@@ -147,9 +150,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let userDefaults = UserDefaults.standard
-
-        userDefaults.setValue(false, forKey: "wasIntroWatched")
-
         let wasIntroWatched = userDefaults.bool(forKey: "wasIntroWatched")
         
         guard !wasIntroWatched else { return }
@@ -161,6 +161,7 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.timer?.invalidate()
+        
     }
     
     @IBAction func startStopLocating(_ sender: UIButton) {
@@ -227,6 +228,12 @@ class ViewController: UIViewController {
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.delegate = self
+    }
+    
+    private func setUpBannerView() {
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-5327085666656530/2596989008"
+        bannerView.rootViewController = self
     }
     
     private func startLocating() {
@@ -418,9 +425,24 @@ class ViewController: UIViewController {
         mapView.addOverlay(polyline)
     }
     
+    private func loadBannerAd() {
+        if ConfigurationManager.manager.configuration == .full {
+            let frame = view.frame.inset(by: view.safeAreaInsets)
+            let viewWidth = frame.size.width
+
+            print("Tag1 frame \(frame.height)")
+            print("Tag1 frame \(frame.size.width)")
+            print("Tag1 frame \(frame.size.height)")
+            bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+            bannerView.load(GADRequest())
+        } else {
+//            hideBannerView()
+        }
+    }
+    
 }
 
-extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
+extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate, GADBannerViewDelegate {
     //MARK:UITextFieldDelegate
     //range {1,0} 1 - starting location, 0 - length to replace. Replacement string normally just 1 character that user typed.
     //User type 5. Range {0,0}. Current text "". First 0 is the starting location, because the current string is empty.
@@ -475,6 +497,39 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
     // MARK: StopWatchDelegate -
     func stopWatch(time: String) {
         durationTextView.text = time
+    }
+    
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("adViewDidReceiveAd")
+    }
+
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+        didFailToReceiveAdWithError error: GADRequestError) {
+      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("adViewWillPresentScreen")
+    }
+
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewWillDismissScreen")
+    }
+
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewDidDismissScreen")
+    }
+
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+      print("adViewWillLeaveApplication")
     }
     
 }
