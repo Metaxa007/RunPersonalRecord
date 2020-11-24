@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var averagePaceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
     
     private var pauseImage: UIImage {
         get {
@@ -232,7 +233,7 @@ class ViewController: UIViewController {
     
     private func setUpBannerView() {
         bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-5327085666656530/2596989008"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
     }
     
@@ -426,18 +427,20 @@ class ViewController: UIViewController {
     }
     
     private func loadBannerAd() {
-        if ConfigurationManager.manager.configuration == .full {
+        if ConfigurationManager.manager.configuration == .lite {
             let frame = view.frame.inset(by: view.safeAreaInsets)
             let viewWidth = frame.size.width
 
-            print("Tag1 frame \(frame.height)")
-            print("Tag1 frame \(frame.size.width)")
-            print("Tag1 frame \(frame.size.height)")
             bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
             bannerView.load(GADRequest())
         } else {
-//            hideBannerView()
+            hideBannerView()
         }
+    }
+    
+    private func hideBannerView() {
+        bannerView.isHidden = true
+        bannerViewHeightConstraint.constant = 0.0
     }
     
 }
