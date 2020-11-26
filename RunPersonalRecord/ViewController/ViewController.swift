@@ -232,8 +232,9 @@ class ViewController: UIViewController {
     }
     
     private func setUpBannerView() {
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["818ebdf2eceaf58ad6bcb35f44354799"]
         bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-5327085666656530/5070183063"
         bannerView.rootViewController = self
     }
     
