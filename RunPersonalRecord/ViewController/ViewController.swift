@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 import AVFoundation
+import GoogleMobileAds
 
 private let activityDoneSegue = "activityDoneSegue"
 private let pageViewController = "pageViewController"
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var averagePaceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
     
     private var pauseImage: UIImage {
         get {
@@ -126,9 +129,10 @@ class ViewController: UIViewController {
         // ActivityTransformer.register()
         // PaceTransformer.register()
         setUpMapView()
+        setUpBannerView()
+        loadBannerAd()
         roundCornersStartButton()
         addToolBarToKeyBoard()
-        
         hidePauseStopStack()
 
         startButton.setTitle(NSLocalizedString("start", comment: ""), for: .normal)
@@ -147,9 +151,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let userDefaults = UserDefaults.standard
-
-        userDefaults.setValue(false, forKey: "wasIntroWatched")
-
         let wasIntroWatched = userDefaults.bool(forKey: "wasIntroWatched")
         
         guard !wasIntroWatched else { return }
@@ -161,6 +162,7 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.timer?.invalidate()
+        
     }
     
     @IBAction func startStopLocating(_ sender: UIButton) {
@@ -227,6 +229,13 @@ class ViewController: UIViewController {
         mapView.showsScale = true
         mapView.showsUserLocation = true
         mapView.delegate = self
+    }
+    
+    private func setUpBannerView() {
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["818ebdf2eceaf58ad6bcb35f44354799"]
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-5327085666656530/5070183063"
+        bannerView.rootViewController = self
     }
     
     private func startLocating() {
@@ -418,9 +427,26 @@ class ViewController: UIViewController {
         mapView.addOverlay(polyline)
     }
     
+    private func loadBannerAd() {
+        if ConfigurationManager.manager.configuration == .lite {
+            let frame = view.frame.inset(by: view.safeAreaInsets)
+            let viewWidth = frame.size.width
+
+            bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+            bannerView.load(GADRequest())
+        } else {
+            hideBannerView()
+        }
+    }
+    
+    private func hideBannerView() {
+        bannerView.isHidden = true
+        bannerViewHeightConstraint.constant = 0.0
+    }
+    
 }
 
-extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate {
+extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, StopWatchDelegate, GADBannerViewDelegate {
     //MARK:UITextFieldDelegate
     //range {1,0} 1 - starting location, 0 - length to replace. Replacement string normally just 1 character that user typed.
     //User type 5. Range {0,0}. Current text "". First 0 is the starting location, because the current string is empty.
@@ -477,5 +503,12 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
         durationTextView.text = time
     }
     
+    // MARK: GADBannerViewDelegate -
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        
+        hideBannerView()
+    }
 }
 
