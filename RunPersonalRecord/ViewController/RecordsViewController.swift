@@ -30,7 +30,7 @@ class RecordsViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         activities = CoreDataManager.manager.getAllEntities(for: distance) ?? []
-
+        
         sortActivitesByTime()
     }
     
@@ -105,8 +105,19 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
             completion(true)
         }
         
-      deleteAction.backgroundColor = UIColor.red
+        deleteAction.backgroundColor = UIColor(red: 212/256, green: 46/256, blue: 42/256, alpha: 1.0)
         
-      return UISwipeActionsConfiguration(actions: [deleteAction])
+        let shareAction = UIContextualAction(style: .normal, title: "Поделиться") { [weak self] (action, view, completion) in
+            guard let weakSelf = self else { return }
+            
+            let activityVC = UIActivityViewController(activityItems: ["Your ran so good. Your are amazing. Sent from RunPersonalRecord"], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = weakSelf.view
+            
+            weakSelf.present(activityVC, animated: true, completion: nil)
+        }
+        
+        shareAction.backgroundColor = UIColor(red: 141/256, green: 206/256, blue: 212/256, alpha: 1.0)
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
     }
 }
