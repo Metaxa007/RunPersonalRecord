@@ -110,6 +110,11 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
         let shareAction = UIContextualAction(style: .normal, title: "Поделиться") { [weak self] (action, view, completion) in
             guard let weakSelf = self else { return }
             
+            let activity = weakSelf.sortedActivites[indexPath.row]
+            let distance = Utilities.manager.getDistanceInKmAsString(distance: Int(activity.completedDistance))
+            let time = Utilities.manager.getTimeInRegularFormat(duration: activity.duration)
+            print(time)
+            
             let activityVC = UIActivityViewController(activityItems: ["Your ran so good. Your are amazing. Sent from RunPersonalRecord"], applicationActivities: nil)
             activityVC.popoverPresentationController?.sourceView = weakSelf.view
             
