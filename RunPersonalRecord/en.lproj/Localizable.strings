@@ -45,6 +45,8 @@
 "minute" = "m";
 "second" = "s";
 "add_run" = "Add your run";
+"share" = "Share";
+"text_to_share" = "I ran %@ in %@.";
 "eliud_kipchoge" = "Eliud Kipchog";
 "moses_mosop" = "Moses Mosop";
 "geoffrey_kamworor" = "Geoffrey Kamworor";

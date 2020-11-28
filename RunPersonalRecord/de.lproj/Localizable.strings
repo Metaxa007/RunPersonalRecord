@@ -45,6 +45,8 @@
 "minute" = "M";
 "second" = "S";
 "add_run" = "Ergebnis hinzufügen";
+"text_to_share" = "Ich bin %@ in %@ gelaufen.";
+"share" = "Teilen";
 "eliud_kipchoge" = "Eliud Kipchoge";
 "moses_mosop" = "Moses Mosop";
 "geoffrey_kamworor" = "Geoffrey Kamworor";

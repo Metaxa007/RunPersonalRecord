@@ -107,15 +107,15 @@ extension RecordsViewController: UITableViewDelegate, UITableViewDataSource {
         
         deleteAction.backgroundColor = UIColor(red: 212/256, green: 46/256, blue: 42/256, alpha: 1.0)
         
-        let shareAction = UIContextualAction(style: .normal, title: "Поделиться") { [weak self] (action, view, completion) in
+        let shareAction = UIContextualAction(style: .normal, title: NSLocalizedString("share", comment: "")) { [weak self] (action, view, completion) in
             guard let weakSelf = self else { return }
             
             let activity = weakSelf.sortedActivites[indexPath.row]
             let distance = Utilities.manager.getDistanceInKmAsString(distance: Int(activity.completedDistance))
             let time = Utilities.manager.getTimeInRegularFormat(duration: activity.duration)
-            print(time)
-            
-            let activityVC = UIActivityViewController(activityItems: ["Your ran so good. Your are amazing. Sent from RunPersonalRecord"], applicationActivities: nil)
+            let text = String(format: NSLocalizedString("text_to_share", comment: ""), distance, time)
+
+            let activityVC = UIActivityViewController(activityItems: [text], applicationActivities: nil)
             activityVC.popoverPresentationController?.sourceView = weakSelf.view
             
             weakSelf.present(activityVC, animated: true, completion: nil)
