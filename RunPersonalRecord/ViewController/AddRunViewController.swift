@@ -110,7 +110,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 2 {
                 // new DatePicker introduced in iOS 14. If indexPath == 2 and iOS < 14 return 260
                 if #available(iOS 14.0, *) {
-                    return 370
+                    return 380
                 }
             }
             

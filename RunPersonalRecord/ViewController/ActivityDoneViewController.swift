@@ -24,6 +24,9 @@ class ActivityDoneViewController: UIViewController {
     @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
     @IBOutlet weak var infoTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var splitsLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var splitsLabel: UILabel!
+    @IBOutlet weak var kilometerLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     
     private var paceDic = [Int : Double]()
     private var restDistPaceDic = [Int : Double]()
@@ -32,6 +35,11 @@ class ActivityDoneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        splitsLabel.text = NSLocalizedString("splits", comment: "")
+        kilometerLabel.text = NSLocalizedString("kilometer", comment: "")
+        paceLabel.text = NSLocalizedString("pace", comment: "")
+        
         activity = getActivity()
         paceDic = activity.pace?.getPace() ?? [:]
         restDistPaceDic = activity.pace?.getRestDistance() ?? [:]

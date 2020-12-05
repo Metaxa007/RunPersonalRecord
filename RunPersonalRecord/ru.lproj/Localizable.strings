@@ -44,9 +44,10 @@
 "hour" = "ч";
 "minute" = "м";
 "second" = "с";
-"add_run" = "Добавьте свой результат";
+"add_run" = "Добавьте результат";
 "share" = "Поделиться";
 "text_to_share" = "Я пробежал %@ за %@.";
+"pace" = "Темп";
 "eliud_kipchoge" = "Элиуд Кипчоге";
 "moses_mosop" = "Мозес Мосоп";
 "geoffrey_kamworor" = "Джеффри Камворор";

@@ -47,7 +47,7 @@ class RecordDetailedInfoViewController: UIViewController {
         avgSpeedTextLabel.text = NSLocalizedString("avg_speed", comment: "")
         splitsLabel.text = NSLocalizedString("splits", comment: "")
         kilometersLabel.text = NSLocalizedString("kilometer", comment: "")
-        paceLabel.text = NSLocalizedString("duration", comment: "")
+        paceLabel.text = NSLocalizedString("pace", comment: "")
         
         mapView.delegate = self
         tableView.delegate = self
