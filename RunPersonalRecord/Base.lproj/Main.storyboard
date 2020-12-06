@@ -39,7 +39,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg. Pace  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7S-5K-fE0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg. Pace  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J7S-5K-fE0">
                                                         <rect key="frame" x="0.0" y="36" width="100" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -195,6 +195,7 @@
                     <tabBarItem key="tabBarItem" title="Activity" image="bolt.fill" catalog="system" id="Rz1-It-ypt"/>
                     <connections>
                         <outlet property="averagePaceLabel" destination="J7S-5K-fE0" id="Kds-AS-S3i"/>
+                        <outlet property="averagePaceTextView" destination="PFt-ZR-N6Z" id="NNd-yj-CxA"/>
                         <outlet property="bannerView" destination="ZSu-g6-WL9" id="ggO-ab-Kcq"/>
                         <outlet property="bannerViewHeightConstraint" destination="guN-p5-piL" id="vzs-V0-VOg"/>
                         <outlet property="completedDistanceTextView" destination="GSw-5n-Fau" id="up1-sd-2o3"/>
@@ -203,7 +204,6 @@
                         <outlet property="durationLabel" destination="TyO-Ug-9K0" id="8z0-9n-yfj"/>
                         <outlet property="durationTextView" destination="bR7-z4-OWx" id="IP9-cO-V27"/>
                         <outlet property="mapView" destination="L2x-5p-nTJ" id="LgJ-qs-4JC"/>
-                        <outlet property="paceTextView" destination="PFt-ZR-N6Z" id="NNd-yj-CxA"/>
                         <outlet property="pauseResumeButton" destination="3Ux-lF-ihM" id="kLQ-tf-CmO"/>
                         <outlet property="pauseStopStack" destination="zMN-Hi-P1L" id="C8A-UZ-Qr0"/>
                         <outlet property="pauseStopStackBottom" destination="vl2-dM-rFo" id="DQn-LW-3fI"/>
