@@ -12,7 +12,7 @@ private let reuseIdentifier = "recordsCell"
 private let showAddRunVCsegue = "showAddRunVCsegue"
 private let showRecordsTVCsegue = "showRecordsTVCsegue"
 
-class RecordsCollectionViewController: UICollectionViewController {
+class RecordsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var distancesSet: Set<Int32> = []
     private var distancesArray: Array<Int32> = []
@@ -115,6 +115,14 @@ class RecordsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDistance = Int(distancesArray[indexPath.item])
         performSegue(withIdentifier: showRecordsTVCsegue, sender: self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space = (flowLayout?.minimumInteritemSpacing ?? 0.0) + (flowLayout?.sectionInset.left ?? 0.0) + (flowLayout?.sectionInset.right ?? 0.0)
+        let size = (collectionView.frame.size.width - space) / 2.0
+        
+        return CGSize(width: size, height: size)
     }
     
 }

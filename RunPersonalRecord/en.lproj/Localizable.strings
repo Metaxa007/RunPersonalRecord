@@ -12,8 +12,8 @@
 "intro_description_1" = "Enter a distance you desire to set a record for or choose one from the list of the best results human ever run.";
 "intro_description_2" = "While running you will be accompanied by a voice assistant and it will let you know once you finished the distance.";
 "intro_description_3" = "Find, share and investigate your best running results in the records table.";
-"skip" = "skip";
-"next" = "next";
+"skip" = "Skip";
+"next" = "Next";
 "start" = "Start";
 "save" = "Save";
 "duration" = "Duration";
