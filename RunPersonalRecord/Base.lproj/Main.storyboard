@@ -12,7 +12,7 @@
         <!--Activity-->
         <scene sceneID="K6Q-46-ksu">
             <objects>
-                <viewController id="8eo-45-wiJ" customClass="ViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8eo-45-wiJ" customClass="ViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RSV-0I-dZo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,7 +222,7 @@
         <!--Choose a distance-->
         <scene sceneID="Wby-mz-a0f">
             <objects>
-                <viewController id="yNk-mZ-Fzc" customClass="DistanceListViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yNk-mZ-Fzc" customClass="DistanceListViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4cS-T5-jwf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,7 +231,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="786"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="distanceCell" id="05t-2g-4IO" customClass="DistanceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="distanceCell" id="05t-2g-4IO" customClass="DistanceTableViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="05t-2g-4IO" id="87S-94-T1N">
@@ -267,7 +267,7 @@
         <!--Activity Done View Controller-->
         <scene sceneID="tRQ-iG-XSy">
             <objects>
-                <viewController id="nhh-m3-Nfl" customClass="ActivityDoneViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nhh-m3-Nfl" customClass="ActivityDoneViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6be-Qc-WFy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1246"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,7 +300,7 @@
                                                     <constraint firstAttribute="height" constant="320" id="ceM-uM-hpu"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="infoCell" rowHeight="80" id="JFC-EU-HUA" customClass="ActivityDoneInfoTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="infoCell" rowHeight="80" id="JFC-EU-HUA" customClass="ActivityDoneInfoTableViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFC-EU-HUA" id="yB0-WP-aWt">
@@ -388,7 +388,7 @@
                                                     <constraint firstAttribute="height" constant="296" id="b6i-On-lWm"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" id="hzR-01-pyg" customClass="ActivityDonePaceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" id="hzR-01-pyg" customClass="ActivityDonePaceTableViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hzR-01-pyg" id="qB8-91-K66">
@@ -516,7 +516,7 @@
         <!--Records-->
         <scene sceneID="CCP-Qk-1aO">
             <objects>
-                <collectionViewController id="yIM-3F-mLi" customClass="RecordsCollectionViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="yIM-3F-mLi" customClass="RecordsCollectionViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" id="JEy-vi-gkc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,7 +528,7 @@
                             <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordsCell" id="q8U-VP-Bgl" customClass="RecordsCollectionViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordsCell" id="q8U-VP-Bgl" customClass="RecordsCollectionViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                 <rect key="frame" x="30" y="30" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -579,7 +579,7 @@
         <!--ADD-->
         <scene sceneID="0xb-Qp-uyx">
             <objects>
-                <viewController title="ADD" id="05W-QO-3Hi" customClass="AddRunViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ADD" id="05W-QO-3Hi" customClass="AddRunViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZeP-TT-tk5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -588,7 +588,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="656"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addRunCell" id="caR-9t-M1Z" customClass="AddRunTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addRunCell" id="caR-9t-M1Z" customClass="AddRunTableViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caR-9t-M1Z" id="KSd-Fe-Ozk">
@@ -639,7 +639,7 @@
         <!--Page View Controller-->
         <scene sceneID="aqz-lM-qgO">
             <objects>
-                <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pLq-5c-Ofv" customClass="PageViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pLq-5c-Ofv" customClass="PageViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wF2-wO-yj9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="856" y="1632"/>
@@ -647,18 +647,18 @@
         <!--Content View Controller-->
         <scene sceneID="Ti5-zR-ZX2">
             <objects>
-                <viewController storyboardIdentifier="contentViewController" id="ORv-dt-mxv" customClass="ContentViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="contentViewController" id="ORv-dt-mxv" customClass="ContentViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lWm-ck-Z1h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
-                                <rect key="frame" x="20" y="822" width="130" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wI-mB-bil">
+                                <rect key="frame" x="20" y="822" width="165" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="5hn-Wx-A91"/>
+                                    <constraint firstAttribute="width" constant="165" id="5hn-Wx-A91"/>
                                     <constraint firstAttribute="height" constant="40" id="IkW-QW-UgM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="29"/>
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
@@ -698,7 +698,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-EU-8FL">
                                 <rect key="frame" x="276" y="822" width="118" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="118" id="PX9-Ug-VQj"/>
@@ -786,7 +786,7 @@
         <!--Records-->
         <scene sceneID="slh-bF-UVk">
             <objects>
-                <viewController id="IJ1-Wc-Vl5" customClass="RecordsViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IJ1-Wc-Vl5" customClass="RecordsViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nef-g9-XdA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -795,7 +795,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordsCell" rowHeight="60" id="TBk-H6-dX7" customClass="RecordsTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recordsCell" rowHeight="60" id="TBk-H6-dX7" customClass="RecordsTableViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBk-H6-dX7" id="jNV-6U-xfk">
@@ -828,7 +828,7 @@
         <!--Your Activity-->
         <scene sceneID="ysP-lS-X5x">
             <objects>
-                <viewController id="GNm-Df-osw" customClass="RecordDetailedInfoViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GNm-Df-osw" customClass="RecordDetailedInfoViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bg7-N6-0yL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -960,7 +960,7 @@
                                                     <constraint firstAttribute="height" constant="336.66666666666663" id="p8X-n2-xsm"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" id="ap1-BA-2FO" customClass="PaceTableViewCell" customModule="RunPersonalRecord" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paceCell" id="ap1-BA-2FO" customClass="PaceTableViewCell" customModule="RunPR_Lite" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ap1-BA-2FO" id="RLa-zz-77m">
@@ -1096,7 +1096,7 @@
         <!--Details-->
         <scene sceneID="tiE-mZ-sfC">
             <objects>
-                <viewController id="axi-Bc-CWA" customClass="MapViewDetailedInfoViewController" customModule="RunPersonalRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="axi-Bc-CWA" customClass="MapViewDetailedInfoViewController" customModule="RunPR_Lite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bqe-ks-4c2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
