@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Gold.png",
+      "filename" : "GoldMedal.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Gold-1.png",
+      "filename" : "GoldMedal-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Gold-2.png",
+      "filename" : "GoldMedal-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

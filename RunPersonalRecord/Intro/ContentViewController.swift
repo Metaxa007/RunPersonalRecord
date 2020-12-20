@@ -83,7 +83,7 @@ class ContentViewController: UIViewController {
             let pageViewController = parent as! PageViewController
             pageViewController.nextViewController(atIndex: index)
         default:
-            dismiss(animated: true, completion: nil)
+            dismissViewController()
         }
     }
     

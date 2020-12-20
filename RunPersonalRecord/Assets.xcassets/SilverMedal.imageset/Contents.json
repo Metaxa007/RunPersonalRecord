@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Silver.png",
+      "filename" : "SilverMedal.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Silver-1.png",
+      "filename" : "SilverMedal-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Silver-2.png",
+      "filename" : "SilverMedal-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
