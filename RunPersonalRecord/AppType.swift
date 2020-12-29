@@ -9,6 +9,6 @@
 import Foundation
 
 enum AppType: String {
-    case full = "metaxa.RunPersonalRecord"
-    case lite = "metaxa.RunPersonalRecord.lite"
+    case full = "com.lemiasheuski.RunPR"
+    case lite = "com.lemiasheuski.RunPR.lite"
 }

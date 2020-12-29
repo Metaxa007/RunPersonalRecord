@@ -47,7 +47,7 @@ class RecordDetailedInfoViewController: UIViewController {
         avgSpeedTextLabel.text = NSLocalizedString("avg_speed", comment: "")
         splitsLabel.text = NSLocalizedString("splits", comment: "")
         kilometersLabel.text = NSLocalizedString("kilometer", comment: "")
-        paceLabel.text = NSLocalizedString("duration", comment: "")
+        paceLabel.text = NSLocalizedString("pace", comment: "")
         
         mapView.delegate = self
         tableView.delegate = self
@@ -185,7 +185,7 @@ extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewData
 extension RecordDetailedInfoViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = .green
+        renderer.strokeColor = UIColor(red: 117/256, green: 196/256, blue: 128/256, alpha: 1.0)
         renderer.lineWidth = 3.0
         
         return renderer

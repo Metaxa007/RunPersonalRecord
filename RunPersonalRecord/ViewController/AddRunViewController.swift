@@ -73,30 +73,15 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 cell.leftLabel.text = NSLocalizedString("distance", comment: "")
                 cell.updateDistanceLabel()
-                
-                if traitCollection.userInterfaceStyle == .light {
-                    cell.icon.image = UIImage(named: "Distance")!
-                } else {
-                    cell.icon.image = UIImage(named: "Distance_dark")!
-                }
+                cell.icon.image = UIImage(named: "Distance")!
             } else if indexPath.row == 1 {
                 cell.leftLabel.text = NSLocalizedString("duration", comment: "")
                 cell.updateTimeLabel()
-                
-                if traitCollection.userInterfaceStyle == .light {
-                    cell.icon.image = UIImage(named: "Duration")!
-                } else {
-                    cell.icon.image = UIImage(named: "Duration_dark")!
-                }
+                cell.icon.image = UIImage(named: "Duration")!
             } else if indexPath.row == 2 {
                 cell.leftLabel.text = NSLocalizedString("date", comment: "")
                 cell.updateDateLabel()
-                
-                if traitCollection.userInterfaceStyle == .light {
-                    cell.icon.image = UIImage(named: "Date")!
-                } else {
-                    cell.icon.image = UIImage(named: "Date_dark")!
-                }
+                cell.icon.image = UIImage(named: "Date")!
             }
             
             return cell
@@ -110,7 +95,7 @@ extension AddRunViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 2 {
                 // new DatePicker introduced in iOS 14. If indexPath == 2 and iOS < 14 return 260
                 if #available(iOS 14.0, *) {
-                    return 370
+                    return 380
                 }
             }
             

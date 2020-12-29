@@ -66,7 +66,7 @@
 		AC48415224F459A5007B98E1 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		AC528C06252A1C62006F9B9B /* ActivityDoneInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDoneInfoTableViewCell.swift; sourceTree = "<group>"; };
 		AC543F3A2454C51200D2202B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		AC56B29E2452402F00F10921 /* RunPersonalRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunPersonalRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC56B29E2452402F00F10921 /* Run PR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Run PR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC56B2A12452402F00F10921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC56B2A32452402F00F10921 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC56B2A52452402F00F10921 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		AC56B29F2452402F00F10921 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AC56B29E2452402F00F10921 /* RunPersonalRecord.app */,
+				AC56B29E2452402F00F10921 /* Run PR.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			);
 			name = RunPersonalRecord;
 			productName = RunPersonalRecord;
-			productReference = AC56B29E2452402F00F10921 /* RunPersonalRecord.app */;
+			productReference = AC56B29E2452402F00F10921 /* Run PR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -565,15 +565,17 @@
 			baseConfigurationReference = 027216310B4E86FB559F79C2 /* Pods-RunPersonalRecord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "Run PR";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WFGT6GW29Z;
+				DEVELOPMENT_TEAM = 4ATQBPBS7Y;
 				INFOPLIST_FILE = RunPersonalRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_NAME = RunPersonalRecord;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemiasheuski.RunPR;
+				PRODUCT_NAME = "$(BUNDLE_DISPLAY_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -584,15 +586,19 @@
 			baseConfigurationReference = 9F7F7CBAA7D56FEDA07FA02D /* Pods-RunPersonalRecord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "Run PR";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WFGT6GW29Z;
+				DEVELOPMENT_TEAM = 4ATQBPBS7Y;
 				INFOPLIST_FILE = RunPersonalRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_NAME = RunPersonalRecord;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemiasheuski.RunPR;
+				PRODUCT_NAME = "$(BUNDLE_DISPLAY_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -669,15 +675,17 @@
 			baseConfigurationReference = F6A24947CB6BED1EF47C7848 /* Pods-RunPersonalRecord.debuglite.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "RunPR Lite";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WFGT6GW29Z;
+				DEVELOPMENT_TEAM = 4ATQBPBS7Y;
 				INFOPLIST_FILE = RunPersonalRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_NAME = RunPersonalRecord;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemiasheuski.RunPR;
+				PRODUCT_NAME = "$(BUNDLE_DISPLAY_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -748,15 +756,17 @@
 			baseConfigurationReference = A2EBA74FF6CAAFFF9017587F /* Pods-RunPersonalRecord.releaselite.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "Run PR Lite";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WFGT6GW29Z;
+				DEVELOPMENT_TEAM = 4ATQBPBS7Y;
 				INFOPLIST_FILE = RunPersonalRecord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_NAME = RunPersonalRecord;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemiasheuski.RunPR.lite;
+				PRODUCT_NAME = "$(BUNDLE_DISPLAY_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

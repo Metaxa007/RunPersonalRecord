@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Resume.png",
+      "filename" : "Green_dot.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Resume-1.png",
+      "filename" : "Green_dot-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Resume-2.png",
+      "filename" : "Green_dot-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

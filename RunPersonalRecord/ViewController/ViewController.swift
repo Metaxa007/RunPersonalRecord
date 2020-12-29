@@ -20,7 +20,7 @@ private let showDistanceListSegue = "showDistanceListSegue"
 class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var paceTextView: UILabel!
+    @IBOutlet weak var averagePaceTextView: UILabel!
     @IBOutlet weak var durationTextView: UILabel!
     @IBOutlet weak var completedDistanceTextView: UILabel!
     @IBOutlet weak var distanceTextField: UITextField!
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
             // divide by 10 for tests.
             if newValue / 1000 >= passedKilometers + 1 {
                 passedKilometers += 1
-                paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(passedKilometers))
+                averagePaceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / Double(passedKilometers))
                 durationWhenLastPaceCounted = Double(stopWatch.getTimeInSeconds())
             }
         }
@@ -265,7 +265,7 @@ class ViewController: UIViewController {
                 restDistancePaceDict[completedDistance % 1000] = Double(stopWatch.getTimeInSeconds()) - durationWhenLastPaceCounted
 
                 // divide by 10 for tests.
-                paceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000)) //completed distance in case user did not finish. If finished completedDistance == distanceToRun
+                averagePaceTextView.text = Utilities.manager.getTimeInPaceFormat(duration: Double(stopWatch.getTimeInSeconds()) / (Double(completedDistance)/1000)) //completed distance in case user did not finish. If finished completedDistance == distanceToRun
             }
             
             stopDate = Date()
@@ -303,10 +303,12 @@ class ViewController: UIViewController {
         completedDistance = 0
         durationWhenLastPaceCounted = 0
         passedKilometers = 0
+        
         locationsAll = []
         locationsInSection = []
         isPaused = false
 
+        averagePaceTextView.text = "00:00"
         distanceTextField.isEnabled = true
         distanceTextField.textColor =  UIColor { textColor in
             switch textColor.userInterfaceStyle {
@@ -485,7 +487,7 @@ extension ViewController : CLLocationManagerDelegate, MKMapViewDelegate, UITextF
     // MARK: MKMapViewDelegate -
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = .green
+        renderer.strokeColor = UIColor(red: 117/256, green: 196/256, blue: 128/256, alpha: 1.0)
         renderer.lineWidth = 3.0
         
         return renderer

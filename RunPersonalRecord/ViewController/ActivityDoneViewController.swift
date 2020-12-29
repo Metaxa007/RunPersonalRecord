@@ -24,6 +24,9 @@ class ActivityDoneViewController: UIViewController {
     @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
     @IBOutlet weak var infoTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var splitsLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var splitsLabel: UILabel!
+    @IBOutlet weak var kilometerLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     
     private var paceDic = [Int : Double]()
     private var restDistPaceDic = [Int : Double]()
@@ -32,6 +35,11 @@ class ActivityDoneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        splitsLabel.text = NSLocalizedString("splits", comment: "")
+        kilometerLabel.text = NSLocalizedString("kilometer", comment: "")
+        paceLabel.text = NSLocalizedString("pace", comment: "")
+        
         activity = getActivity()
         paceDic = activity.pace?.getPace() ?? [:]
         restDistPaceDic = activity.pace?.getRestDistance() ?? [:]
@@ -73,10 +81,10 @@ class ActivityDoneViewController: UIViewController {
     private func setDoneLabel() {
         if activity.completed {
             doneLabel.text = NSLocalizedString("distance_completed", comment: "")
-            doneLabel.textColor = UIColor.green
+            doneLabel.textColor = UIColor(red: 117/256, green: 196/256, blue: 128/256, alpha: 1.0)
         } else {
             doneLabel.text = NSLocalizedString("distance_not_completed", comment: "")
-            doneLabel.textColor = UIColor.red
+            doneLabel.textColor = UIColor(red: 224/256, green: 94/256, blue: 45/256, alpha: 1.0)
         }
     }
     
@@ -176,7 +184,7 @@ extension ActivityDoneViewController: UITableViewDelegate, UITableViewDataSource
 extension ActivityDoneViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = .green
+        renderer.strokeColor = UIColor(red: 117/256, green: 196/256, blue: 128/256, alpha: 1.0)
         renderer.lineWidth = 3.0
         
         return renderer
