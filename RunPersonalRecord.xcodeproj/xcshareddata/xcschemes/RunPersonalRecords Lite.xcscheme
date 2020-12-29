@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AC56B29D2452402F00F10921"
-               BuildableName = "RunPersonalRecord.app"
+               BuildableName = "Run PR.app"
                BlueprintName = "RunPersonalRecord"
                ReferencedContainer = "container:RunPersonalRecord.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
       buildConfiguration = "DebugLite"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "ru"
+      language = "de"
       region = "RU"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AC56B29D2452402F00F10921"
-            BuildableName = "RunPersonalRecord.app"
+            BuildableName = "Run PR.app"
             BlueprintName = "RunPersonalRecord"
             ReferencedContainer = "container:RunPersonalRecord.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AC56B29D2452402F00F10921"
-            BuildableName = "RunPersonalRecord.app"
+            BuildableName = "Run PR.app"
             BlueprintName = "RunPersonalRecord"
             ReferencedContainer = "container:RunPersonalRecord.xcodeproj">
          </BuildableReference>

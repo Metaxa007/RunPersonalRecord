@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Green_dot.png",
+      "filename" : "Average_pace.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Green_dot-1.png",
+      "filename" : "Average_pace-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Green_dot-2.png",
+      "filename" : "Average_pace-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

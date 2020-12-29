@@ -185,7 +185,7 @@ extension RecordDetailedInfoViewController: UITableViewDelegate, UITableViewData
 extension RecordDetailedInfoViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = .green
+        renderer.strokeColor = UIColor(red: 117/256, green: 196/256, blue: 128/256, alpha: 1.0)
         renderer.lineWidth = 3.0
         
         return renderer

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Green_dot.png",
+      "filename" : "Duration_green.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Green_dot-1.png",
+      "filename" : "Duration_green-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Green_dot-2.png",
+      "filename" : "Duration_green-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

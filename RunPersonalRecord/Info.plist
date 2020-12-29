@@ -23,11 +23,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>always gps</string>
+	<string>Let the app use get your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>App uses location</string>
+	<string>Let the app use get your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>in use gps</string>
+	<string>Let the app use get your location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -151,7 +151,7 @@ class MapViewDetailedInfoViewController: UIViewController {
 extension MapViewDetailedInfoViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor(red: 134/256, green: 200/256, blue: 206/256, alpha: 1.0)
+        renderer.strokeColor = UIColor(red: 117/256, green: 196/256, blue: 128/256, alpha: 1.0)
         renderer.lineWidth = 3.0
         
         return renderer
@@ -171,14 +171,14 @@ extension MapViewDetailedInfoViewController: MKMapViewDelegate {
         }
         
         if let tag = anno.tag, tag == "Start" {
-            annotationView?.image = UIImage(named: "Flag_green")
+            annotationView?.image = UIImage(named: "Green_dot")
             
-            let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            let transform = CGAffineTransform(scaleX: 0.015, y: 0.015)
             annotationView?.transform = transform
         } else if let tag = anno.tag, tag == "Finish" {
-            annotationView?.image = UIImage(named: "Flag_red")
+            annotationView?.image = UIImage(named: "Red_dot")
             
-            let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            let transform = CGAffineTransform(scaleX: 0.015, y: 0.015)
             annotationView?.transform = transform
         } else  {
             let distance = anno.tag ?? ""
