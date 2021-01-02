@@ -34,7 +34,6 @@
       buildConfiguration = "DebugLite"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "de"
       region = "RU"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
